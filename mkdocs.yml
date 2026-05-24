@@ -1,0 +1,60 @@
+site_name: Animora
+site_description: High-level, declarative animation framework built on top of Manim.
+site_author: Himanshu Jadhav
+site_url: https://himanshu-jadhav108.github.io/Animora/
+repo_url: https://github.com/himanshu-jadhav108/Animora
+repo_name: himanshu-jadhav108/Animora
+
+theme:
+  name: material
+  palette:
+    # Palette toggle for automatic mode between light and dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.code.annotate
+
+nav:
+  - Overview: index.md
+  - Architecture:
+    - Overview & Layers: architecture/00-overview.md
+    - Module Boundaries: architecture/module-boundaries.md
+    - API Philosophy: architecture/api-philosophy.md
+    - Dependency Policy: architecture/dependency-policy.md
+    - Versioning Strategy: architecture/versioning-strategy.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
