@@ -9,4 +9,15 @@ global engine configuration.
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from animora.core.animation import Animation
+from animora.core.component import Component
+from animora.core.config import BoundingBox, ComponentConfig
+from animora.core.scene import Scene
+
+__all__: list[str] = [
+    "Animation",
+    "BoundingBox",
+    "Component",
+    "ComponentConfig",
+    "Scene",
+]

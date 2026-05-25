@@ -7,4 +7,8 @@ visual primitives, data visualizations, and computer science data structures.
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from animora.components.label import Label
+
+__all__: list[str] = [
+    "Label",
+]
