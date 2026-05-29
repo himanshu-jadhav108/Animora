@@ -8,6 +8,7 @@ import manim
 from animora.core.animation import Animation
 from animora.core.component import Component
 from animora.core.config import ComponentConfig
+from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -17,7 +18,7 @@ class Text(Component):
     """General-purpose styled text component for typography and titles.
 
     Supports multi-line text strings, custom font families, font sizing,
-    colors, and text transform animations.
+    colors, and text transform animations with active theme resolution.
 
     Example:
     ```python
@@ -38,17 +39,17 @@ class Text(Component):
         config: ComponentConfig | None = None,
         **kwargs: Any,
     ) -> None:
+        active_theme = get_active_theme()
         cfg = config or ComponentConfig()
-        if font_size is not None:
-            cfg = cfg.merge(font_size=font_size)
-        if color is not None:
-            cfg = cfg.merge(color=color)
-        if font is not None:
-            cfg = cfg.merge(font_family=font)
+        resolved_cfg = cfg.merge(
+            font_size=font_size if font_size is not None else active_theme.typography.font_size_md,
+            color=color if color is not None else active_theme.colors.text,
+            font_family=font if font is not None else active_theme.typography.font_family,
+        ).resolve_with_theme(active_theme)
 
         self._text_content: str = text
         self._line_spacing: float = line_spacing
-        super().__init__(config=cfg, **kwargs)
+        super().__init__(config=resolved_cfg, **kwargs)
 
     @property
     def text(self) -> str:

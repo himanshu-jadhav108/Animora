@@ -10,6 +10,7 @@ from animora.components.connector import Connector
 from animora.core.animation import Animation
 from animora.core.component import Component
 from animora.core.config import ComponentConfig
+from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -19,13 +20,13 @@ class Arrow(Connector):
     """A directional arrow connector between components or coordinates.
 
     Composes on top of Connector, adding configurable arrowhead tips,
-    straight/curved paths, and edge highlighting.
+    straight/curved paths, and active theme styling.
 
     Example:
     ```python
     node_a = Shape.circle(radius=0.4).move_to([0, 2, 0])
     node_b = Shape.circle(radius=0.4).move_to([0, -2, 0])
-    edge = Arrow(start=node_a, end=node_b, stroke_color="#38BDF8")
+    edge = Arrow(start=node_a, end=node_b)
     ```
     """
 
@@ -37,19 +38,23 @@ class Arrow(Connector):
         path_arc: float = 0.0,
         tip_length: float = 0.25,
         buff: float = 0.1,
-        stroke_color: str | None = "#38BDF8",
-        stroke_width: float = 3.0,
+        stroke_color: str | None = None,
+        stroke_width: float | None = None,
         config: ComponentConfig | None = None,
         **kwargs: Any,
     ) -> None:
+        active_theme = get_active_theme()
+        resolved_color = stroke_color if stroke_color is not None else active_theme.colors.primary
+        resolved_width = stroke_width if stroke_width is not None else active_theme.strokes.thick
+
         self._tip_length: float = tip_length
         self._buff: float = buff
         super().__init__(
             start=start,
             end=end,
             path_arc=path_arc,
-            stroke_color=stroke_color,
-            stroke_width=stroke_width,
+            stroke_color=resolved_color,
+            stroke_width=resolved_width,
             config=config,
             **kwargs,
         )
@@ -83,15 +88,19 @@ class Arrow(Connector):
 
     def animate_highlight(
         self,
-        color: str = "#F59E0B",
-        run_time: float = 1.0,
+        color: str | None = None,
+        run_time: float | None = None,
     ) -> Animation:
         """Animate highlighting the arrow (e.g. during traversal)."""
+        active_theme = get_active_theme()
+        highlight_color = color if color is not None else active_theme.colors.accent
+        duration = run_time if run_time is not None else active_theme.timing.normal
+
         return Animation(
             component=self,
-            manim_animation=manim.Indicate(self.manim_object, color=color),
-            run_time=run_time,
-            name=f"highlight_arrow(color={color})",
+            manim_animation=manim.Indicate(self.manim_object, color=highlight_color),
+            run_time=duration,
+            name=f"highlight_arrow(color={highlight_color})",
         )
 
 

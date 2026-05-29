@@ -9,6 +9,7 @@ import manim
 from animora.core.animation import Animation
 from animora.core.component import Component
 from animora.core.config import ComponentConfig
+from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -18,13 +19,13 @@ class Connector(Component):
     """A geometric line or curved arc connecting two components or coordinate points.
 
     Supports straight lines and curved arcs with customizable stroke colors
-    and widths.
+    and widths resolved from active theme.
 
     Example:
     ```python
     node_a = Shape.circle(radius=0.5).move_to([-2, 0, 0])
     node_b = Shape.circle(radius=0.5).move_to([2, 0, 0])
-    link = Connector(start=node_a, end=node_b, stroke_color="#94A3B8")
+    link = Connector(start=node_a, end=node_b)
     ```
     """
 
@@ -34,15 +35,19 @@ class Connector(Component):
         end: Component | Sequence[float] | np.ndarray,
         *,
         path_arc: float = 0.0,
-        stroke_color: str | None = "#94A3B8",
-        stroke_width: float = 2.5,
+        stroke_color: str | None = None,
+        stroke_width: float | None = None,
         config: ComponentConfig | None = None,
         **kwargs: Any,
     ) -> None:
+        active_theme = get_active_theme()
+        resolved_color = stroke_color if stroke_color is not None else active_theme.colors.text_muted
+        resolved_width = stroke_width if stroke_width is not None else active_theme.strokes.regular
+
         cfg = config or ComponentConfig(
-            color=stroke_color or "#94A3B8",
-            stroke_color=stroke_color or "#94A3B8",
-            stroke_width=stroke_width,
+            color=resolved_color,
+            stroke_color=resolved_color,
+            stroke_width=resolved_width,
         )
         self._start_target = start
         self._end_target = end
@@ -89,12 +94,15 @@ class Connector(Component):
             )
         return mob
 
-    def animate_draw(self, run_time: float = 1.0) -> Animation:
+    def animate_draw(self, run_time: float | None = None) -> Animation:
         """Animate drawing the connector from start to end."""
+        active_theme = get_active_theme()
+        duration = run_time if run_time is not None else active_theme.timing.normal
+
         return Animation(
             component=self,
             manim_animation=manim.Create(self.manim_object),
-            run_time=run_time,
+            run_time=duration,
             name="draw_connector",
         )
 

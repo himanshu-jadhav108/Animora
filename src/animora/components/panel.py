@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from typing import TYPE_CHECKING, Any
 import manim
 
 from animora.components.group import Group
@@ -10,6 +10,7 @@ from animora.components.shape import Shape
 from animora.components.text import Text
 from animora.core.component import Component
 from animora.core.config import ComponentConfig
+from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -19,18 +20,12 @@ class Panel(Component):
     """A framed card/panel container component with a styled background shape.
 
     Wraps child components or standalone content within a padded background card,
-    optionally displaying a header title.
+    optionally displaying a header title, styled by active theme.
 
     Example:
     ```python
     code_text = Text("x = 42\ny = x * 2", font_size=24)
-    panel = Panel(
-        children=[code_text],
-        title="Variables",
-        padding=0.4,
-        fill_color="#0F172A",
-        stroke_color="#38BDF8",
-    )
+    panel = Panel(code_text, title="Variables")
     ```
     """
 
@@ -38,27 +33,34 @@ class Panel(Component):
         self,
         *children: Component,
         title: str | Text | None = None,
-        padding: float = 0.4,
-        corner_radius: float = 0.2,
-        fill_color: str | None = "#0F172A",
+        padding: float | None = None,
+        corner_radius: float | None = None,
+        fill_color: str | None = None,
         fill_opacity: float = 0.9,
-        stroke_color: str | None = "#38BDF8",
-        stroke_width: float = 2.0,
+        stroke_color: str | None = None,
+        stroke_width: float | None = None,
         config: ComponentConfig | None = None,
         **kwargs: Any,
     ) -> None:
+        active_theme = get_active_theme()
+        resolved_fill = fill_color if fill_color is not None else active_theme.colors.surface
+        resolved_stroke = stroke_color if stroke_color is not None else active_theme.colors.border
+        resolved_stroke_w = stroke_width if stroke_width is not None else active_theme.strokes.regular
+        resolved_pad = padding if padding is not None else active_theme.spacing.md
+        resolved_corner_r = corner_radius if corner_radius is not None else active_theme.corner_radius.md
+
         cfg = config or ComponentConfig(
-            color=stroke_color or "#38BDF8",
-            fill_color=fill_color,
+            color=resolved_stroke,
+            fill_color=resolved_fill,
             fill_opacity=fill_opacity,
-            stroke_color=stroke_color,
-            stroke_width=stroke_width,
+            stroke_color=resolved_stroke,
+            stroke_width=resolved_stroke_w,
         )
-        self._padding = float(padding)
-        self._corner_radius = float(corner_radius)
+        self._padding = float(resolved_pad)
+        self._corner_radius = float(resolved_corner_r)
         self._content_group = Group(*children)
         self._title_comp: Text | None = (
-            Text(title, font_size=28, color=stroke_color)
+            Text(title, font_size=active_theme.typography.font_size_sm, color=active_theme.colors.text)
             if isinstance(title, str)
             else title
         )
@@ -101,9 +103,9 @@ class Panel(Component):
             width=w,
             height=h,
             corner_radius=self._corner_radius,
-            fill_color=self.config.fill_color or "#0F172A",
+            fill_color=self.config.fill_color,
             fill_opacity=self.config.fill_opacity,
-            stroke_color=self.config.stroke_color or "#38BDF8",
+            stroke_color=self.config.stroke_color,
             stroke_width=self.config.stroke_width,
         ).move_to(center)
 
