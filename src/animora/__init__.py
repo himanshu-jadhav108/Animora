@@ -17,6 +17,12 @@ from animora.core.animation import Animation
 from animora.core.component import Component
 from animora.core.config import BoundingBox, ComponentConfig
 from animora.core.scene import Scene
+from animora.dataviz.axes import Axes
+from animora.dataviz.bar_chart import BarChart
+from animora.dataviz.histogram import Histogram
+from animora.dataviz.line_chart import LineChart
+from animora.dataviz.scatter_plot import ScatterPlot
+from animora.dataviz.table import Table
 from animora.layout.base import BaseLayout, LayoutItem, LayoutResult
 from animora.layout.circular import CircularLayout
 from animora.layout.flow import FlowLayout
@@ -53,6 +59,8 @@ __all__: list[str] = [
     "Animation",
     "AnimationTiming",
     "Arrow",
+    "Axes",
+    "BarChart",
     "BaseLayout",
     "BoundingBox",
     "CircularLayout",
@@ -67,19 +75,23 @@ __all__: list[str] = [
     "GraphLayout",
     "GridLayout",
     "Group",
+    "Histogram",
     "HorizontalLayout",
     "Label",
     "LayoutItem",
     "LayoutResult",
+    "LineChart",
     "ModernDark",
     "Monokai",
     "Panel",
     "PaperLight",
+    "ScatterPlot",
     "Scene",
     "Shape",
     "ShapeType",
     "SpacingScale",
     "StrokeScale",
+    "Table",
     "Text",
     "Theme",
     "TreeLayout",
