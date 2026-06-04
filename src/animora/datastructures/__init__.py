@@ -1,4 +1,8 @@
-"""Data structures subpackage exports."""
+"""Stateful, algorithm-aware data structure components for Animora.
+
+Includes Array, Stack, Queue, LinkedList, Heap, Tree, BST, Graph, and HashTable,
+with separated pure Python data models and synchronized animation generation layers.
+"""
 
 from __future__ import annotations
 

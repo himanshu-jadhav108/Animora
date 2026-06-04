@@ -17,6 +17,15 @@ from animora.core.animation import Animation
 from animora.core.component import Component
 from animora.core.config import BoundingBox, ComponentConfig
 from animora.core.scene import Scene
+from animora.datastructures.array import Array, ArrayListModel
+from animora.datastructures.bst import BST, BSTModel, BSTNode
+from animora.datastructures.graph import Graph, GraphModel
+from animora.datastructures.hash_table import HashEntry, HashTable, HashTableChainingModel
+from animora.datastructures.heap import Heap, HeapModel
+from animora.datastructures.linked_list import LinkedList, LinkedListModel, ListNode
+from animora.datastructures.queue import Queue, QueueModel
+from animora.datastructures.stack import Stack, StackModel
+from animora.datastructures.tree import GenericTreeModel, Tree, TreeNode
 from animora.dataviz.axes import Axes
 from animora.dataviz.bar_chart import BarChart
 from animora.dataviz.histogram import Histogram
@@ -58,8 +67,13 @@ __version__ = "0.1.0.dev0"
 __all__: list[str] = [
     "Animation",
     "AnimationTiming",
+    "Array",
+    "ArrayListModel",
     "Arrow",
     "Axes",
+    "BST",
+    "BSTModel",
+    "BSTNode",
     "BarChart",
     "BaseLayout",
     "BoundingBox",
@@ -72,29 +86,46 @@ __all__: list[str] = [
     "Cyberpunk",
     "DefaultTheme",
     "FlowLayout",
+    "GenericTreeModel",
+    "Graph",
     "GraphLayout",
+    "GraphModel",
     "GridLayout",
     "Group",
+    "HashEntry",
+    "HashTable",
+    "HashTableChainingModel",
+    "Heap",
+    "HeapModel",
     "Histogram",
     "HorizontalLayout",
     "Label",
     "LayoutItem",
     "LayoutResult",
     "LineChart",
+    "LinkedList",
+    "LinkedListModel",
+    "ListNode",
     "ModernDark",
     "Monokai",
     "Panel",
     "PaperLight",
+    "Queue",
+    "QueueModel",
     "ScatterPlot",
     "Scene",
     "Shape",
     "ShapeType",
     "SpacingScale",
+    "Stack",
+    "StackModel",
     "StrokeScale",
     "Table",
     "Text",
     "Theme",
+    "Tree",
     "TreeLayout",
+    "TreeNode",
     "Typography",
     "VerticalLayout",
     "__version__",
