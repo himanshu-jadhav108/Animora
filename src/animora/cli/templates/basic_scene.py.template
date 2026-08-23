@@ -1,0 +1,27 @@
+"""Basic Animora starter scene demonstrating core abstractions and components."""
+
+from __future__ import annotations
+
+from animora.core import Scene
+from animora.components import Text, Shape, Panel
+from animora.theme import ModernDark, use_theme
+
+
+class StarterScene(Scene):
+    """A minimal starter scene created by 'animora new'."""
+
+    def construct(self) -> None:
+        with use_theme(ModernDark):
+            # 1. Title
+            title = Text("Welcome to Animora!", font_size=40)
+            title.move_to([0, 2.5, 0])
+
+            # 2. Shape inside a container Panel
+            circle = Shape.circle(radius=0.7)
+            card = Panel(circle, title="Visual Primitive")
+
+            # 3. Animate in sequence
+            self.play(title.animate_fade_in(run_time=0.8))
+            self.play(card.animate_create(run_time=1.0))
+            self.play(circle.animate_highlight(run_time=0.8))
+            self.wait(1)

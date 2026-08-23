@@ -41,6 +41,9 @@ dependencies = [
     "networkx>=3.0,<4.0",
 ]
 
+[project.scripts]
+animora = "animora.cli.main:main"
+
 [project.optional-dependencies]
 cli = [
     "click>=8.0",
