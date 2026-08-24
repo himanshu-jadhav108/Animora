@@ -1,35 +1,50 @@
-# Welcome to Animora
+# Animora
 
-**Animora** is a high-level, declarative animation framework built on top of [Manim](https://www.manim.community/) (Community Edition) for creating educational, technical, mathematical, and algorithmic visualizations.
+**High-Level Declarative Animation Framework Built on Manim**
+
+Animora democratizes the creation of publication-quality educational, technical, mathematical, and algorithmic animations through a modern declarative component hierarchy, automatic layout solvers, design token themes, stateful data structures, and verifiable algorithm operation tracing.
 
 ---
 
-## 💡 The Animora Philosophy
+## Key Highlights
 
-Just as **Seaborn** sits on top of Matplotlib to make statistical plots intuitive, **Animora** sits on top of Manim to make technical and algorithmic animation effortless:
+- **Visual Component Primitives**: High-level `Text`, `Shape`, `Connector`, `Arrow`, `Group`, and `Panel` primitives with semantic state animations (`animate_highlight`, `animate_transform`, `animate_create`).
+- **Decoupled Automatic Layout Solvers**: Pure geometric layout engines including `HorizontalLayout`, `VerticalLayout`, `GridLayout`, `CircularLayout`, `TreeLayout`, `GraphLayout`, and `FlowLayout`.
+- **Theme & Design Token Engine**: Built-in production themes (`ModernDark`, `PaperLight`, `Cyberpunk`, `Monokai`) with dynamic context resolution via `use_theme()`.
+- **Data Visualization**: Educational chart components with guaranteed mathematical precision: `Axes`, `BarChart`, `LineChart`, `ScatterPlot`, `Histogram`, and `Table`.
+- **Computer Science Data Structures**: Stateful structures isolating pure Python data models from animation layers: `Array`, `Stack`, `Queue`, `LinkedList`, `Heap`, `Tree`, `BST`, `Graph`, and `HashTable`.
+- **Verifiable Algorithm Animations**: Explicit `OperationTrace` recording for Searching, 5 Sorting algorithms, BFS/DFS, Dijkstra, A*, DP, and Backtracking.
+- **Developer CLI**: Fast prototyping with `animora new`, `animora preview`, `animora render`, and `animora doctor`.
+
+---
+
+## Quick Example
 
 ```python
-# Coming soon in v0.1:
-from animora.components.dsa import Graph
+from animora.core import Scene
+from animora.datastructures import BST
+from animora.theme import ModernDark, use_theme
 
-graph = Graph(edges=[("A", "B"), ("B", "C"), ("A", "C")])
-graph.bfs(start="A")
+class BSTDemoScene(Scene):
+    def construct(self) -> None:
+        with use_theme(ModernDark):
+            # 1. Initialize BST
+            bst = BST([50, 30, 70, 20, 40])
+            self.play(bst.animate_create())
+
+            # 2. Insert new value (animates comparison path 50 -> 30 -> 40 before placement)
+            self.play(bst.animate_insert(35))
+
+            # 3. Search target
+            self.play(bst.animate_search(35))
 ```
 
 ---
 
-## 📖 Architecture & Design Specifications
+## Next Steps
 
-During Phase 0, complete architectural specifications were established:
-
-- [System Overview & Layered Architecture](architecture/00-overview.md)
-- [Module Boundaries & Responsibilities](architecture/module-boundaries.md)
-- [Public API Philosophy & Escape Hatch Design](architecture/api-philosophy.md)
-- [Dependency Policy](architecture/dependency-policy.md)
-- [Versioning & Compatibility Strategy](architecture/versioning-strategy.md)
-
----
-
-## 🛠️ Development Status
-
-Animora is currently in active foundational development. Follow along on our [GitHub Repository](https://github.com/himanshu-jadhav108/Animora).
+- **[Installation Guide](getting-started/installation.md)**: Set up Animora, Python, Manim, and FFmpeg.
+- **[Your First Scene](getting-started/first-scene.md)**: Step-by-step beginner tutorial.
+- **[Guides & Concepts](guides/components.md)**: Deep dive into components, layouts, theming, and algorithms.
+- **[Example Gallery](examples/gallery.md)**: Explore runnable code examples.
+- **[API Reference](reference/api.md)**: Full reference for all public classes and functions.

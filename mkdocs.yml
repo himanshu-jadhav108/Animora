@@ -8,7 +8,6 @@ repo_name: himanshu-jadhav108/Animora
 theme:
   name: material
   palette:
-    # Palette toggle for automatic mode between light and dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
@@ -32,13 +31,32 @@ theme:
     - content.code.annotate
 
 nav:
-  - Overview: index.md
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - First Scene: getting-started/first-scene.md
+  - Guides:
+      - Visual Components: guides/components.md
+      - Layout Solvers: guides/layout.md
+      - Theming & Tokens: guides/theming.md
+      - Data Visualization: guides/dataviz.md
+      - Data Structures: guides/datastructures.md
+      - Algorithms: guides/algorithms.md
+      - CLI: guides/cli.md
+  - Examples & Gallery: examples/gallery.md
+  - Recipes:
+      - Custom Layout: recipes/custom-layout.md
+      - Theme Switching: recipes/theme-switching.md
+      - Manim Escape Hatch: recipes/escape-hatch.md
+  - API Reference: reference/api.md
+  - Troubleshooting: troubleshooting.md
+  - Migration Guide: migration.md
   - Architecture:
-    - Overview & Layers: architecture/00-overview.md
-    - Module Boundaries: architecture/module-boundaries.md
-    - API Philosophy: architecture/api-philosophy.md
-    - Dependency Policy: architecture/dependency-policy.md
-    - Versioning Strategy: architecture/versioning-strategy.md
+      - System Overview: architecture/00-overview.md
+      - Module Boundaries: architecture/module-boundaries.md
+      - API Philosophy: architecture/api-philosophy.md
+      - Dependency Policy: architecture/dependency-policy.md
+      - Versioning Strategy: architecture/versioning-strategy.md
 
 markdown_extensions:
   - admonition
