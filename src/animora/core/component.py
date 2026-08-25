@@ -31,6 +31,7 @@ class Component(ABC):
         self._config: ComponentConfig = config or ComponentConfig()
         self._mobject: manim.Mobject | None = None
         self._children: list[Component] = []
+        self._cached_bbox: BoundingBox | None = None
 
     # -------------------------------------------------------------------------
     # The Manim Escape Hatch
@@ -81,21 +82,26 @@ class Component(ABC):
     @property
     def bounding_box(self) -> BoundingBox:
         """Axis-aligned 3D bounding box for layout calculations."""
-        mob = self.manim_object
-        corners = mob.get_bounding_box()
-        # corners is an array of 8 corner points or [bottom_left, center, top_right]
-        min_pt = mob.get_corner(manim.DL)
-        max_pt = mob.get_corner(manim.UR)
-        return BoundingBox(
-            min_point=(float(min_pt[0]), float(min_pt[1]), float(min_pt[2])),
-            max_point=(float(max_pt[0]), float(max_pt[1]), float(max_pt[2])),
-        )
+        if self._cached_bbox is None:
+            mob = self.manim_object
+            min_pt = mob.get_corner(manim.DL)
+            max_pt = mob.get_corner(manim.UR)
+            self._cached_bbox = BoundingBox(
+                min_point=(float(min_pt[0]), float(min_pt[1]), float(min_pt[2])),
+                max_point=(float(max_pt[0]), float(max_pt[1]), float(max_pt[2])),
+            )
+        return self._cached_bbox
+
+    def _invalidate_bbox_cache(self) -> None:
+        """Invalidate cached bounding box calculations."""
+        self._cached_bbox = None
 
     # -------------------------------------------------------------------------
     # Spatial Positioning & Alignment (Fluent API)
     # -------------------------------------------------------------------------
     def move_to(self, target: np.ndarray | Sequence[float] | Component | manim.Mobject) -> Self:
         """Move the component's center to the specified coordinate or target center."""
+        self._invalidate_bbox_cache()
         if isinstance(target, Component):
             self.manim_object.move_to(target.manim_object)
         else:
@@ -104,6 +110,7 @@ class Component(ABC):
 
     def shift(self, vector: np.ndarray | Sequence[float]) -> Self:
         """Shift the component by a relative offset vector."""
+        self._invalidate_bbox_cache()
         self.manim_object.shift(vector)
         return self
 
