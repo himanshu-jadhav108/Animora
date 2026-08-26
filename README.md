@@ -1,79 +1,97 @@
 # Animora
 
+[![PyPI Version](https://img.shields.io/pypi/v/animora.svg)](https://pypi.org/project/animora/)
 [![CI](https://github.com/himanshu-jadhav108/Animora/actions/workflows/ci.yml/badge.svg)](https://github.com/himanshu-jadhav108/Animora/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg)](https://himanshu-jadhav108.github.io/Animora/)
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Checked with mypy](https://img.shields.io/badge/mypy-checked-blue)](https://mypy-lang.org/)
 
-> High-level, declarative animation framework built on top of Manim for educational, technical, mathematical, and algorithmic visualization.
+> **High-level, declarative animation framework built on top of Manim for educational, technical, mathematical, and algorithmic visualization.**
 
 ---
 
 ## 🌟 Overview
 
-**Animora** provides an intuitive, high-level abstraction layer over [Manim](https://www.manim.community/) (Community Edition), inspired by the relationship between Seaborn and Matplotlib. Instead of manually orchestrating low-level vector primitives (`Circle`, `Line`, `Transform`, `FadeIn`), Animora lets you describe **what** you want to visualize:
+**Animora** provides an intuitive, high-level abstraction layer over [Manim](https://www.manim.community/) (Community Edition), inspired by the relationship between Seaborn and Matplotlib. Instead of manually orchestrating low-level vector primitives, Animora lets you describe **what** you want to visualize:
 
 ```python
-# Declarative, high-level visualization (coming in v0.1):
-from animora.components.dsa import Graph
+from animora.core import Scene
+from animora.datastructures import BST
+from animora.theme import ModernDark, use_theme
 
-graph = Graph(edges=[("A", "B"), ("B", "C"), ("A", "C")])
-graph.bfs(start="A")
+class BSTDemo(Scene):
+    def construct(self) -> None:
+        with use_theme(ModernDark):
+            bst = BST([50, 30, 70, 20, 40])
+            self.play(bst.animate_create())
+            self.play(bst.animate_insert(35))
+            self.play(bst.animate_search(35))
 ```
 
 ---
 
-## 🚀 Quick Start (Development Install)
+## 🚀 Installation
 
-Animora requires Python 3.10 or higher.
+Install Animora via `pip`:
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/himanshu-jadhav108/Animora.git
-cd Animora
+pip install animora
+```
 
-# 2. Set up virtual environment
-python -m venv .venv
-# On Windows:
-.venv\Scripts\activate
-# On Linux/macOS:
-# source .venv/bin/activate
+Verify your environment and media tools:
 
-# 3. Install in editable mode with development dependencies
-pip install -e ".[dev]"
+```bash
+animora doctor
 ```
 
 ---
 
-## 📐 Architecture & Design
+## 🛠️ CLI Quickstart
 
-Animora is built around a decoupled 4-layer architecture, pure layout solvers, and a first-class escape hatch (`.manim_object`) for seamless Manim interoperability.
+Scaffold, preview, and render your scenes rapidly:
 
-Explore our architectural specifications:
-- [Overview & Layered Design](docs/architecture/00-overview.md)
-- [Module Boundaries & Responsibilities](docs/architecture/module-boundaries.md)
-- [Public API Philosophy & Escape Hatch](docs/architecture/api-philosophy.md)
-- [Dependency Policy](docs/architecture/dependency-policy.md)
-- [Versioning & Compatibility Strategy](docs/architecture/versioning-strategy.md)
+```bash
+# 1. Create a new starter scene
+animora new my_scene.py
+
+# 2. Fast preview
+animora preview my_scene.py --open
+
+# 3. High quality production render
+animora render my_scene.py --quality high
+```
 
 ---
 
-## 🧭 Roadmap
+## 📦 Features & Capabilities
 
-- [x] **Phase 0: Product & Architecture** — Layered design, module boundaries, API philosophy.
-- [x] **Phase 1: Repository Foundation & Tooling** — Package skeleton, pyproject.toml, CI, tests, linting.
-- [ ] **Phase 2: Core Abstractions** — `Component`, `Scene`, `Animation` bridge.
-- [ ] **Phase 3: Visual Primitives** — Text, Shape, Arrow, Connector, Group, Panel.
-- [ ] **Phase 4: Layout System** — Horizontal, vertical, grid, circular, tree, graph layouts.
-- [ ] **Phase 5: Theme Engine** — Design tokens, color palettes, dark/light themes.
-- [ ] **Phase 6: Data Visualizations** — Axes, BarChart, LineChart, ScatterPlot, Histogram, Table.
-- [ ] **Phase 7: Data Structures** — Array, LinkedList, Stack, Queue, Heap, Tree, BST, Graph, HashTable.
-- [ ] **Phase 8: Algorithms** — Search, Sorts, BFS/DFS, Dijkstra, A*, Dynamic Programming.
-- [ ] **Phase 9: CLI Tooling** — `animora new / preview / render / doctor`.
-- [ ] **Phase 10: Documentation & Tutorials** — Complete documentation site, interactive guides.
-- [ ] **Phase 11: Performance & Profiling** — Benchmarks and optimization.
-- [ ] **Phase 12: v1.0 Release** — Packaging, changelog, PyPI release.
+- **Visual Primitives (`animora.components`)**: `Text`, `Shape`, `Connector`, `Arrow`, `Group`, `Panel`, `Label`.
+- **Layout Solvers (`animora.layout`)**: `HorizontalLayout`, `VerticalLayout`, `GridLayout`, `CircularLayout`, `TreeLayout`, `GraphLayout`, `FlowLayout`.
+- **Theme Engine (`animora.theme`)**: `ModernDark`, `PaperLight`, `Cyberpunk`, `Monokai`, `use_theme()`.
+- **Data Visualization (`animora.dataviz`)**: `Axes`, `BarChart`, `LineChart`, `ScatterPlot`, `Histogram`, `Table`.
+- **Data Structures (`animora.datastructures`)**: `Array`, `Stack`, `Queue`, `LinkedList`, `Heap`, `Tree`, `BST`, `Graph`, `HashTable`.
+- **Algorithm Visualizations (`animora.algorithms`)**: Binary Search, 5 Sorting algorithms, BFS/DFS, Dijkstra, A*, DP, Backtracking.
+- **Escape Hatch**: Full interoperability with raw Manim through `.manim_object`.
+
+---
+
+## 🧭 Roadmap Status
+
+- [x] **Phase 0: Product & Architecture** — 4-layer design, module boundaries, API philosophy.
+- [x] **Phase 1: Repository Foundation & Tooling** — Pyproject, CI matrix, test suite, linting.
+- [x] **Phase 2: Core Abstractions** — `Component`, `Scene`, `Animation` bridge, escape hatch.
+- [x] **Phase 3: Visual Primitives** — Text, Shape, Arrow, Connector, Group, Panel.
+- [x] **Phase 4: Layout System** — Horizontal, Vertical, Grid, Circular, Tree, Graph, Flow.
+- [x] **Phase 5: Theme Engine** — Design tokens, color palettes, dark/light themes.
+- [x] **Phase 6: Data Visualizations** — Axes, BarChart, LineChart, ScatterPlot, Histogram, Table.
+- [x] **Phase 7: Data Structures** — Array, LinkedList, Stack, Queue, Heap, Tree, BST, Graph, HashTable.
+- [x] **Phase 8: Algorithms** — Search, Sorts, BFS/DFS, Dijkstra, A*, Dynamic Programming, Backtracking.
+- [x] **Phase 9: CLI Tooling** — `animora new / preview / render / doctor`.
+- [x] **Phase 10: Documentation & Examples** — Complete docs site, tutorials, recipes, runnable gallery.
+- [x] **Phase 11: Performance & Profiling** — Benchmarks and bounding box caching.
+- [x] **Phase 12: Release v0.1.0** — Packaging, changelog, publishing workflows.
 
 ---
 

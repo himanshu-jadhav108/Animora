@@ -51,6 +51,7 @@ nav:
   - API Reference: reference/api.md
   - Troubleshooting: troubleshooting.md
   - Migration Guide: migration.md
+  - API Stability: stability.md
   - Architecture:
       - System Overview: architecture/00-overview.md
       - Module Boundaries: architecture/module-boundaries.md
