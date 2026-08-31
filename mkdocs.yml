@@ -7,28 +7,38 @@ repo_name: himanshu-jadhav108/Animora
 
 theme:
   name: material
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: cyan
+      primary: light blue
+      accent: amber
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: cyan
+      primary: light blue
+      accent: amber
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
   features:
     - navigation.instant
     - navigation.tracking
+    - navigation.tabs
     - navigation.sections
     - navigation.expand
+    - navigation.top
     - content.code.copy
     - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
   - Home: index.md
@@ -58,6 +68,7 @@ nav:
       - API Philosophy: architecture/api-philosophy.md
       - Dependency Policy: architecture/dependency-policy.md
       - Versioning Strategy: architecture/versioning-strategy.md
+      - Docs Media Strategy: architecture/docs-media-strategy.md
 
 markdown_extensions:
   - admonition

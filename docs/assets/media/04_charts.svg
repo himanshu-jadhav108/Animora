@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <!-- Axes -->
+  <line x1="80" y1="280" x2="520" y2="280" stroke="#475569" stroke-width="2" />
+  <line x1="80" y1="40" x2="80" y2="280" stroke="#475569" stroke-width="2" />
+  
+  <!-- Bars -->
+  <!-- Python -->
+  <rect x="120" y="80" width="60" height="200" rx="4" fill="#38BDF8" fill-opacity="0.8" stroke="#38BDF8" stroke-width="2" />
+  <text x="150" y="305" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" font-weight="600" text-anchor="middle">Python</text>
+  <text x="150" y="70" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">85</text>
+
+  <!-- Rust (Highlighted) -->
+  <rect x="220" y="115" width="60" height="165" rx="4" fill="#10B981" fill-opacity="0.8" stroke="#10B981" stroke-width="2" />
+  <text x="250" y="305" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" font-weight="600" text-anchor="middle">Rust</text>
+  <text x="250" y="105" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">70</text>
+
+  <!-- Go -->
+  <rect x="320" y="140" width="60" height="140" rx="4" fill="#818CF8" fill-opacity="0.8" stroke="#818CF8" stroke-width="2" />
+  <text x="350" y="305" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" font-weight="600" text-anchor="middle">Go</text>
+  <text x="350" y="130" fill="#818CF8" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">60</text>
+
+  <!-- TypeScript -->
+  <rect x="420" y="100" width="60" height="180" rx="4" fill="#F59E0B" fill-opacity="0.8" stroke="#F59E0B" stroke-width="2" />
+  <text x="450" y="305" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" font-weight="600" text-anchor="middle">TypeScript</text>
+  <text x="450" y="90" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">75</text>
+</svg>

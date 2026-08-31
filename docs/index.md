@@ -1,24 +1,21 @@
-# Animora
+<div class="hero-container">
+  <div class="hero-title">Animora</div>
+  <div class="hero-tagline">
+    The high-level, declarative animation framework built on Manim for computer science, mathematics, and technical storytelling.
+  </div>
+  
+  <div class="hero-media-wrapper">
+    <img src="assets/media/hero_bst.svg" alt="Binary Search Tree Insertion Animation in Animora" width="100%" />
+  </div>
 
-**High-Level Declarative Animation Framework Built on Manim**
-
-Animora democratizes the creation of publication-quality educational, technical, mathematical, and algorithmic animations through a modern declarative component hierarchy, automatic layout solvers, design token themes, stateful data structures, and verifiable algorithm operation tracing.
-
----
-
-## Key Highlights
-
-- **Visual Component Primitives**: High-level `Text`, `Shape`, `Connector`, `Arrow`, `Group`, and `Panel` primitives with semantic state animations (`animate_highlight`, `animate_transform`, `animate_create`).
-- **Decoupled Automatic Layout Solvers**: Pure geometric layout engines including `HorizontalLayout`, `VerticalLayout`, `GridLayout`, `CircularLayout`, `TreeLayout`, `GraphLayout`, and `FlowLayout`.
-- **Theme & Design Token Engine**: Built-in production themes (`ModernDark`, `PaperLight`, `Cyberpunk`, `Monokai`) with dynamic context resolution via `use_theme()`.
-- **Data Visualization**: Educational chart components with guaranteed mathematical precision: `Axes`, `BarChart`, `LineChart`, `ScatterPlot`, `Histogram`, and `Table`.
-- **Computer Science Data Structures**: Stateful structures isolating pure Python data models from animation layers: `Array`, `Stack`, `Queue`, `LinkedList`, `Heap`, `Tree`, `BST`, `Graph`, and `HashTable`.
-- **Verifiable Algorithm Animations**: Explicit `OperationTrace` recording for Searching, 5 Sorting algorithms, BFS/DFS, Dijkstra, A*, DP, and Backtracking.
-- **Developer CLI**: Fast prototyping with `animora new`, `animora preview`, `animora render`, and `animora doctor`.
+  <div class="hero-install-box">
+    <span>$ pip install animora</span>
+  </div>
+</div>
 
 ---
 
-## Quick Example
+## ⚡ Value Proposition: Manim, Elevated
 
 ```python
 from animora.core import Scene
@@ -28,23 +25,44 @@ from animora.theme import ModernDark, use_theme
 class BSTDemoScene(Scene):
     def construct(self) -> None:
         with use_theme(ModernDark):
-            # 1. Initialize BST
+            # 1. Declaratively initialize a Binary Search Tree
             bst = BST([50, 30, 70, 20, 40])
             self.play(bst.animate_create())
 
-            # 2. Insert new value (animates comparison path 50 -> 30 -> 40 before placement)
+            # 2. Insert with animated path tracing: 50 -> 30 -> 40 -> 35
             self.play(bst.animate_insert(35))
 
-            # 3. Search target
+            # 3. Search target key with instant visual highlight
             self.play(bst.animate_search(35))
 ```
 
 ---
 
-## Next Steps
+## 📦 What Makes Animora Distinct?
 
-- **[Installation Guide](getting-started/installation.md)**: Set up Animora, Python, Manim, and FFmpeg.
-- **[Your First Scene](getting-started/first-scene.md)**: Step-by-step beginner tutorial.
-- **[Guides & Concepts](guides/components.md)**: Deep dive into components, layouts, theming, and algorithms.
-- **[Example Gallery](examples/gallery.md)**: Explore runnable code examples.
-- **[API Reference](reference/api.md)**: Full reference for all public classes and functions.
+=== "🧩 Visual Primitives & Panels"
+    High-level `Text`, `Shape`, `Connector`, `Arrow`, `Group`, and `Panel` primitives with semantic state animations (`animate_highlight`, `animate_transform`, `animate_create`).
+
+=== "📐 Automatic Layout Solvers"
+    Pure geometric layout engines (`Horizontal`, `Vertical`, `Grid`, `Circular`, `Tree`, `Graph`, `Flow`) that arrange components automatically with zero manual coordinate math.
+
+=== "🎨 Design Tokens & Theming"
+    Centralized design token themes (`ModernDark`, `PaperLight`, `Cyberpunk`, `Monokai`) with dynamic context resolution via `use_theme()`.
+
+=== "📊 Data Visualization"
+    Dual-correctness educational chart components: `Axes`, `BarChart`, `LineChart`, `ScatterPlot`, `Histogram`, and `Table`.
+
+=== "🌳 CS Data Structures"
+    Stateful structures pairing computational Python models with animation layers: `Array`, `Stack`, `Queue`, `LinkedList`, `Heap`, `Tree`, `BST`, `Graph`, `HashTable`.
+
+=== "🔍 Algorithm Visualizations"
+    Explicit `OperationTrace` event tracking for Search, 5 Sorting algorithms, BFS/DFS, Dijkstra, A*, DP, and Backtracking.
+
+---
+
+## 🗺️ Next Steps
+
+- **[Installation Guide](getting-started/installation.md)** — Set up Animora, Python, and system media dependencies.
+- **[Your First Scene](getting-started/first-scene.md)** — 5-minute linear tutorial for beginners.
+- **[Example Gallery](examples/gallery.md)** — Browse visual output clips alongside copy-paste code.
+- **[API Reference](reference/api.md)** — Full parameter signatures for all public classes and functions.
