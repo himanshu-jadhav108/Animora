@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Sequence
+from typing import Any
 
 
 class OperationType(str, Enum):
@@ -65,7 +66,7 @@ class OperationTrace:
     def __getitem__(self, index: int) -> OperationStep:
         return self._steps[index]
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[OperationStep]:
         return iter(self._steps)
 
     @property

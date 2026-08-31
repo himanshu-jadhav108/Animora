@@ -28,6 +28,7 @@ class BSTDataStructureScene(Scene):
 
 if __name__ == "__main__":
     import manim
+
     with manim.tempconfig({"quality": "low_quality", "preview": True}):
         scene = BSTDataStructureScene()
         scene.render()

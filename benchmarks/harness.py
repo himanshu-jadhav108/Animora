@@ -7,35 +7,26 @@ import gc
 import sys
 import time
 import tracemalloc
-from typing import Callable
+from collections.abc import Callable
 
 import manim
-
-from animora.algorithms.backtracking import n_queens_trace
-from animora.algorithms.dynamic_programming import fibonacci_dp_trace
-from animora.algorithms.pathfinding import a_star_trace, dijkstra_trace
-from animora.algorithms.search import binary_search_trace
-from animora.algorithms.sorting import (
-    bubble_sort_trace,
-    insertion_sort_trace,
-    merge_sort_trace,
-    quick_sort_trace,
-    selection_sort_trace,
-)
-from animora.components.shape import Shape
-from animora.datastructures.graph import GraphModel
-from animora.layout.base import LayoutItem
-from animora.layout.circular import CircularLayout
-from animora.layout.flow import FlowLayout
-from animora.layout.grid import GridLayout
-from animora.layout.horizontal import HorizontalLayout
-from animora.layout.tree import TreeLayout
-from animora.layout.vertical import VerticalLayout
 from benchmarks.scenarios.stress_scenes import (
     LargeArrayStressScene,
     LargeGridStressScene,
     LargeTreeStressScene,
 )
+
+from animora.algorithms.sorting import (
+    merge_sort_trace,
+    quick_sort_trace,
+)
+from animora.components.shape import Shape
+from animora.layout.base import LayoutItem
+from animora.layout.circular import CircularLayout
+from animora.layout.flow import FlowLayout
+from animora.layout.grid import GridLayout
+from animora.layout.horizontal import HorizontalLayout
+from animora.layout.vertical import VerticalLayout
 
 
 def benchmark_function(func: Callable[[], None], iterations: int = 10) -> tuple[float, float]:
@@ -48,7 +39,7 @@ def benchmark_function(func: Callable[[], None], iterations: int = 10) -> tuple[
         func()
     end_time = time.perf_counter()
 
-    current_mem, peak_mem = tracemalloc.get_traced_memory()
+    _current_mem, peak_mem = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
     avg_time_ms = ((end_time - start_time) / iterations) * 1000.0
@@ -78,7 +69,9 @@ def run_benchmarks() -> dict[str, dict[str, float]]:
         ("CircularLayout (N=100)", CircularLayout(radius=5.0)),
         ("FlowLayout (N=100)", FlowLayout()),
     ]:
-        t_ms, mem_kb = benchmark_function(lambda ls=layout_solver: ls.solve(items_100), iterations=50)
+        t_ms, mem_kb = benchmark_function(
+            lambda ls=layout_solver: ls.solve(items_100), iterations=50
+        )
         results[f"Layout: {name}"] = {"Time (ms)": t_ms, "Peak Mem (KB)": mem_kb}
 
     # 3. Algorithm Trace Generation
@@ -118,7 +111,7 @@ def print_report(results: dict[str, dict[str, float]]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Animora Performance Benchmark Harness")
     parser.add_argument("--report", action="store_true", help="Print benchmark summary report")
-    args = parser.parse_args()
+    parser.parse_args()
 
     results = run_benchmarks()
     print_report(results)

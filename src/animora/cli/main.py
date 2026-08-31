@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import sys
-from typing import Sequence
+from collections.abc import Sequence
 
 import animora
 from animora.cli.doctor import register_doctor_parser
@@ -52,7 +52,7 @@ def main(args: Sequence[str] | None = None) -> int:
         parser.print_help()
         return 0
 
-    return parsed_args.func(parsed_args)
+    return int(parsed_args.func(parsed_args))
 
 
 if __name__ == "__main__":

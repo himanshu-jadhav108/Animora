@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from animora.algorithms.trace import OperationTrace, OperationType
 from animora.core.animation import Animation
@@ -37,7 +37,7 @@ def fibonacci_dp_trace(n: int) -> tuple[int, list[int], OperationTrace]:
         dp[i] = dp[i - 1] + dp[i - 2]
         trace.add_step(
             OperationType.TABLE_FILL,
-            f"Compute dp[{i}] = dp[{i-1}] ({dp[i-1]}) + dp[{i-2}] ({dp[i-2]}) = {dp[i]}",
+            f"Compute dp[{i}] = dp[{i - 1}] ({dp[i - 1]}) + dp[{i - 2}] ({dp[i - 2]}) = {dp[i]}",
             targets=(i,),
             value=dp[i],
             operand_a=dp[i - 1],
@@ -59,7 +59,7 @@ def fibonacci_dp(
     active_theme = get_active_theme()
     duration = run_time or active_theme.timing.fast
 
-    result, dp_array, trace = fibonacci_dp_trace(n)
+    _result, _dp_array, trace = fibonacci_dp_trace(n)
     animations: list[Animation] = []
 
     if table is not None:
@@ -67,7 +67,9 @@ def fibonacci_dp(
             idx = step.targets[0]
             if idx < table.num_cols:
                 # Row 1 is the DP values row (Row 0 is header)
-                anim = table.animate_highlight_cell(1, idx, color=active_theme.colors.success, run_time=duration)
+                anim = table.animate_highlight_cell(
+                    1, idx, color=active_theme.colors.success, run_time=duration
+                )
                 animations.append(anim)
 
     return animations

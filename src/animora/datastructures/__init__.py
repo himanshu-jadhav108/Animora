@@ -17,9 +17,9 @@ from animora.datastructures.stack import Stack, StackModel
 from animora.datastructures.tree import GenericTreeModel, Tree, TreeNode
 
 __all__: list[str] = [
+    "BST",
     "Array",
     "ArrayListModel",
-    "BST",
     "BSTModel",
     "BSTNode",
     "GenericTreeModel",

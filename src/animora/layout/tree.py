@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Any, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 from animora.layout.base import BaseLayout, LayoutItem, LayoutResult
 
@@ -12,15 +13,15 @@ class TreeLayout(BaseLayout):
     """Hierarchical layout solver positioning tree nodes with non-overlapping subtrees.
 
     Computes 3D coordinates for trees with arbitrary branching factors,
-    centering parents over children and maintaining level spacing.
+    allocating subtree widths dynamically to ensure clean visual separation.
 
     Example:
     ```python
     layout = TreeLayout(
         edges=[("A", "B"), ("A", "C"), ("B", "D"), ("B", "E")],
         root_id="A",
-        level_spacing=1.5,
         node_spacing=1.0,
+        level_spacing=1.2,
     )
     result = layout.solve(items)
     ```
@@ -28,7 +29,7 @@ class TreeLayout(BaseLayout):
 
     def __init__(
         self,
-        edges: Sequence[tuple[str, str]] | dict[str, Sequence[str]] | None = None,
+        edges: Sequence[tuple[str, str]] | Mapping[str, Sequence[str]] | None = None,
         root_id: str | None = None,
         node_spacing: float = 1.0,
         level_spacing: float = 1.2,
@@ -51,7 +52,7 @@ class TreeLayout(BaseLayout):
         all_children: set[str] = set()
         all_nodes: set[str] = {item.id for item in items}
 
-        if isinstance(self.edges, dict):
+        if isinstance(self.edges, Mapping):
             for parent, kids in self.edges.items():
                 for k in kids:
                     children_map[parent].append(k)
@@ -62,6 +63,7 @@ class TreeLayout(BaseLayout):
                 all_children.add(child)
 
         # Determine root
+        root: str | None = None
         if self.root_id and self.root_id in all_nodes:
             root = self.root_id
         else:

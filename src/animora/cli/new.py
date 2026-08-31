@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+from typing import Any
 
 DEFAULT_TEMPLATE = '''"""Starter Animora scene."""
 
@@ -32,7 +33,7 @@ class StarterScene(Scene):
 '''
 
 
-def register_new_parser(subparsers: argparse._SubParsersAction) -> None:
+def register_new_parser(subparsers: argparse._SubParsersAction[Any]) -> None:
     """Register 'new' subcommand arguments."""
     parser = subparsers.add_parser(
         "new",

@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.group import Group
@@ -15,7 +17,7 @@ from animora.layout.grid import GridLayout
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class Table(Component):
@@ -96,20 +98,15 @@ class Table(Component):
         flat_cell_components: list[Group] = []
         self._cells = []
 
-        for r_idx, (row, is_header) in enumerate(zip(all_row_data, is_header_row)):
+        for _r_idx, (row, is_header) in enumerate(zip(all_row_data, is_header_row, strict=False)):
             row_cells: list[Group] = []
-            for c_idx, cell_value in enumerate(row):
+            for _c_idx, cell_value in enumerate(row):
                 bg_color = (
-                    self._header_color
-                    or active_theme.colors.primary
+                    self._header_color or active_theme.colors.primary
                     if is_header
                     else (self._cell_color or active_theme.colors.surface)
                 )
-                txt_color = (
-                    "#FFFFFF"
-                    if is_header
-                    else active_theme.colors.text
-                )
+                txt_color = "#FFFFFF" if is_header else active_theme.colors.text
 
                 bg_rect = Shape.rounded_rectangle(
                     width=self._cell_width,
@@ -122,7 +119,9 @@ class Table(Component):
                 )
                 cell_text = Text(
                     cell_value,
-                    font_size=active_theme.typography.font_size_sm if not is_header else active_theme.typography.font_size_sm + 2,
+                    font_size=active_theme.typography.font_size_sm
+                    if not is_header
+                    else active_theme.typography.font_size_sm + 2,
                     color=txt_color,
                 )
 

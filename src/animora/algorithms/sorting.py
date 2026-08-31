@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
 
 from animora.algorithms.trace import OperationTrace, OperationType
 from animora.core.animation import Animation
@@ -26,13 +27,13 @@ def bubble_sort_trace(data: Sequence[Any]) -> tuple[list[Any], OperationTrace]:
         for j in range(0, n - i - 1):
             trace.add_step(
                 OperationType.COMPARE,
-                f"Compare adjacent elements at {j} ({arr[j]}) and {j+1} ({arr[j+1]})",
+                f"Compare adjacent elements at {j} ({arr[j]}) and {j + 1} ({arr[j + 1]})",
                 targets=(j, j + 1),
             )
             if arr[j] > arr[j + 1]:
                 trace.add_step(
                     OperationType.SWAP,
-                    f"Swap {arr[j]} and {arr[j+1]}",
+                    f"Swap {arr[j]} and {arr[j + 1]}",
                     targets=(j, j + 1),
                 )
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
@@ -51,7 +52,9 @@ def bubble_sort(arr: Array, run_time: float | None = None) -> list[Animation]:
     for step in trace:
         if step.op_type == OperationType.COMPARE:
             i, j = step.targets
-            animations.append(arr.animate_highlight(i, color=active_theme.colors.accent, run_time=duration))
+            animations.append(
+                arr.animate_highlight(i, color=active_theme.colors.accent, run_time=duration)
+            )
         elif step.op_type == OperationType.SWAP:
             i, j = step.targets
             animations.append(arr.animate_swap(i, j, run_time=duration))
@@ -79,10 +82,18 @@ def selection_sort_trace(data: Sequence[Any]) -> tuple[list[Any], OperationTrace
             )
             if arr[j] < arr[min_idx]:
                 min_idx = j
-                trace.add_step(OperationType.HIGHLIGHT, f"New minimum found at {min_idx} ({arr[min_idx]})", targets=(min_idx,))
+                trace.add_step(
+                    OperationType.HIGHLIGHT,
+                    f"New minimum found at {min_idx} ({arr[min_idx]})",
+                    targets=(min_idx,),
+                )
 
         if min_idx != i:
-            trace.add_step(OperationType.SWAP, f"Swap minimum {arr[min_idx]} to index {i}", targets=(i, min_idx))
+            trace.add_step(
+                OperationType.SWAP,
+                f"Swap minimum {arr[min_idx]} to index {i}",
+                targets=(i, min_idx),
+            )
             arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
     return arr, trace
@@ -99,7 +110,9 @@ def selection_sort(arr: Array, run_time: float | None = None) -> list[Animation]
     for step in trace:
         if step.op_type == OperationType.HIGHLIGHT:
             idx = step.targets[0]
-            animations.append(arr.animate_highlight(idx, color=active_theme.colors.warning, run_time=duration))
+            animations.append(
+                arr.animate_highlight(idx, color=active_theme.colors.warning, run_time=duration)
+            )
         elif step.op_type == OperationType.SWAP:
             i, j = step.targets
             animations.append(arr.animate_swap(i, j, run_time=duration))
@@ -121,15 +134,21 @@ def insertion_sort_trace(data: Sequence[Any]) -> tuple[list[Any], OperationTrace
         trace.add_step(OperationType.HIGHLIGHT, f"Selected key {key} at index {i}", targets=(i,))
 
         while j >= 0:
-            trace.add_step(OperationType.COMPARE, f"Compare {key} with {arr[j]} at index {j}", targets=(i, j))
+            trace.add_step(
+                OperationType.COMPARE, f"Compare {key} with {arr[j]} at index {j}", targets=(i, j)
+            )
             if arr[j] > key:
-                trace.add_step(OperationType.SET, f"Shift {arr[j]} to {j+1}", targets=(j + 1,), value=arr[j])
+                trace.add_step(
+                    OperationType.SET, f"Shift {arr[j]} to {j + 1}", targets=(j + 1,), value=arr[j]
+                )
                 arr[j + 1] = arr[j]
                 j -= 1
             else:
                 break
 
-        trace.add_step(OperationType.SET, f"Place key {key} at index {j+1}", targets=(j + 1,), value=key)
+        trace.add_step(
+            OperationType.SET, f"Place key {key} at index {j + 1}", targets=(j + 1,), value=key
+        )
         arr[j + 1] = key
 
     return arr, trace
@@ -146,7 +165,9 @@ def insertion_sort(arr: Array, run_time: float | None = None) -> list[Animation]
     for step in trace:
         if step.op_type == OperationType.HIGHLIGHT:
             idx = step.targets[0]
-            animations.append(arr.animate_highlight(idx, color=active_theme.colors.primary, run_time=duration))
+            animations.append(
+                arr.animate_highlight(idx, color=active_theme.colors.primary, run_time=duration)
+            )
         elif step.op_type == OperationType.SET:
             idx = step.targets[0]
             val = step.metadata["value"]
@@ -167,7 +188,11 @@ def merge_sort_trace(data: Sequence[Any]) -> tuple[list[Any], OperationTrace]:
         if left >= right:
             return
         mid = (left + right) // 2
-        trace.add_step(OperationType.HIGHLIGHT, f"Divide range [{left}, {right}] at mid {mid}", targets=(left, mid, right))
+        trace.add_step(
+            OperationType.HIGHLIGHT,
+            f"Divide range [{left}, {right}] at mid {mid}",
+            targets=(left, mid, right),
+        )
         _merge_sort_rec(left, mid)
         _merge_sort_rec(mid + 1, right)
 
@@ -177,7 +202,11 @@ def merge_sort_trace(data: Sequence[Any]) -> tuple[list[Any], OperationTrace]:
         j = mid + 1
 
         while i <= mid and j <= right:
-            trace.add_step(OperationType.COMPARE, f"Compare {arr[i]} at {i} with {arr[j]} at {j}", targets=(i, j))
+            trace.add_step(
+                OperationType.COMPARE,
+                f"Compare {arr[i]} at {i} with {arr[j]} at {j}",
+                targets=(i, j),
+            )
             if arr[i] <= arr[j]:
                 merged.append(arr[i])
                 i += 1
@@ -193,7 +222,12 @@ def merge_sort_trace(data: Sequence[Any]) -> tuple[list[Any], OperationTrace]:
             j += 1
 
         for idx, val in enumerate(merged):
-            trace.add_step(OperationType.SET, f"Write merged value {val} at {left + idx}", targets=(left + idx,), value=val)
+            trace.add_step(
+                OperationType.SET,
+                f"Write merged value {val} at {left + idx}",
+                targets=(left + idx,),
+                value=val,
+            )
             arr[left + idx] = val
 
     _merge_sort_rec(0, len(arr) - 1)
@@ -230,19 +264,33 @@ def quick_sort_trace(data: Sequence[Any]) -> tuple[list[Any], OperationTrace]:
             return
 
         pivot = arr[high]
-        trace.add_step(OperationType.HIGHLIGHT, f"Selected pivot {pivot} at index {high}", targets=(high,))
+        trace.add_step(
+            OperationType.HIGHLIGHT, f"Selected pivot {pivot} at index {high}", targets=(high,)
+        )
         i = low - 1
 
         for j in range(low, high):
-            trace.add_step(OperationType.COMPARE, f"Compare {arr[j]} at {j} with pivot {pivot}", targets=(j, high))
+            trace.add_step(
+                OperationType.COMPARE,
+                f"Compare {arr[j]} at {j} with pivot {pivot}",
+                targets=(j, high),
+            )
             if arr[j] < pivot:
                 i += 1
                 if i != j:
-                    trace.add_step(OperationType.SWAP, f"Swap {arr[i]} at {i} with {arr[j]} at {j}", targets=(i, j))
+                    trace.add_step(
+                        OperationType.SWAP,
+                        f"Swap {arr[i]} at {i} with {arr[j]} at {j}",
+                        targets=(i, j),
+                    )
                     arr[i], arr[j] = arr[j], arr[i]
 
         if i + 1 != high:
-            trace.add_step(OperationType.SWAP, f"Place pivot {pivot} at partition boundary {i+1}", targets=(i + 1, high))
+            trace.add_step(
+                OperationType.SWAP,
+                f"Place pivot {pivot} at partition boundary {i + 1}",
+                targets=(i + 1, high),
+            )
             arr[i + 1], arr[high] = arr[high], arr[i + 1]
 
         pivot_idx = i + 1
@@ -264,7 +312,9 @@ def quick_sort(arr: Array, run_time: float | None = None) -> list[Animation]:
     for step in trace:
         if step.op_type == OperationType.HIGHLIGHT:
             idx = step.targets[0]
-            animations.append(arr.animate_highlight(idx, color=active_theme.colors.accent, run_time=duration))
+            animations.append(
+                arr.animate_highlight(idx, color=active_theme.colors.accent, run_time=duration)
+            )
         elif step.op_type == OperationType.SWAP:
             i, j = step.targets
             animations.append(arr.animate_swap(i, j, run_time=duration))

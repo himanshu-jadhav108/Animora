@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
+from animora.components import Panel, Shape, Text
 from animora.core import Scene
-from animora.components import Text, Shape, Panel
 from animora.theme import Cyberpunk, PaperLight, use_theme
 
 
@@ -30,6 +30,7 @@ class ThemesAndStylingScene(Scene):
 
 if __name__ == "__main__":
     import manim
+
     with manim.tempconfig({"quality": "low_quality", "preview": True}):
         scene = ThemesAndStylingScene()
         scene.render()

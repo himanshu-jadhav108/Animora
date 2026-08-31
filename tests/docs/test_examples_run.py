@@ -2,61 +2,75 @@
 
 from __future__ import annotations
 
+import importlib.util
+from pathlib import Path
+from typing import Any
+
 import manim
 
-from examples.01_basics_and_shapes import BasicsAndShapesScene
-from examples.02_layout_and_grouping import LayoutAndGroupingScene
-from examples.03_themes_and_styling import ThemesAndStylingScene
-from examples.04_dataviz_charts import DataVizChartsScene
-from examples.05_datastructures_bst import BSTDataStructureScene
-from examples.06_algorithms_sorting import QuickSortAlgorithmScene
-from examples.07_pathfinding_dijkstra import DijkstraPathfindingScene
+
+def _load_scene_from_file(rel_path: str, scene_class_name: str) -> Any:
+    """Dynamically load a scene class from an example file path."""
+    file_path = Path(__file__).parent.parent.parent / "examples" / rel_path
+    spec = importlib.util.spec_from_file_location("example_module", file_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Could not load spec from {file_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return getattr(module, scene_class_name)
 
 
 def test_example_01_basics_and_shapes() -> None:
+    scene_cls = _load_scene_from_file("01_basics_and_shapes.py", "BasicsAndShapesScene")
     with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-        scene = BasicsAndShapesScene()
+        scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1
 
 
 def test_example_02_layout_and_grouping() -> None:
+    scene_cls = _load_scene_from_file("02_layout_and_grouping.py", "LayoutAndGroupingScene")
     with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-        scene = LayoutAndGroupingScene()
+        scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1
 
 
 def test_example_03_themes_and_styling() -> None:
+    scene_cls = _load_scene_from_file("03_themes_and_styling.py", "ThemesAndStylingScene")
     with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-        scene = ThemesAndStylingScene()
+        scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1
 
 
 def test_example_04_dataviz_charts() -> None:
+    scene_cls = _load_scene_from_file("04_dataviz_charts.py", "DataVizChartsScene")
     with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-        scene = DataVizChartsScene()
+        scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1
 
 
 def test_example_05_datastructures_bst() -> None:
+    scene_cls = _load_scene_from_file("05_datastructures_bst.py", "BSTDataStructureScene")
     with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-        scene = BSTDataStructureScene()
+        scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1
 
 
 def test_example_06_algorithms_sorting() -> None:
+    scene_cls = _load_scene_from_file("06_algorithms_sorting.py", "QuickSortAlgorithmScene")
     with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-        scene = QuickSortAlgorithmScene()
+        scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1
 
 
 def test_example_07_pathfinding_dijkstra() -> None:
+    scene_cls = _load_scene_from_file("07_pathfinding_dijkstra.py", "DijkstraPathfindingScene")
     with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-        scene = DijkstraPathfindingScene()
+        scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1

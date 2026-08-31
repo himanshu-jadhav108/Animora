@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
-import numpy as np
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.components.shape import Shape
 from animora.core.animation import Animation
@@ -14,7 +16,7 @@ from animora.dataviz.axes import Axes
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class ScatterPlot(Component):
@@ -40,9 +42,7 @@ class ScatterPlot(Component):
         config: ComponentConfig | None = None,
         **kwargs: Any,
     ) -> None:
-        self._raw_points: list[tuple[float, float]] = [
-            (float(p[0]), float(p[1])) for p in points
-        ]
+        self._raw_points: list[tuple[float, float]] = [(float(p[0]), float(p[1])) for p in points]
         self._point_radius = float(point_radius)
         self._point_color = point_color
 

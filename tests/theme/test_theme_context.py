@@ -5,7 +5,7 @@ from __future__ import annotations
 from animora.components.shape import Shape
 from animora.components.text import Text
 from animora.theme.builtin import Cyberpunk, DefaultTheme, PaperLight
-from animora.theme.context import get_active_theme, set_active_theme, use_theme
+from animora.theme.context import get_active_theme, use_theme
 
 
 def test_theme_context_manager() -> None:

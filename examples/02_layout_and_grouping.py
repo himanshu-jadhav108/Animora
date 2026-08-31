@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
+from animora.components import Group, Shape
 from animora.core import Scene
-from animora.components import Text, Shape, Group
-from animora.layout import GridLayout, CircularLayout, HorizontalLayout
+from animora.layout import CircularLayout, GridLayout
 from animora.theme import ModernDark, use_theme
 
 
@@ -30,6 +30,7 @@ class LayoutAndGroupingScene(Scene):
 
 if __name__ == "__main__":
     import manim
+
     with manim.tempconfig({"quality": "low_quality", "preview": True}):
         scene = LayoutAndGroupingScene()
         scene.render()

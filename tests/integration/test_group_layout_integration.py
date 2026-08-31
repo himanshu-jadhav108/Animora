@@ -7,11 +7,9 @@ import pytest
 
 from animora.components.group import Group
 from animora.components.shape import Shape
-from animora.components.text import Text
 from animora.core.scene import Scene
 from animora.layout.circular import CircularLayout
 from animora.layout.grid import GridLayout
-from animora.layout.horizontal import HorizontalLayout
 from animora.layout.tree import TreeLayout
 
 

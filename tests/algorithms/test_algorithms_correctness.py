@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import random
+
 from animora.algorithms.backtracking import n_queens_trace
 from animora.algorithms.dynamic_programming import fibonacci_dp_trace
 from animora.algorithms.graph_traversal import bfs_trace, dfs_trace

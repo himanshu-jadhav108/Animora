@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pytest
+
 from animora.dataviz.bar_chart import BarChart
 
 

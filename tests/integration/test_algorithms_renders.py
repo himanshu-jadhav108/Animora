@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import manim
+
 from animora.algorithms.backtracking import n_queens
 from animora.algorithms.dynamic_programming import fibonacci_dp
 from animora.algorithms.graph_traversal import bfs, dfs

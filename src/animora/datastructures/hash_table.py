@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.components.arrow import Arrow
 from animora.components.group import Group
@@ -15,7 +17,7 @@ from animora.core.config import ComponentConfig
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------
@@ -153,14 +155,18 @@ class HashTable(Component):
                 stroke_color=active_theme.colors.primary,
             ).move_to([-3.0, y, 0.0])
 
-            b_lbl = Text(f"[{b_idx}]", font_size=active_theme.typography.font_size_sm, color=active_theme.colors.primary).move_to(b_box.center)
+            b_lbl = Text(
+                f"[{b_idx}]",
+                font_size=active_theme.typography.font_size_sm,
+                color=active_theme.colors.primary,
+            ).move_to(b_box.center)
             b_grp = Group(b_box, b_lbl)
             self._bucket_groups.append(b_grp)
             all_mobjects.append(b_grp.manim_object)
 
             # Build chain nodes horizontally
             prev_center = b_box.center
-            for c_idx, entry in enumerate(self._model.buckets[b_idx]):
+            for _c_idx, entry in enumerate(self._model.buckets[b_idx]):
                 cx = prev_center[0] + self._chain_spacing
                 c_box = Shape.rounded_rectangle(
                     width=self._bucket_width * 1.1,
@@ -171,15 +177,21 @@ class HashTable(Component):
                     stroke_color=active_theme.colors.border,
                 ).move_to([cx, y, 0.0])
 
-                c_txt = Text(f"{entry.key}:{entry.value}", font_size=active_theme.typography.font_size_xs, color="#FFFFFF").move_to([cx, y, 0.0])
+                c_txt = Text(
+                    f"{entry.key}:{entry.value}",
+                    font_size=active_theme.typography.font_size_xs,
+                    color="#FFFFFF",
+                ).move_to([cx, y, 0.0])
                 c_grp = Group(c_box, c_txt)
                 self._chain_nodes[b_idx].append(c_grp)
                 all_mobjects.append(c_grp.manim_object)
 
                 # Arrow connecting previous item to this chain entry
-                arr = Arrow(start=prev_center, end=[cx, y, 0.0], buff=self._bucket_width / 2.0 + 0.1)
+                arr = Arrow(
+                    start=prev_center, end=[cx, y, 0.0], buff=self._bucket_width / 2.0 + 0.1
+                )
                 all_mobjects.append(arr.manim_object)
-                prev_center = [cx, y, 0.0]
+                prev_center = np.array([cx, y, 0.0])
 
         return manim.VGroup(*all_mobjects)
 
@@ -190,7 +202,7 @@ class HashTable(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Insert key-value pair and animate bucket highlight and chain entry."""
-        b_idx, c_pos = self._model.insert(key, value)
+        b_idx, _c_pos = self._model.insert(key, value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
 
@@ -208,7 +220,7 @@ class HashTable(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Search key and animate target bucket highlight."""
-        found, b_idx, c_pos, val = self._model.search(key)
+        found, b_idx, _c_pos, _val = self._model.search(key)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
 

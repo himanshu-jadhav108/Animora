@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import heapq
-from typing import TYPE_CHECKING, Any, Callable
+from collections.abc import Callable
+from typing import TYPE_CHECKING, Any
 
 from animora.algorithms.trace import OperationTrace, OperationType
 from animora.core.animation import Animation
@@ -25,12 +26,14 @@ def dijkstra_trace(
     """Execute Dijkstra's algorithm, returning (distances, path, operation_trace)."""
     trace = OperationTrace()
     distances: dict[Any, float] = {node: float("inf") for node in graph_model.nodes()}
-    predecessors: dict[Any, Any | None] = {node: None for node in graph_model.nodes()}
+    predecessors: dict[Any, Any | None] = dict.fromkeys(graph_model.nodes())
 
     distances[start] = 0.0
     pq: list[tuple[float, Any]] = [(0.0, start)]
 
-    trace.add_step(OperationType.VISIT_NODE, f"Initialize Dijkstra with start {start} (d=0)", targets=(start,))
+    trace.add_step(
+        OperationType.VISIT_NODE, f"Initialize Dijkstra with start {start} (d=0)", targets=(start,)
+    )
 
     while pq:
         curr_dist, u = heapq.heappop(pq)
@@ -38,7 +41,11 @@ def dijkstra_trace(
         if curr_dist > distances[u]:
             continue
 
-        trace.add_step(OperationType.VISIT_NODE, f"Expand node {u} with current distance {curr_dist}", targets=(u,))
+        trace.add_step(
+            OperationType.VISIT_NODE,
+            f"Expand node {u} with current distance {curr_dist}",
+            targets=(u,),
+        )
 
         if target is not None and u == target:
             break
@@ -47,7 +54,9 @@ def dijkstra_trace(
         for v, weight in graph_model.adj.get(u, []):
             w = 1.0 if weight is None else float(weight)
             alt = curr_dist + w
-            trace.add_step(OperationType.HIGHLIGHT_EDGE, f"Check edge ({u}, {v}) weight={w}", targets=(u, v))
+            trace.add_step(
+                OperationType.HIGHLIGHT_EDGE, f"Check edge ({u}, {v}) weight={w}", targets=(u, v)
+            )
 
             if alt < distances[v]:
                 distances[v] = alt
@@ -88,15 +97,25 @@ def dijkstra(
     for step in trace:
         if step.op_type == OperationType.VISIT_NODE:
             u = step.targets[0]
-            animations.append(graph.animate_mark_visited(u, color=active_theme.colors.accent, run_time=duration))
+            animations.append(
+                graph.animate_mark_visited(u, color=active_theme.colors.accent, run_time=duration)
+            )
         elif step.op_type == OperationType.RELAX_EDGE:
             u, v = step.targets
-            animations.append(graph.animate_highlight_edge(u, v, color=active_theme.colors.success, run_time=duration))
+            animations.append(
+                graph.animate_highlight_edge(
+                    u, v, color=active_theme.colors.success, run_time=duration
+                )
+            )
 
     # Highlight final shortest path
     if len(path) > 1:
         for i in range(len(path) - 1):
-            animations.append(graph.animate_highlight_edge(path[i], path[i + 1], color=active_theme.colors.primary, run_time=duration))
+            animations.append(
+                graph.animate_highlight_edge(
+                    path[i], path[i + 1], color=active_theme.colors.primary, run_time=duration
+                )
+            )
 
     return animations
 
@@ -116,7 +135,7 @@ def a_star_trace(
 
     g_score: dict[Any, float] = {node: float("inf") for node in graph_model.nodes()}
     f_score: dict[Any, float] = {node: float("inf") for node in graph_model.nodes()}
-    came_from: dict[Any, Any | None] = {node: None for node in graph_model.nodes()}
+    came_from: dict[Any, Any | None] = dict.fromkeys(graph_model.nodes())
 
     g_score[start] = 0.0
     f_score[start] = h_func(start, goal)
@@ -157,7 +176,7 @@ def a_star_trace(
 
                 trace.add_step(
                     OperationType.RELAX_EDGE,
-                    f"A* heuristic update to {v}: g={tentative_g:.1f}, h={h_val:.1f}, f={f_val:.1f}",
+                    f"A* update to {v}: g={tentative_g:.1f}, h={h_val:.1f}, f={f_val:.1f}",
                     targets=(u, v),
                     g_score=tentative_g,
                     h_score=h_val,
@@ -193,14 +212,26 @@ def a_star(
     for step in trace:
         if step.op_type == OperationType.VISIT_NODE:
             u = step.targets[0]
-            animations.append(graph.animate_mark_visited(u, color=active_theme.colors.secondary, run_time=duration))
+            animations.append(
+                graph.animate_mark_visited(
+                    u, color=active_theme.colors.secondary, run_time=duration
+                )
+            )
         elif step.op_type == OperationType.RELAX_EDGE:
             u, v = step.targets
-            animations.append(graph.animate_highlight_edge(u, v, color=active_theme.colors.warning, run_time=duration))
+            animations.append(
+                graph.animate_highlight_edge(
+                    u, v, color=active_theme.colors.warning, run_time=duration
+                )
+            )
 
     if len(path) > 1:
         for i in range(len(path) - 1):
-            animations.append(graph.animate_highlight_edge(path[i], path[i + 1], color=active_theme.colors.success, run_time=duration))
+            animations.append(
+                graph.animate_highlight_edge(
+                    path[i], path[i + 1], color=active_theme.colors.success, run_time=duration
+                )
+            )
 
     return animations
 

@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.arrow import Arrow
@@ -17,7 +19,7 @@ from animora.layout.graph import GraphLayout
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------
@@ -150,7 +152,11 @@ class Graph(Component):
                 stroke_color=active_theme.colors.primary,
                 stroke_width=active_theme.strokes.regular,
             )
-            txt = Text(str(n), font_size=active_theme.typography.font_size_sm, color=active_theme.colors.text)
+            txt = Text(
+                str(n),
+                font_size=active_theme.typography.font_size_sm,
+                color=active_theme.colors.text,
+            )
             grp = Group(circle, txt)
             self._node_map[n] = grp
             node_components.append(grp)
@@ -158,7 +164,6 @@ class Graph(Component):
         # 2. Position via Phase 4 GraphLayout
         edge_tuples = [(str(u), str(v)) for u, v in self._model.edges()]
         layout = GraphLayout(
-            nodes=[str(n) for n in all_nodes],
             edges=edge_tuples,
             algorithm=self._layout_algorithm,
             scale=3.0,

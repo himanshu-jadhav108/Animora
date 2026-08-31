@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import manim
+
 from animora.components.panel import Panel
 from animora.components.shape import Shape
 from animora.components.text import Text
@@ -26,15 +27,19 @@ class ThemedScene(Scene):
 def test_themed_rendering_end_to_end() -> None:
     """Verify scene renders cleanly under both ModernDark and PaperLight themes."""
     # 1. Render under ModernDark
-    with use_theme(ModernDark):
-        with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-            dark_scene = ThemedScene()
-            dark_scene.render()
-            assert len(dark_scene.mobjects) >= 1
+    with (
+        use_theme(ModernDark),
+        manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}),
+    ):
+        dark_scene = ThemedScene()
+        dark_scene.render()
+        assert len(dark_scene.mobjects) >= 1
 
     # 2. Render under PaperLight
-    with use_theme(PaperLight):
-        with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
-            light_scene = ThemedScene()
-            light_scene.render()
-            assert len(light_scene.mobjects) >= 1
+    with (
+        use_theme(PaperLight),
+        manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}),
+    ):
+        light_scene = ThemedScene()
+        light_scene.render()
+        assert len(light_scene.mobjects) >= 1

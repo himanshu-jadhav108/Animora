@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
 
 from animora.algorithms.trace import OperationTrace, OperationType
 from animora.core.animation import Animation
@@ -75,12 +76,16 @@ def binary_search(
     for step in trace:
         if step.op_type == OperationType.COMPARE:
             mid = step.metadata["mid"]
-            anim = arr.animate_highlight(mid, color=active_theme.colors.accent, run_time=step_duration)
+            anim = arr.animate_highlight(
+                mid, color=active_theme.colors.accent, run_time=step_duration
+            )
             animations.append(anim)
         elif step.op_type == OperationType.HIGHLIGHT:
             if step.metadata.get("found"):
                 idx = step.metadata["index"]
-                anim = arr.animate_highlight(idx, color=active_theme.colors.success, run_time=step_duration)
+                anim = arr.animate_highlight(
+                    idx, color=active_theme.colors.success, run_time=step_duration
+                )
                 animations.append(anim)
 
     return animations

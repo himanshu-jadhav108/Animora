@@ -3,10 +3,8 @@
 from __future__ import annotations
 
 import manim
-import pytest
 
 from animora.components.panel import Panel
-from animora.components.shape import Shape
 from animora.components.text import Text
 
 

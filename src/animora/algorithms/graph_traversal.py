@@ -51,10 +51,18 @@ def bfs(graph: Graph, start: Any, run_time: float | None = None) -> list[Animati
     for step in trace:
         if step.op_type == OperationType.VISIT_NODE:
             node = step.targets[0]
-            animations.append(graph.animate_mark_visited(node, color=active_theme.colors.success, run_time=duration))
+            animations.append(
+                graph.animate_mark_visited(
+                    node, color=active_theme.colors.success, run_time=duration
+                )
+            )
         elif step.op_type == OperationType.HIGHLIGHT_EDGE:
             u, v = step.targets
-            animations.append(graph.animate_highlight_edge(u, v, color=active_theme.colors.accent, run_time=duration))
+            animations.append(
+                graph.animate_highlight_edge(
+                    u, v, color=active_theme.colors.accent, run_time=duration
+                )
+            )
 
     return animations
 
@@ -93,10 +101,18 @@ def dfs(graph: Graph, start: Any, run_time: float | None = None) -> list[Animati
     for step in trace:
         if step.op_type == OperationType.VISIT_NODE:
             node = step.targets[0]
-            animations.append(graph.animate_mark_visited(node, color=active_theme.colors.success, run_time=duration))
+            animations.append(
+                graph.animate_mark_visited(
+                    node, color=active_theme.colors.success, run_time=duration
+                )
+            )
         elif step.op_type == OperationType.HIGHLIGHT_EDGE:
             u, v = step.targets
-            animations.append(graph.animate_highlight_edge(u, v, color=active_theme.colors.accent, run_time=duration))
+            animations.append(
+                graph.animate_highlight_edge(
+                    u, v, color=active_theme.colors.accent, run_time=duration
+                )
+            )
 
     return animations
 

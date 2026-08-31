@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 from animora.layout.base import BaseLayout, LayoutItem, LayoutResult
 
@@ -89,7 +90,7 @@ class FlowLayout(BaseLayout):
         offset_x = (min_x + max_x) / 2.0 if self.center_origin else 0.0
         offset_y = (min_y + max_y) / 2.0 if self.center_origin else 0.0
 
-        for item, (rx, ry) in zip(items, raw_coords):
+        for item, (rx, ry) in zip(items, raw_coords, strict=False):
             positions[item.id] = (rx - offset_x, ry - offset_y, 0.0)
 
         return LayoutResult(

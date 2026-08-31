@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import manim
+
 from animora.components.label import Label
 from animora.core.animation import Animation
 

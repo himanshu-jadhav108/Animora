@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
-import numpy as np
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.components.connector import Connector
 from animora.core.animation import Animation
@@ -13,7 +15,7 @@ from animora.core.config import ComponentConfig
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class Arrow(Connector):

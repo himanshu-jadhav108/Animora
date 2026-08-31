@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.components.group import Group
 from animora.components.shape import Shape
@@ -13,7 +15,7 @@ from animora.core.config import ComponentConfig
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class Panel(Component):
@@ -45,9 +47,13 @@ class Panel(Component):
         active_theme = get_active_theme()
         resolved_fill = fill_color if fill_color is not None else active_theme.colors.surface
         resolved_stroke = stroke_color if stroke_color is not None else active_theme.colors.border
-        resolved_stroke_w = stroke_width if stroke_width is not None else active_theme.strokes.regular
+        resolved_stroke_w = (
+            stroke_width if stroke_width is not None else active_theme.strokes.regular
+        )
         resolved_pad = padding if padding is not None else active_theme.spacing.md
-        resolved_corner_r = corner_radius if corner_radius is not None else active_theme.corner_radius.md
+        resolved_corner_r = (
+            corner_radius if corner_radius is not None else active_theme.corner_radius.md
+        )
 
         cfg = config or ComponentConfig(
             color=resolved_stroke,
@@ -60,7 +66,11 @@ class Panel(Component):
         self._corner_radius = float(resolved_corner_r)
         self._content_group = Group(*children)
         self._title_comp: Text | None = (
-            Text(title, font_size=active_theme.typography.font_size_sm, color=active_theme.colors.text)
+            Text(
+                title,
+                font_size=active_theme.typography.font_size_sm,
+                color=active_theme.colors.text,
+            )
             if isinstance(title, str)
             else title
         )
@@ -93,7 +103,7 @@ class Panel(Component):
         else:
             w = 3.0
             h = 2.0
-            center = [0.0, 0.0, 0.0]
+            center = np.array([0.0, 0.0, 0.0])
 
         # Minimum sizing
         w = max(w, 2.0)

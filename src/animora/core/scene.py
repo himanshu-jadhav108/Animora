@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 from typing import Any
+
 import manim
 
 from animora.core.animation import Animation
 from animora.core.component import Component
 
 
-class Scene(manim.Scene):
+class Scene(manim.Scene):  # type: ignore[misc]
     """High-level Scene for Animora animations.
 
     Inherits from Manim's Scene while providing first-class support for

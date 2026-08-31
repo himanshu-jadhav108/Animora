@@ -7,8 +7,6 @@ from animora.components import Group, Shape
 from animora.core.scene import Scene
 from animora.datastructures.array import Array
 from animora.datastructures.bst import BST
-from animora.datastructures.graph import Graph
-from animora.layout.circular import CircularLayout
 from animora.layout.grid import GridLayout
 from animora.theme.builtin import ModernDark
 from animora.theme.context import use_theme

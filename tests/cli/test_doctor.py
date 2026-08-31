@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from animora.cli.doctor import check_environment, handle_doctor
+from animora.cli.doctor import check_environment
 from animora.cli.main import create_parser
 
 

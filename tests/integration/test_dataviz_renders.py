@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import manim
+
 from animora.core.scene import Scene
 from animora.dataviz.axes import Axes
 from animora.dataviz.bar_chart import BarChart

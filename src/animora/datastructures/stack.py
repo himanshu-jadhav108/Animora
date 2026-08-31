@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.group import Group
@@ -15,7 +17,7 @@ from animora.layout.vertical import VerticalLayout
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------

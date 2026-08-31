@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import manim
+
 from animora.components.arrow import Arrow
 from animora.components.panel import Panel
 from animora.components.shape import Shape

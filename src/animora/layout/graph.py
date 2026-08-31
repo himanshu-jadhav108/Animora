@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-import math
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
+
 import networkx as nx
 
 from animora.layout.base import BaseLayout, LayoutItem, LayoutResult

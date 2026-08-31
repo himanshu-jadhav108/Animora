@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
-import numpy as np
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.components.connector import Connector
 from animora.components.shape import Shape
@@ -15,7 +17,7 @@ from animora.dataviz.axes import Axes
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class LineChart(Component):
@@ -43,9 +45,7 @@ class LineChart(Component):
         config: ComponentConfig | None = None,
         **kwargs: Any,
     ) -> None:
-        self._raw_points: list[tuple[float, float]] = [
-            (float(p[0]), float(p[1])) for p in points
-        ]
+        self._raw_points: list[tuple[float, float]] = [(float(p[0]), float(p[1])) for p in points]
         self._line_color = line_color
         self._custom_stroke_width = stroke_width
         self._show_dots = show_dots
@@ -120,9 +120,7 @@ class LineChart(Component):
         line_mobjects = [line.manim_object for line in self._lines]
         dot_mobjects = [dot.manim_object for dot in self._dots]
 
-        animations: list[manim.Animation] = [
-            manim.Create(lm) for lm in line_mobjects
-        ]
+        animations: list[manim.Animation] = [manim.Create(lm) for lm in line_mobjects]
         if dot_mobjects:
             animations.append(manim.FadeIn(manim.VGroup(*dot_mobjects)))
 

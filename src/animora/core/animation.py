@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Callable
+from collections.abc import Callable
+from typing import TYPE_CHECKING
+
 import manim
 
 if TYPE_CHECKING:
@@ -62,7 +64,9 @@ class Animation:
         )
 
     def __repr__(self) -> str:
-        return f"<Animora.Animation '{self._name}' on {self._component} (run_time={self._run_time}s)>"
+        return (
+            f"<Animora.Animation '{self._name}' on {self._component} (run_time={self._run_time}s)>"
+        )
 
 
 __all__ = [

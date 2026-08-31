@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 import argparse
-import importlib.metadata
 import shutil
 import sys
-from typing import NamedTuple
+from typing import Any, NamedTuple
 
 
 class DiagnosticResult(NamedTuple):
@@ -38,17 +37,27 @@ def check_environment() -> list[DiagnosticResult]:
     # 2. Animora Version
     try:
         import animora
-        results.append(DiagnosticResult("Animora", "PASS", f"Animora {animora.__version__} installed"))
+
+        results.append(
+            DiagnosticResult("Animora", "PASS", f"Animora {animora.__version__} installed")
+        )
     except ImportError:
-        results.append(DiagnosticResult("Animora", "FAIL", "Animora package not found in Python path"))
+        results.append(
+            DiagnosticResult("Animora", "FAIL", "Animora package not found in Python path")
+        )
 
     # 3. Manim Version (>=0.18.0)
     try:
         import manim
+
         manim_ver = getattr(manim, "__version__", "unknown")
         # Check minimum version 0.18
-        if manim_ver != "unknown" and tuple(int(x) for x in manim_ver.split(".")[:2] if x.isdigit()) >= (0, 18):
-            results.append(DiagnosticResult("Manim", "PASS", f"Manim Community {manim_ver} (compatible)"))
+        if manim_ver != "unknown" and tuple(
+            int(x) for x in manim_ver.split(".")[:2] if x.isdigit()
+        ) >= (0, 18):
+            results.append(
+                DiagnosticResult("Manim", "PASS", f"Manim Community {manim_ver} (compatible)")
+            )
         else:
             results.append(
                 DiagnosticResult(
@@ -71,6 +80,7 @@ def check_environment() -> list[DiagnosticResult]:
     # 4. NumPy Version
     try:
         import numpy as np
+
         results.append(DiagnosticResult("NumPy", "PASS", f"NumPy {np.__version__} installed"))
     except ImportError:
         results.append(DiagnosticResult("NumPy", "FAIL", "NumPy is not installed"))
@@ -78,6 +88,7 @@ def check_environment() -> list[DiagnosticResult]:
     # 5. NetworkX Version
     try:
         import networkx as nx
+
         results.append(DiagnosticResult("NetworkX", "PASS", f"NetworkX {nx.__version__} installed"))
     except ImportError:
         results.append(DiagnosticResult("NetworkX", "FAIL", "NetworkX is not installed"))
@@ -99,12 +110,12 @@ def check_environment() -> list[DiagnosticResult]:
     return results
 
 
-def register_doctor_parser(subparsers: argparse._SubParsersAction) -> None:
+def register_doctor_parser(subparsers: argparse._SubParsersAction[Any]) -> None:
     """Register 'doctor' subcommand arguments."""
     parser = subparsers.add_parser(
         "doctor",
         help="Diagnose system environment, Python dependencies, and Manim setup",
-        description="Inspects Python, Manim, NumPy, and system media dependencies for compatibility.",
+        description="Inspects Python, Manim, and system dependencies for compatibility.",
     )
     parser.set_defaults(func=handle_doctor)
 

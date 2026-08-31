@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from animora.algorithms.trace import OperationTrace, OperationType
 from animora.core.animation import Animation
@@ -91,22 +91,28 @@ def n_queens(
     active_theme = get_active_theme()
     duration = run_time or active_theme.timing.fast
 
-    solutions, trace = n_queens_trace(n)
+    _solutions, trace = n_queens_trace(n)
     animations: list[Animation] = []
 
     if table is not None:
         for step in trace:
             if step.op_type == OperationType.TRY_CHOICE:
                 r, c = step.targets
-                anim = table.animate_highlight_cell(r, c, color=active_theme.colors.warning, run_time=duration)
+                anim = table.animate_highlight_cell(
+                    r, c, color=active_theme.colors.warning, run_time=duration
+                )
                 animations.append(anim)
             elif step.op_type == OperationType.BACKTRACK:
                 r, c = step.targets
-                anim = table.animate_highlight_cell(r, c, color=active_theme.colors.error, run_time=duration)
+                anim = table.animate_highlight_cell(
+                    r, c, color=active_theme.colors.error, run_time=duration
+                )
                 animations.append(anim)
             elif step.op_type == OperationType.HIGHLIGHT:
                 for r, c in step.targets:
-                    anim = table.animate_highlight_cell(r, c, color=active_theme.colors.success, run_time=duration)
+                    anim = table.animate_highlight_cell(
+                        r, c, color=active_theme.colors.success, run_time=duration
+                    )
                     animations.append(anim)
 
     return animations

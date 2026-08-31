@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import Sequence
 from dataclasses import dataclass, field
-from typing import Any, Sequence
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -29,7 +30,9 @@ class LayoutResult:
     total_width: float = 0.0
     total_height: float = 0.0
 
-    def get(self, item_id: str, default: tuple[float, float, float] = (0.0, 0.0, 0.0)) -> tuple[float, float, float]:
+    def get(
+        self, item_id: str, default: tuple[float, float, float] = (0.0, 0.0, 0.0)
+    ) -> tuple[float, float, float]:
         """Get the 3D position vector for a specific item id."""
         return self.positions.get(item_id, default)
 

@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
-import numpy as np
-import manim
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
 
-from animora.components.group import Group
+import manim
+import numpy as np
+
 from animora.components.shape import Shape
 from animora.components.text import Text
 from animora.core.animation import Animation
@@ -16,7 +17,7 @@ from animora.dataviz.axes import Axes
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class BarChart(Component):
@@ -48,7 +49,7 @@ class BarChart(Component):
         elif data and isinstance(data[0], (tuple, list)):
             self._data = [(str(item[0]), float(item[1])) for item in data]  # type: ignore[index]
         else:
-            self._data = [(f"Item {idx+1}", float(v)) for idx, v in enumerate(data)]  # type: ignore[arg-type]
+            self._data = [(f"Item {idx + 1}", float(v)) for idx, v in enumerate(data)]  # type: ignore[arg-type]
 
         self._bar_width = float(bar_width)
         self._bar_color = bar_color

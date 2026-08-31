@@ -3,8 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
-from typing import Any, Callable
-import manim
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -101,9 +100,7 @@ class Theme:
     ) -> Theme:
         """Return a new Theme instance with specified token overrides."""
         new_colors = (
-            replace(self.colors, **colors)
-            if isinstance(colors, dict)
-            else (colors or self.colors)
+            replace(self.colors, **colors) if isinstance(colors, dict) else (colors or self.colors)
         )
         new_typography = (
             replace(self.typography, **typography)
@@ -126,9 +123,7 @@ class Theme:
             else (corner_radius or self.corner_radius)
         )
         new_timing = (
-            replace(self.timing, **timing)
-            if isinstance(timing, dict)
-            else (timing or self.timing)
+            replace(self.timing, **timing) if isinstance(timing, dict) else (timing or self.timing)
         )
 
         return Theme(

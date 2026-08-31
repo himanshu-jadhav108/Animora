@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import manim
+
 from animora.core.scene import Scene
 from animora.datastructures.array import Array
 from animora.datastructures.bst import BST

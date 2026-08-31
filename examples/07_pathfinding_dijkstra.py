@@ -30,6 +30,7 @@ class DijkstraPathfindingScene(Scene):
 
 if __name__ == "__main__":
     import manim
+
     with manim.tempconfig({"quality": "low_quality", "preview": True}):
         scene = DijkstraPathfindingScene()
         scene.render()

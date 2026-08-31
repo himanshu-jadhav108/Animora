@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
-import numpy as np
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.core.animation import Animation
 from animora.core.component import Component
@@ -12,7 +14,7 @@ from animora.core.config import ComponentConfig
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class Connector(Component):
@@ -41,7 +43,9 @@ class Connector(Component):
         **kwargs: Any,
     ) -> None:
         active_theme = get_active_theme()
-        resolved_color = stroke_color if stroke_color is not None else active_theme.colors.text_muted
+        resolved_color = (
+            stroke_color if stroke_color is not None else active_theme.colors.text_muted
+        )
         resolved_width = stroke_width if stroke_width is not None else active_theme.strokes.regular
 
         cfg = config or ComponentConfig(

@@ -6,6 +6,7 @@ import argparse
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
 
 
 def build_preview_command(
@@ -26,7 +27,7 @@ def build_preview_command(
     return cmd
 
 
-def register_preview_parser(subparsers: argparse._SubParsersAction) -> None:
+def register_preview_parser(subparsers: argparse._SubParsersAction[Any]) -> None:
     """Register 'preview' subcommand arguments."""
     parser = subparsers.add_parser(
         "preview",

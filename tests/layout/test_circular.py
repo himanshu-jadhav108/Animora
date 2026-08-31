@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import math
 import pytest
+
 from animora.layout.base import LayoutItem
 from animora.layout.circular import CircularLayout
 

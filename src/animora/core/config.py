@@ -62,22 +62,31 @@ class ComponentConfig:
         """Resolve any unassigned (None) attributes against the provided or active theme."""
         if theme is None:
             from animora.theme.context import get_active_theme
+
             theme = get_active_theme()
 
         return ComponentConfig(
             color=self.color if self.color is not None else theme.colors.text,
             fill_color=self.fill_color if self.fill_color is not None else theme.colors.primary,
             fill_opacity=self.fill_opacity,
-            stroke_color=self.stroke_color if self.stroke_color is not None else theme.colors.border,
-            stroke_width=self.stroke_width if self.stroke_width is not None else theme.strokes.regular,
-            font_size=self.font_size if self.font_size is not None else theme.typography.font_size_md,
-            font_family=self.font_family if self.font_family is not None else theme.typography.font_family,
+            stroke_color=self.stroke_color
+            if self.stroke_color is not None
+            else theme.colors.border,
+            stroke_width=self.stroke_width
+            if self.stroke_width is not None
+            else theme.strokes.regular,
+            font_size=self.font_size
+            if self.font_size is not None
+            else theme.typography.font_size_md,
+            font_family=self.font_family
+            if self.font_family is not None
+            else theme.typography.font_family,
             extra_props=dict(self.extra_props),
         )
 
     def merge(self, **overrides: Any) -> ComponentConfig:
         """Return a new ComponentConfig with overridden properties."""
-        current_data = {
+        current_data: dict[str, Any] = {
             "color": self.color,
             "fill_color": self.fill_color,
             "fill_opacity": self.fill_opacity,
@@ -91,7 +100,7 @@ class ComponentConfig:
             if k in current_data:
                 current_data[k] = v
             else:
-                current_data["extra_props"][k] = v  # type: ignore[index]
+                current_data["extra_props"][k] = v
         return ComponentConfig(**current_data)
 
 

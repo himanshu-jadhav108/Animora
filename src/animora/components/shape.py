@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from enum import Enum
-from typing import TYPE_CHECKING, Any, Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.core.animation import Animation
@@ -12,7 +14,7 @@ from animora.core.config import ComponentConfig
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class ShapeType(str, Enum):
@@ -57,8 +59,12 @@ class Shape(Component):
 
         resolved_fill = fill_color if fill_color is not None else active_theme.colors.primary
         resolved_stroke = stroke_color if stroke_color is not None else active_theme.colors.border
-        resolved_stroke_w = stroke_width if stroke_width is not None else active_theme.strokes.regular
-        resolved_corner_r = corner_radius if corner_radius is not None else active_theme.corner_radius.md
+        resolved_stroke_w = (
+            stroke_width if stroke_width is not None else active_theme.strokes.regular
+        )
+        resolved_corner_r = (
+            corner_radius if corner_radius is not None else active_theme.corner_radius.md
+        )
 
         cfg = config or ComponentConfig(
             color=resolved_stroke,

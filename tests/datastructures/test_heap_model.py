@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import heapq
 import random
+
 from animora.datastructures.heap import HeapModel
 
 

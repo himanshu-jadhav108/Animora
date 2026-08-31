@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from collections import deque
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.group import Group
@@ -16,7 +18,7 @@ from animora.layout.horizontal import HorizontalLayout
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------
@@ -105,7 +107,11 @@ class Queue(Component):
                 stroke_color=active_theme.colors.primary,
                 stroke_width=active_theme.strokes.thin,
             )
-            txt = Text(str(val), font_size=active_theme.typography.font_size_sm, color=active_theme.colors.text)
+            txt = Text(
+                str(val),
+                font_size=active_theme.typography.font_size_sm,
+                color=active_theme.colors.text,
+            )
             self._item_groups.append(Group(box, txt))
 
         container = Group(*self._item_groups)
@@ -173,7 +179,9 @@ class Queue(Component):
         front_grp = self._item_groups[0]
         return Animation(
             component=front_grp,
-            manim_animation=manim.Indicate(front_grp.manim_object, color=active_theme.colors.accent),
+            manim_animation=manim.Indicate(
+                front_grp.manim_object, color=active_theme.colors.accent
+            ),
             run_time=duration,
             name="peek()",
         )

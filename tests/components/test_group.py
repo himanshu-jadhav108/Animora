@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import manim
-import numpy as np
 import pytest
 
 from animora.components.group import Group

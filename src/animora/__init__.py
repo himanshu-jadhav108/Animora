@@ -92,13 +92,13 @@ from animora.theme.theme import (
 __version__ = "0.1.0"
 
 __all__: list[str] = [
+    "BST",
     "Animation",
     "AnimationTiming",
     "Array",
     "ArrayListModel",
     "Arrow",
     "Axes",
-    "BST",
     "BSTModel",
     "BSTNode",
     "BarChart",

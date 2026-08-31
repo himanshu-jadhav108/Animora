@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-import heapq
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.arrow import Arrow
@@ -13,11 +14,10 @@ from animora.components.text import Text
 from animora.core.animation import Animation
 from animora.core.component import Component
 from animora.core.config import ComponentConfig
-from animora.layout.tree import TreeLayout
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------
@@ -142,13 +142,18 @@ class Heap(Component):
                 fill_opacity=0.9,
                 stroke_color=active_theme.colors.primary,
             )
-            txt = Text(str(val), font_size=active_theme.typography.font_size_sm, color=active_theme.colors.text)
+            txt = Text(
+                str(val),
+                font_size=active_theme.typography.font_size_sm,
+                color=active_theme.colors.text,
+            )
             self._node_groups.append(Group(circle, txt))
 
         # Position nodes using hierarchical binary tree coordinates
         for idx, grp in enumerate(self._node_groups):
             import math
-            level = int(math.floor(math.log2(idx + 1)))
+
+            level = math.floor(math.log2(idx + 1))
             pos_in_level = idx - (2**level - 1)
             total_in_level = 2**level
 

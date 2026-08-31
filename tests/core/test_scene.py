@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import manim
+
 from animora.components.label import Label
-from animora.core.animation import Animation
 from animora.core.scene import Scene
 
 
@@ -39,7 +39,7 @@ def test_scene_play_accepts_animora_animation(monkeypatch: object) -> None:
         played_anims.extend(args)
 
     # Monkeypatch manim.Scene.play on scene instance
-    scene.play = Scene.play.__get__(scene, Scene)  # ensure bound method
+    scene.play = Scene.play.__get__(scene, Scene)  # type: ignore[method-assign]
     monkeypatch.setattr(manim.Scene, "play", mock_play)  # type: ignore[attr-defined]
 
     # 1. Play Animora Animation

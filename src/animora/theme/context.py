@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import contextvars
+from collections.abc import Generator
 from contextlib import contextmanager
-from typing import Generator
 
 from animora.theme.builtin import DefaultTheme
 from animora.theme.theme import Theme

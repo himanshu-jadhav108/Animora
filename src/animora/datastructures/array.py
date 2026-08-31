@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.group import Group
@@ -15,7 +17,7 @@ from animora.layout.horizontal import HorizontalLayout
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------
@@ -114,7 +116,7 @@ class Array(Component):
         self._index_labels = []
         self._cell_groups = []
 
-        for idx, val in enumerate(self._model.to_list()):
+        for _idx, val in enumerate(self._model.to_list()):
             box = Shape.rounded_rectangle(
                 width=self._cell_width,
                 height=self._cell_height,

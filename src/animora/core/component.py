@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Any, Sequence
-import numpy as np
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.core.animation import Animation
 from animora.core.config import BoundingBox, ComponentConfig

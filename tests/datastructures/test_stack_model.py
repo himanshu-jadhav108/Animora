@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pytest
+
 from animora.datastructures.stack import StackModel
 
 

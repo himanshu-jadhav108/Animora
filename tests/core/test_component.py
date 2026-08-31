@@ -2,19 +2,20 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 import manim
 import numpy as np
 import pytest
 
 from animora.core.animation import Animation
 from animora.core.component import Component
-from animora.core.config import ComponentConfig
 
 
 class DummyBoxComponent(Component):
     """Concrete dummy component for testing base Component methods."""
 
-    def __init__(self, width: float = 2.0, height: float = 1.0, **kwargs: object) -> None:
+    def __init__(self, width: float = 2.0, height: float = 1.0, **kwargs: Any) -> None:
         self._box_width = width
         self._box_height = height
         super().__init__(**kwargs)

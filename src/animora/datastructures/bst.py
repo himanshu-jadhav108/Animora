@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.connector import Connector
@@ -16,7 +18,7 @@ from animora.layout.tree import TreeLayout
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------
@@ -213,7 +215,11 @@ class BST(Component):
                 stroke_color=active_theme.colors.primary,
                 stroke_width=active_theme.strokes.regular,
             )
-            txt = Text(str(curr.value), font_size=active_theme.typography.font_size_sm, color=active_theme.colors.text)
+            txt = Text(
+                str(curr.value),
+                font_size=active_theme.typography.font_size_sm,
+                color=active_theme.colors.text,
+            )
             grp = Group(circle, txt)
             self._node_map[curr.value] = grp
             node_components.append(grp)
@@ -235,10 +241,10 @@ class BST(Component):
 
         root_key = str(self._model.root.value)
         layout = TreeLayout(
+            edges=tree_dict,
             root_id=root_key,
-            tree_hierarchy=tree_dict,
-            level_height=self._level_height,
-            sibling_spacing=self._sibling_spacing,
+            level_spacing=self._level_height,
+            node_spacing=self._sibling_spacing,
         )
 
         container = Group(*node_components)
@@ -276,7 +282,9 @@ class BST(Component):
         for val in trace:
             if val in self._node_map:
                 grp = self._node_map[val]
-                highlights.append(manim.Indicate(grp.manim_object, color=active_theme.colors.accent))
+                highlights.append(
+                    manim.Indicate(grp.manim_object, color=active_theme.colors.accent)
+                )
 
         if not highlights:
             highlights.append(manim.FadeIn(self.manim_object))
@@ -312,7 +320,7 @@ class BST(Component):
 
     def animate_delete(self, value: float | int, run_time: float | None = None) -> Animation:
         """Delete value and animate deletion trace."""
-        deleted, case_name, trace = self._model.delete(value)
+        _deleted, case_name, _trace = self._model.delete(value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
 

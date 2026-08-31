@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import manim
-import pytest
 
 from animora.components.arrow import Arrow
 from animora.components.shape import Shape

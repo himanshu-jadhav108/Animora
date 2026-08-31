@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import math
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 from animora.layout.base import BaseLayout, LayoutItem, LayoutResult
 
@@ -63,7 +64,9 @@ class GridLayout(BaseLayout):
 
         # 3. Origin offsets
         start_x = (-total_w / 2.0) + (cell_w / 2.0) if self.center_origin else (cell_w / 2.0)
-        start_y = (total_h / 2.0) - (cell_h / 2.0) if self.center_origin else total_h - (cell_h / 2.0)
+        start_y = (
+            (total_h / 2.0) - (cell_h / 2.0) if self.center_origin else total_h - (cell_h / 2.0)
+        )
 
         positions: dict[str, tuple[float, float, float]] = {}
         for idx, item in enumerate(items):

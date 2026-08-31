@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
-import numpy as np
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
+import numpy as np
 
 from animora.core.animation import Animation
 from animora.core.component import Component
@@ -12,7 +14,7 @@ from animora.core.config import ComponentConfig
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 class Axes(Component):
@@ -47,8 +49,16 @@ class Axes(Component):
             stroke_width=active_theme.strokes.regular,
         )
 
-        self.x_range: tuple[float, float, float] = (float(x_range[0]), float(x_range[1]), float(x_range[2]))
-        self.y_range: tuple[float, float, float] = (float(y_range[0]), float(y_range[1]), float(y_range[2]))
+        self.x_range: tuple[float, float, float] = (
+            float(x_range[0]),
+            float(x_range[1]),
+            float(x_range[2]),
+        )
+        self.y_range: tuple[float, float, float] = (
+            float(y_range[0]),
+            float(y_range[1]),
+            float(y_range[2]),
+        )
         self.x_length: float = float(x_length)
         self.y_length: float = float(y_length)
 

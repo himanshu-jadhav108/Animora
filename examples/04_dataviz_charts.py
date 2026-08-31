@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from animora.core import Scene
-from animora.dataviz import BarChart, Table
+from animora.dataviz import BarChart
 from animora.theme import ModernDark, use_theme
 
 
@@ -25,6 +25,7 @@ class DataVizChartsScene(Scene):
 
 if __name__ == "__main__":
     import manim
+
     with manim.tempconfig({"quality": "low_quality", "preview": True}):
         scene = DataVizChartsScene()
         scene.render()

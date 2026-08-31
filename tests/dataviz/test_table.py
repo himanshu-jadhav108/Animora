@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
 from animora.core.animation import Animation
 from animora.dataviz.table import Table
 

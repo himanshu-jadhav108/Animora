@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
+
 import manim
 
 from animora.components.arrow import Arrow
@@ -15,7 +17,7 @@ from animora.core.config import ComponentConfig
 from animora.theme.context import get_active_theme
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    pass
 
 
 # -----------------------------------------------------------------------------
@@ -156,7 +158,11 @@ class LinkedList(Component):
                 stroke_width=active_theme.strokes.regular,
             ).move_to(pos)
 
-            txt = Text(str(val), font_size=active_theme.typography.font_size_sm, color=active_theme.colors.text).move_to(pos)
+            txt = Text(
+                str(val),
+                font_size=active_theme.typography.font_size_sm,
+                color=active_theme.colors.text,
+            ).move_to(pos)
             node_grp = Group(circle, txt)
             self._node_groups.append(node_grp)
             all_mobjects.append(node_grp.manim_object)

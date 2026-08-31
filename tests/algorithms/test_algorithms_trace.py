@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from animora.algorithms.pathfinding import a_star_trace, dijkstra_trace
 from animora.algorithms.search import binary_search_trace
-from animora.algorithms.sorting import bubble_sort_trace, selection_sort_trace
+from animora.algorithms.sorting import bubble_sort_trace
 from animora.algorithms.trace import OperationType
 from animora.datastructures.graph import GraphModel
 
 
 def test_binary_search_trace_sequence() -> None:
-    """Verify binary search on [10, 20, 30, 40, 50] searching for 40 compares index 2 then index 3."""
+    """Verify binary search on [10, 20, 30, 40, 50] searching for 40 compares index 2 then 3."""
     data = [10, 20, 30, 40, 50]
     idx, trace = binary_search_trace(data, 40)
     assert idx == 3
@@ -56,14 +56,20 @@ def test_dijkstra_vs_a_star_trace_distinction() -> None:
 
     # Dijkstra explores "Detour" first because its edge cost is 1.0 < 2.0
     _, _, d_trace = dijkstra_trace(g, "S", target="G")
-    dijkstra_visited = [step.targets[0] for step in d_trace if step.op_type == OperationType.VISIT_NODE]
+    dijkstra_visited = [
+        step.targets[0] for step in d_trace if step.op_type == OperationType.VISIT_NODE
+    ]
 
     # A* explores "Mid" before "Detour" because f(Mid) = 2+1 = 3 < f(Detour) = 1+10 = 11!
     _, a_trace = a_star_trace(g, "S", "G", heuristic=lambda u, v: heuristics.get(u, 0.0))
-    a_star_visited = [step.targets[0] for step in a_trace if step.op_type == OperationType.VISIT_NODE]
+    a_star_visited = [
+        step.targets[0] for step in a_trace if step.op_type == OperationType.VISIT_NODE
+    ]
 
     assert dijkstra_visited != a_star_visited
     # Dijkstra visits Detour before Mid
     assert dijkstra_visited.index("Detour") < dijkstra_visited.index("Mid")
     # A* visits Mid before Detour
-    assert a_star_visited.index("Mid") < (a_star_visited.index("Detour") if "Detour" in a_star_visited else 999)
+    assert a_star_visited.index("Mid") < (
+        a_star_visited.index("Detour") if "Detour" in a_star_visited else 999
+    )
