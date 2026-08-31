@@ -4,13 +4,13 @@
 
 ### *Declarative, High-Level Animation Framework for Python*
 
-[![PyPI Version](https://img.shields.io/pypi/v/animora.svg?color=blue&logo=pypi&logoColor=white)](https://pypi.org/project/animora/)
-[![CI Status](https://github.com/himanshu-jadhav108/Animora/actions/workflows/ci.yml/badge.svg)](https://github.com/himanshu-jadhav108/Animora/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-00B4D8.svg?logo=materialformkdocs&logoColor=white)](https://himanshu-jadhav108.github.io/Animora/)
-[![Python Version](https://img.shields.io/pypi/pyversions/animora.svg?logo=python&logoColor=white)](https://pypi.org/project/animora/)
+[![PyPI Version](https://img.shields.io/badge/pypi-v0.1.0-3776AB?logo=pypi&logoColor=white)](https://pypi.org/project/animora/)
+[![CI Status](https://img.shields.io/badge/CI-Passing-22c55e?logo=githubactions&logoColor=white)](https://github.com/himanshu-jadhav108/Animora/actions)
+[![Docs](https://img.shields.io/badge/Docs-Live-38BDF8?logo=materialformkdocs&logoColor=white)](https://himanshu-jadhav108.github.io/Animora/)
+[![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?logo=python&logoColor=white)](https://pypi.org/project/animora/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
-[![Checked with mypy](https://img.shields.io/badge/mypy-checked-1f425f.svg)](https://mypy-lang.org/)
+[![Code style: ruff](https://img.shields.io/badge/Code%20Style-Ruff-000000.svg?logo=ruff&logoColor=white)](https://github.com/astral-sh/ruff)
+[![Checked with mypy](https://img.shields.io/badge/Types-MyPy%20Checked-1f425f.svg)](https://mypy-lang.org/)
 
 <p align="center">
   <a href="#-quick-start">Quick Start</a> •
@@ -281,3 +281,49 @@ mypy src/
 ## 📄 License
 
 Animora is open-source software licensed under the **[MIT License](LICENSE)**.
+
+---
+
+## 👤 Author & Contact
+
+<br>
+
+<p align="center">
+  <table align="center" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(8px); padding: 20px; max-width: 500px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);">
+    <tr>
+      <td align="center">
+        <h3 style="margin: 0; color: #38bdf8; font-size: 1.6em; font-weight: 800; letter-spacing: -0.5px;">Himanshu Jadhav</h3>
+        <p style="color: #94a3b8; font-weight: 500; margin: 4px 0 15px 0;">Artificial Intelligence & Data Science Engineer</p>
+        <p style="color: #cbd5e1; font-size: 0.95em; max-width: 400px; line-height: 1.5; margin-bottom: 20px;">
+          Passionate about computer vision, mathematical animation engines, declarative developer tooling, and high-performance algorithms.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <a href="https://github.com/himanshu-jadhav108" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+          <a href="https://www.linkedin.com/in/himanshu-jadhav-328082339" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+          <a href="https://himanshu-jadhav-portfolio.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/Portfolio-FFD700?style=for-the-badge&logo=google-chrome&logoColor=black" alt="Portfolio"></a>
+          <a href="https://www.instagram.com/himanshu_jadhav_108" target="_blank"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"></a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</p>
+
+<br>
+
+---
+
+## 💖 Acknowledgements
+
+- [Manim Community](https://www.manim.community/) for the foundational vector graphics and mathematical animation engine.
+- [NumPy](https://numpy.org/) for high-performance numerical computing and array operations.
+- [NetworkX](https://networkx.org/) for graph data structures and force-directed spring layout algorithms.
+- [FFmpeg](https://ffmpeg.org/) for specialized media demuxing and video stream encoding.
+- [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) for modern, responsive documentation tooling.
+- The open-source mathematical visualization and computer science community.
+
+---
+
+<p align="center">
+  <b>Animora — Declarative Animation Engine for Python</b>
+</p>
+
