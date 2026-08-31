@@ -12,7 +12,8 @@ import manim
 def _load_scene_from_file(rel_path: str, scene_class_name: str) -> Any:
     """Dynamically load a scene class from an example file path."""
     file_path = Path(__file__).parent.parent.parent / "examples" / rel_path
-    spec = importlib.util.spec_from_file_location("example_module", file_path)
+    mod_name = f"example_module_{rel_path.replace('.', '_')}"
+    spec = importlib.util.spec_from_file_location(mod_name, file_path)
     if spec is None or spec.loader is None:
         raise ImportError(f"Could not load spec from {file_path}")
     module = importlib.util.module_from_spec(spec)
