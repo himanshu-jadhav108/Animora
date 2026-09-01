@@ -278,13 +278,9 @@ mypy src/
 
 ---
 
-## 📄 License
+## 👤 Creator
 
-Animora is open-source software licensed under the **[MIT License](LICENSE)**.
-
----
-
-## 👤 Author & Contact
+Animora was created by **Himanshu Jadhav** and is developed as an open-source Python animation framework for educational, mathematical, algorithmic, and technical visualization.
 
 <br>
 
@@ -309,6 +305,19 @@ Animora is open-source software licensed under the **[MIT License](LICENSE)**.
 </p>
 
 <br>
+
+---
+
+## 📄 License & Intellectual Property
+
+Animora's source code is released under the **[MIT License](LICENSE)**.
+
+- **Copyright Notice**: [COPYRIGHT.md](COPYRIGHT.md) — Copyright © 2026 Himanshu Jadhav.
+- **Brand & Fork Policy**: [TRADEMARKS.md](TRADEMARKS.md) — Guidelines for project branding, naming forks, and derivative works.
+- **Third-Party Notices**: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) — Dependency attributions and upstream license details.
+- **Security Policy**: [SECURITY.md](SECURITY.md) — Vulnerability reporting guidelines and security procedures.
+
+*(The MIT License applies to the source code and does not grant permission to use the Animora name, logo, or branding in a way that implies official affiliation or endorsement.)*
 
 ---
 
