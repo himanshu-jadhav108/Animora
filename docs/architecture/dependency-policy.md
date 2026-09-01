@@ -17,7 +17,7 @@ Animora classifies all external dependencies into three strict tiers:
 | **`manim`** | **Hard (Runtime)** | `>=0.18.0, <1.0.0` | MIT | Core vector animation engine and rendering backend (Community Edition). |
 | **`numpy`** | **Hard (Runtime)** | `>=1.24.0, <3.0.0` | BSD-3-Clause | Foundational vector, matrix, coordinate transformations, and numerical data processing. |
 | **`networkx`** | **Hard (Runtime)** | `>=3.0, <4.0` | BSD-3-Clause | Topological graph representation, shortest-path algorithms, tree hierarchy traversal, and graph layout coordinates. |
-| **`click`** / **`typer`** | **Optional (`[cli]`)** | `>=8.0` | MIT / MIT | Clean, modern CLI framework powering `animora new`, `preview`, and `doctor`. |
+| **`click`** / **`typer`** | **Optional (`[cli]`)** | `>=8.0` | BSD-3-Clause / MIT | Clean, modern CLI framework powering `animora new`, `preview`, and `doctor`. |
 | **`rich`** | **Optional (`[cli]`)** | `>=13.0` | MIT | Terminal formatting, progress bars, and diagnostics for CLI outputs. |
 | **`pytest`** | **Development** | `>=8.0` | MIT | Primary test runner and assertion framework for unit and integration testing. |
 | **`pytest-cov`** | **Development** | `>=4.1` | MIT | Code coverage reporting ensuring minimum 90% coverage on core and layouts. |
