@@ -64,7 +64,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/himanshu-jadhav108/Animora"
-Documentation = "https://github.com/himanshu-jadhav108/Animora#readme"
+Documentation = "https://himanshu-jadhav108.github.io/Animora/"
 Repository = "https://github.com/himanshu-jadhav108/Animora.git"
 Issues = "https://github.com/himanshu-jadhav108/Animora/issues"
 

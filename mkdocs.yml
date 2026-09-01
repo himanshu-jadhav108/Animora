@@ -69,6 +69,12 @@ nav:
       - Dependency Policy: architecture/dependency-policy.md
       - Versioning Strategy: architecture/versioning-strategy.md
       - Docs Media Strategy: architecture/docs-media-strategy.md
+  - Governance & Licensing:
+      - Copyright & Ownership: governance/copyright.md
+      - Brand & Trademarks: governance/trademarks.md
+      - Third-Party Notices: governance/third-party-notices.md
+      - Contributing Guide: governance/contributing.md
+      - Security Policy: governance/security.md
 
 markdown_extensions:
   - admonition
