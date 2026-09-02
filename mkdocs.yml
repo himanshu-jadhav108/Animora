@@ -52,6 +52,7 @@ nav:
       - Data Visualization: guides/dataviz.md
       - Data Structures: guides/datastructures.md
       - Algorithms: guides/algorithms.md
+      - AI & ML Foundations: ml/foundations.md
       - CLI: guides/cli.md
   - Examples & Gallery: examples/gallery.md
   - Recipes:
@@ -66,6 +67,7 @@ nav:
       - System Overview: architecture/00-overview.md
       - Module Boundaries: architecture/module-boundaries.md
       - API Philosophy: architecture/api-philosophy.md
+      - ML API Contract: architecture/ml-api-contract.md
       - Dependency Policy: architecture/dependency-policy.md
       - Versioning Strategy: architecture/versioning-strategy.md
       - Docs Media Strategy: architecture/docs-media-strategy.md
