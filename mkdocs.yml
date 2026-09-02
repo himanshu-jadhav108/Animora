@@ -53,6 +53,7 @@ nav:
       - Data Structures: guides/datastructures.md
       - Algorithms: guides/algorithms.md
       - AI & ML Foundations: ml/foundations.md
+      - Classic Machine Learning: ml/classic-ml.md
       - CLI: guides/cli.md
   - Examples & Gallery: examples/gallery.md
   - Recipes:
