@@ -1,4 +1,4 @@
-"""Animora AI/ML visualization module for mathematical surfaces, classic ML, and optimization."""
+"""Animora AI/ML visualization module for mathematical surfaces, classic ML, and deep learning."""
 
 from __future__ import annotations
 
@@ -24,6 +24,28 @@ from animora.ml.classic import (
     pca,
     svm,
 )
+from animora.ml.deep_learning import (
+    AdamOptimizerModel,
+    BackpropagationModel,
+    BackpropagationVisualizer,
+    BaseOptimizerModel,
+    CNNConvolutionModel,
+    CNNConvolutionVisualizer,
+    MomentumOptimizerModel,
+    NeuralNetworkModel,
+    NeuralNetworkVisualizer,
+    OptimizerVisualizer,
+    RNNCellModel,
+    RNNVisualizer,
+    SGDOptimizerModel,
+    adam,
+    backpropagation,
+    cnn_convolution,
+    momentum,
+    neural_network_forward,
+    rnn_forward,
+    sgd,
+)
 from animora.ml.optimization.gradient_descent import (
     GradientDescentModel,
     GradientDescentVisualizer,
@@ -34,6 +56,12 @@ from animora.ml.tensor_grid import TensorGrid
 from animora.ml.vector_field import VectorField
 
 __all__ = [
+    "AdamOptimizerModel",
+    "BackpropagationModel",
+    "BackpropagationVisualizer",
+    "BaseOptimizerModel",
+    "CNNConvolutionModel",
+    "CNNConvolutionVisualizer",
     "DecisionNode",
     "DecisionTreeModel",
     "DecisionTreeVisualizer",
@@ -49,17 +77,31 @@ __all__ = [
     "MLComponent",
     "MLTrace",
     "MLTraceStep",
+    "MomentumOptimizerModel",
+    "NeuralNetworkModel",
+    "NeuralNetworkVisualizer",
+    "OptimizerVisualizer",
     "PCAModel",
     "PCAVisualizer",
+    "RNNCellModel",
+    "RNNVisualizer",
+    "SGDOptimizerModel",
     "SVMVisualizer",
     "SurfacePlot",
     "TensorGrid",
     "VectorField",
+    "adam",
+    "backpropagation",
+    "cnn_convolution",
     "decision_tree",
     "gradient_descent",
     "kmeans",
     "linear_regression",
     "logistic_regression",
+    "momentum",
+    "neural_network_forward",
     "pca",
+    "rnn_forward",
+    "sgd",
     "svm",
 ]
