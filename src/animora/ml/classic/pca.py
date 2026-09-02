@@ -27,8 +27,8 @@ class PCAModel:
         n_components: int = 1,
     ) -> None:
         self.X = np.asarray(X, dtype=float)
-        if self.X.ndim != 2 or self.X.shape[1] != 2:
-            raise ValueError("X must be a 2D array of shape (N, 2).")
+        if self.X.ndim != 2 or self.X.shape[1] < 2:
+            raise ValueError("X must be a 2D array with at least 2 features.")
         self.n_components = min(int(n_components), self.X.shape[1])
         self.trace = MLTrace()
 
@@ -78,6 +78,8 @@ class PCAVisualizer(MLComponent):
         **kwargs: Any,
     ) -> None:
         self.X = np.asarray(X, dtype=float)
+        if self.X.ndim != 2 or self.X.shape[1] != 2:
+            raise ValueError("PCAVisualizer requires 2D input data.")
         self.model = PCAModel(self.X, n_components=n_components)
 
         x_min, x_max = float(np.min(self.X[:, 0])), float(np.max(self.X[:, 0]))

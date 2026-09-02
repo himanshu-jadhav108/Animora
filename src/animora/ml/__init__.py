@@ -1,4 +1,4 @@
-"""Animora AI/ML visualization module for mathematical surfaces, classic ML, and deep learning."""
+"""Animora AI/ML visualization module for math surfaces, classic ML, deep learning, and NLP."""
 
 from __future__ import annotations
 
@@ -46,6 +46,20 @@ from animora.ml.deep_learning import (
     rnn_forward,
     sgd,
 )
+from animora.ml.nlp import (
+    AttentionModel,
+    AttentionVisualizer,
+    EmbeddingModel,
+    EmbeddingVisualizer,
+    TokenizerModel,
+    TokenizerVisualizer,
+    TransformerBlockModel,
+    TransformerBlockVisualizer,
+    attention,
+    tokenize,
+    transformer_block,
+    word_embeddings,
+)
 from animora.ml.optimization.gradient_descent import (
     GradientDescentModel,
     GradientDescentVisualizer,
@@ -57,6 +71,8 @@ from animora.ml.vector_field import VectorField
 
 __all__ = [
     "AdamOptimizerModel",
+    "AttentionModel",
+    "AttentionVisualizer",
     "BackpropagationModel",
     "BackpropagationVisualizer",
     "BaseOptimizerModel",
@@ -65,6 +81,8 @@ __all__ = [
     "DecisionNode",
     "DecisionTreeModel",
     "DecisionTreeVisualizer",
+    "EmbeddingModel",
+    "EmbeddingVisualizer",
     "GradientDescentModel",
     "GradientDescentVisualizer",
     "HardMarginSVMModel",
@@ -89,8 +107,13 @@ __all__ = [
     "SVMVisualizer",
     "SurfacePlot",
     "TensorGrid",
+    "TokenizerModel",
+    "TokenizerVisualizer",
+    "TransformerBlockModel",
+    "TransformerBlockVisualizer",
     "VectorField",
     "adam",
+    "attention",
     "backpropagation",
     "cnn_convolution",
     "decision_tree",
@@ -104,4 +127,7 @@ __all__ = [
     "rnn_forward",
     "sgd",
     "svm",
+    "tokenize",
+    "transformer_block",
+    "word_embeddings",
 ]

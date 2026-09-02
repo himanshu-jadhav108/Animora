@@ -55,6 +55,7 @@ nav:
       - AI & ML Foundations: ml/foundations.md
       - Classic Machine Learning: ml/classic-ml.md
       - Deep Learning: ml/deep-learning.md
+      - NLP & Attention: ml/nlp-and-attention.md
       - CLI: guides/cli.md
   - Examples & Gallery: examples/gallery.md
   - Recipes:
