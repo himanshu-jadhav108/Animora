@@ -8,6 +8,7 @@ from pathlib import Path
 
 EXPECTED_MEDIA = [
     "hero_bst.svg",
+    "hero_ml.svg",
     "01_primitives.svg",
     "02_layout.svg",
     "03_theming.svg",
@@ -15,6 +16,24 @@ EXPECTED_MEDIA = [
     "05_bst.svg",
     "06_quicksort.svg",
     "07_dijkstra.svg",
+    "ml_gradient_descent.svg",
+    "ml_surface_plot.svg",
+    "ml_vector_field.svg",
+    "ml_tensor_grid.svg",
+    "ml_linear_regression.svg",
+    "ml_logistic_regression.svg",
+    "ml_kmeans.svg",
+    "ml_decision_tree.svg",
+    "ml_svm.svg",
+    "ml_pca.svg",
+    "ml_neural_network.svg",
+    "ml_backpropagation.svg",
+    "ml_optimizers.svg",
+    "ml_cnn_convolution.svg",
+    "ml_rnn_cell.svg",
+    "ml_tokenization.svg",
+    "ml_attention.svg",
+    "ml_transformer.svg",
 ]
 
 

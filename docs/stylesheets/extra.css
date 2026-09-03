@@ -108,3 +108,35 @@
   background: #0B0F19;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+/* Responsive Enhancements for All Devices (Mobile, Tablet, Desktop) */
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-tagline {
+    font-size: 1.05rem;
+  }
+  .hero-container {
+    padding: 1.5rem 0.75rem 1rem 0.75rem;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .hero-install-box {
+    font-size: 0.82rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+/* Ensure all embedded preview SVGs scale smoothly on all viewports */
+img[src$=".svg"] {
+  height: auto;
+  max-width: 100%;
+}

@@ -38,6 +38,24 @@ class BSTDemoScene(Scene):
 
 ---
 
+## 🤖 Built for AI & Machine Learning Engineers
+
+Animora now features a dedicated, production-grade AI & Machine Learning visualization suite. Render complex scalar loss surfaces, backpropagation gradient waves, multi-layer networks, CNN convolutions, and attention heatmaps in a single line of code.
+
+<p align="center" style="margin: 20px 0;">
+  <a href="ml/index.md">
+    <img src="assets/media/hero_ml.svg" alt="Animora AI/ML Suite Showcase" style="width: 100%; max-width: 680px; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 8px 30px rgba(0,0,0,0.4);" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="ml/index.md" class="md-button md-button--primary">
+    Explore the AI &amp; ML Visualizations &rarr;
+  </a>
+</p>
+
+---
+
 ## 📦 What Makes Animora Distinct?
 
 === "🧩 Visual Primitives & Panels"
@@ -58,11 +76,15 @@ class BSTDemoScene(Scene):
 === "🔍 Algorithm Visualizations"
     Explicit `OperationTrace` event tracking for Search, 5 Sorting algorithms, BFS/DFS, Dijkstra, A*, DP, and Backtracking.
 
+=== "🤖 AI & Machine Learning Suite"
+    Complete, one-call visualizers for optimization surfaces, classic machine learning (regression, clustering, trees, SVM, PCA), deep learning (forward pass, backprop, SGD/Momentum/Adam, CNNs, RNNs), and attention mechanisms.
+
 ---
 
 ## 🗺️ Next Steps
 
 - **[Installation Guide](getting-started/installation.md)** — Set up Animora, Python, and system media dependencies.
 - **[Your First Scene](getting-started/first-scene.md)** — 5-minute linear tutorial for beginners.
+- **[AI & Machine Learning Suite](ml/index.md)** — One-call visualizers for optimization, classic ML, deep learning, and attention.
 - **[Example Gallery](examples/gallery.md)** — Browse visual output clips alongside copy-paste code.
 - **[API Reference](reference/api.md)** — Full parameter signatures for all public classes and functions.

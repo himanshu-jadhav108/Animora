@@ -75,3 +75,35 @@ def test_example_07_pathfinding_dijkstra() -> None:
         scene = scene_cls()
         scene.render()
         assert len(scene.mobjects) >= 1
+
+
+def test_example_08_ai_ml_foundations() -> None:
+    scene_cls = _load_scene_from_file("08_ai_ml_foundations.py", "AIMLFoundationsScene")
+    with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
+        scene = scene_cls()
+        scene.render()
+        assert len(scene.mobjects) >= 1
+
+
+def test_example_09_classic_machine_learning() -> None:
+    scene_cls = _load_scene_from_file("09_classic_machine_learning.py", "ClassicMLScene")
+    with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
+        scene = scene_cls()
+        scene.render()
+        assert len(scene.mobjects) >= 1
+
+
+def test_example_10_deep_learning_and_backprop() -> None:
+    scene_cls = _load_scene_from_file("10_deep_learning_and_backprop.py", "DeepLearningScene")
+    with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
+        scene = scene_cls()
+        scene.render()
+        assert len(scene.mobjects) >= 1
+
+
+def test_example_11_nlp_and_attention() -> None:
+    scene_cls = _load_scene_from_file("11_nlp_and_attention.py", "NLPAndAttentionScene")
+    with manim.tempconfig({"dry_run": True, "verbosity": "WARNING", "write_to_movie": False}):
+        scene = scene_cls()
+        scene.render()
+        assert len(scene.mobjects) >= 1

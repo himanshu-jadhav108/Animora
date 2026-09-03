@@ -52,11 +52,14 @@ nav:
       - Data Visualization: guides/dataviz.md
       - Data Structures: guides/datastructures.md
       - Algorithms: guides/algorithms.md
-      - AI & ML Foundations: ml/foundations.md
-      - Classic Machine Learning: ml/classic-ml.md
-      - Deep Learning: ml/deep-learning.md
-      - NLP & Attention: ml/nlp-and-attention.md
       - CLI: guides/cli.md
+  - AI & Machine Learning:
+      - Overview & Learning Path: ml/index.md
+      - 1. Math Foundations: ml/foundations.md
+      - 2. Classic Machine Learning: ml/classic-ml.md
+      - 3. Deep Learning: ml/deep-learning.md
+      - 4. NLP & Attention: ml/nlp-and-attention.md
+      - API Contract: architecture/ml-api-contract.md
   - Examples & Gallery: examples/gallery.md
   - Recipes:
       - Custom Layout: recipes/custom-layout.md
