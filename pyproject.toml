@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "animora"
-version = "0.1.0"
+version = "0.2.0a1"
 description = "High-level, declarative animation framework built on top of Manim for educational, technical, and algorithmic visualization."
 readme = "README.md"
 license = { text = "MIT" }
