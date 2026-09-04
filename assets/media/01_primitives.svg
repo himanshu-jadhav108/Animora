@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <!-- Panel Container -->
+  <rect x="50" y="40" width="500" height="260" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2" />
+  <text x="75" y="75" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Shape Primitives &amp; Panel</text>
+  
+  <!-- Circle -->
+  <circle cx="150" cy="180" r="50" fill="#38BDF8" fill-opacity="0.2" stroke="#38BDF8" stroke-width="3" />
+  <text x="150" y="185" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="14px" font-weight="600" text-anchor="middle">Circle</text>
+
+  <!-- Rect -->
+  <rect x="250" y="130" width="100" height="100" rx="8" fill="#818CF8" fill-opacity="0.2" stroke="#818CF8" stroke-width="3" />
+  <text x="300" y="185" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="14px" font-weight="600" text-anchor="middle">Rectangle</text>
+
+  <!-- Rounded Rect -->
+  <rect x="390" y="130" width="120" height="100" rx="24" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="3" />
+  <text x="450" y="185" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="14px" font-weight="600" text-anchor="middle">Rounded</text>
+</svg>

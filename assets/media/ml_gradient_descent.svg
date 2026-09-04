@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <!-- Title / Metric -->
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Surface Plot &amp; Gradient Descent</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">f(x, y) = x² + y²  |  Step 15: loss=0.002</text>
+  
+  <!-- Contour concentric rings -->
+  <ellipse cx="320" cy="190" rx="190" ry="110" fill="none" stroke="#1E293B" stroke-width="2" />
+  <ellipse cx="320" cy="190" rx="145" ry="85" fill="none" stroke="#334155" stroke-width="2" />
+  <ellipse cx="320" cy="190" rx="100" ry="60" fill="none" stroke="#475569" stroke-width="2" />
+  <ellipse cx="320" cy="190" rx="55" ry="35" fill="none" stroke="#64748B" stroke-width="2" />
+  
+  <!-- Optimization Path -->
+  <path d="M 450,110 Q 390,150 360,170 T 325,188" fill="none" stroke="#38BDF8" stroke-width="3" stroke-dasharray="4,4" />
+  
+  <!-- Steps -->
+  <circle cx="450" cy="110" r="6" fill="#F59E0B" />
+  <circle cx="400" cy="140" r="5" fill="#38BDF8" />
+  <circle cx="360" cy="170" r="5" fill="#38BDF8" />
+  <circle cx="335" cy="182" r="5" fill="#38BDF8" />
+  <!-- Minimum Target -->
+  <circle cx="320" cy="190" r="7" fill="#10B981" />
+  <circle cx="320" cy="190" r="14" fill="none" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.6" />
+  
+  <text x="465" y="115" fill="#F59E0B" font-family="'Inter', sans-serif" font-size="12px" font-weight="600">Start (2.5, 2.5)</text>
+  <text x="320" y="225" fill="#10B981" font-family="'Inter', sans-serif" font-size="12px" font-weight="600" text-anchor="middle">Min (0.0, 0.0)</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Logistic Regression Decision Boundary</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">P(y=1|x) = σ(wᵀx + b)  |  Boundary: wᵀx + b = 0</text>
+  
+  <!-- Coordinate Grid -->
+  <line x1="80" y1="280" x2="520" y2="280" stroke="#334155" stroke-width="1.5" />
+  <line x1="80" y1="80" x2="80" y2="280" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Decision Boundary Line -->
+  <line x1="120" y1="270" x2="480" y2="90" stroke="#F59E0B" stroke-width="3" />
+
+  <!-- Class 0 (Primary / Blue Dots) -->
+  <circle cx="160" cy="240" r="6" fill="#38BDF8" />
+  <circle cx="210" cy="250" r="6" fill="#38BDF8" />
+  <circle cx="180" cy="210" r="6" fill="#38BDF8" />
+  <circle cx="240" cy="220" r="6" fill="#38BDF8" />
+  <circle cx="290" cy="230" r="6" fill="#38BDF8" />
+
+  <!-- Class 1 (Accent / Red Dots) -->
+  <circle cx="340" cy="130" r="6" fill="#EC4899" />
+  <circle cx="390" cy="110" r="6" fill="#EC4899" />
+  <circle cx="430" cy="140" r="6" fill="#EC4899" />
+  <circle cx="470" cy="120" r="6" fill="#EC4899" />
+  <circle cx="380" cy="160" r="6" fill="#EC4899" />
+
+  <text x="170" y="275" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="12px" font-weight="600">Class 0</text>
+  <text x="440" y="165" fill="#EC4899" font-family="'Inter', sans-serif" font-size="12px" font-weight="600">Class 1</text>
+  <text x="490" y="85" fill="#F59E0B" font-family="'Inter', sans-serif" font-size="12px" font-weight="600">Boundary</text>
+</svg>

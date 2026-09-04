@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Backpropagation Gradient Flow</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">Backward Pass: ∂L/∂W = δ · aᵀ  |  Rel Error &lt; 1e-10</text>
+  
+  <!-- Reverse Synaptic Waves (Red/Amber gradients) -->
+  <line x1="480" y1="190" x2="300" y2="100" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="4,3" />
+  <line x1="480" y1="190" x2="300" y2="190" stroke="#EC4899" stroke-width="3" />
+  <line x1="480" y1="190" x2="300" y2="280" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="4,3" />
+
+  <line x1="300" y1="190" x2="120" y2="140" stroke="#EC4899" stroke-width="3" />
+  <line x1="300" y1="190" x2="120" y2="240" stroke="#EC4899" stroke-width="3" />
+
+  <!-- Output Loss Node -->
+  <circle cx="480" cy="190" r="24" fill="#1E293B" stroke="#EC4899" stroke-width="3" />
+  <text x="480" y="195" fill="#EC4899" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">δ_out</text>
+  <text x="480" y="235" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Loss Source</text>
+
+  <!-- Hidden Nodes -->
+  <circle cx="300" cy="100" r="20" fill="#1E293B" stroke="#64748B" stroke-width="1.5" />
+  <circle cx="300" cy="190" r="22" fill="#1E293B" stroke="#F59E0B" stroke-width="3" />
+  <text x="300" y="195" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">δ_1</text>
+  <circle cx="300" cy="280" r="20" fill="#1E293B" stroke="#64748B" stroke-width="1.5" />
+  <text x="300" y="325" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Hidden Layer</text>
+
+  <!-- Input Nodes -->
+  <circle cx="120" cy="140" r="20" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+  <circle cx="120" cy="240" r="20" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+  <text x="120" y="285" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Input Gradients</text>
+</svg>
