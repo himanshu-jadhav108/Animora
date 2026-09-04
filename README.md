@@ -4,7 +4,7 @@
 
 ### *Declarative, High-Level Animation Framework for Python*
 
-[![PyPI Version](https://img.shields.io/badge/pypi-v0.1.0-3776AB?logo=pypi&logoColor=white)](https://pypi.org/project/animora/)
+[![PyPI Version](https://img.shields.io/badge/pypi-v0.2.0a1-3776AB?logo=pypi&logoColor=white)](https://pypi.org/project/animora/)
 [![CI Status](https://img.shields.io/badge/CI-Passing-22c55e?logo=githubactions&logoColor=white)](https://github.com/himanshu-jadhav108/Animora/actions)
 [![Docs](https://img.shields.io/badge/Docs-Live-38BDF8?logo=materialformkdocs&logoColor=white)](https://himanshu-jadhav108.github.io/Animora/)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?logo=python&logoColor=white)](https://pypi.org/project/animora/)
@@ -35,6 +35,7 @@ Instead of manually calculating pixel coordinates, managing low-level point arra
 from animora.core import Scene
 from animora.datastructures import BST
 from animora.theme import ModernDark, use_theme
+
 
 class BinarySearchTreeDemo(Scene):
     def construct(self) -> None:
@@ -131,6 +132,7 @@ from animora.core import Scene
 from animora.components import Text, Shape, Panel, Arrow
 from animora.theme import ModernDark, use_theme
 
+
 class PrimitivesScene(Scene):
     def construct(self) -> None:
         with use_theme(ModernDark):
@@ -168,6 +170,7 @@ Mathematically rigorous chart components featuring dual-correctness:
 from animora.core import Scene
 from animora.dataviz import BarChart, Table
 
+
 class ChartScene(Scene):
     def construct(self) -> None:
         chart = BarChart(
@@ -185,6 +188,7 @@ Generate step-by-step algorithm animations directly from real execution traces:
 from animora.core import Scene
 from animora.datastructures import Array
 from animora.algorithms import quick_sort
+
 
 class SortingScene(Scene):
     def construct(self) -> None:
