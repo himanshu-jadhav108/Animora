@@ -172,6 +172,118 @@ class Component(ABC):
             name="fade_out",
         )
 
+    def animate_transform(
+        self,
+        target: Component | manim.Mobject | None = None,
+        run_time: float = 1.0,
+    ) -> Animation:
+        """Produce a transformation animation into target or rearranged state."""
+        if target is None or target is self:
+            source_mob = getattr(self, "_previous_mobject", None) or self.manim_object
+            target_mob = self.manim_object
+        else:
+            source_mob = self.manim_object
+            target_mob = target.manim_object if isinstance(target, Component) else target
+
+        return Animation(
+            component=self,
+            manim_animation=manim.Transform(source_mob, target_mob),
+            run_time=run_time,
+            name="transform",
+        )
+
+    def annotate(
+        self,
+        target: Any = None,
+        text: str = "",
+        *,
+        direction: np.ndarray | Sequence[float] = manim.UP,
+        buff: float = 0.5,
+        arrow: bool = True,
+        box: bool = False,
+        color: str | None = None,
+        font_size: float | None = None,
+        run_time: float | None = None,
+    ) -> Animation:
+        """Create and animate an educational callout annotation attached to this component
+        or one of its sub-elements.
+
+        Parameters:
+            target: Optional sub-element identifier (node key, cell index, or sub-component).
+                    If a string is passed as first argument and text is empty, target is treated
+                    as the annotation text on this component.
+            text: The explanatory annotation text.
+            direction: Direction vector specifying where the annotation sits relative to target.
+            buff: Spacing buffer between the target and the annotation.
+            arrow: Whether to include a directional pointer arrow pointing to the target.
+            box: Whether to wrap the annotation in a framed background callout box.
+            color: Optional text/border color override.
+            font_size: Optional font size override.
+            run_time: Animation duration in seconds.
+
+        Returns:
+            Animation whose component is the constructed Annotation instance.
+        """
+        from animora.components.annotation import Annotation
+
+        if isinstance(target, str) and not text:
+            text = target
+            actual_target: Any = self
+        elif target is None or target is self:
+            actual_target = self
+        else:
+            if hasattr(self, "get_node") and callable(self.get_node):
+                try:
+                    actual_target = self.get_node(target)
+                except Exception:
+                    actual_target = target
+            elif hasattr(self, "get_cell") and callable(self.get_cell):
+                try:
+                    if isinstance(target, (tuple, list)):
+                        actual_target = self.get_cell(*target)
+                    else:
+                        actual_target = self.get_cell(target)
+                except Exception:
+                    actual_target = target
+            elif isinstance(target, Component):
+                actual_target = target
+            else:
+                actual_target = self
+
+        annotation = Annotation(
+            target=actual_target,
+            text=text,
+            direction=direction,
+            buff=buff,
+            arrow=arrow,
+            box=box,
+            color=color,
+            font_size=font_size,
+        )
+        return annotation.animate_create(run_time=run_time)
+
+    def apply_effect(
+        self,
+        effect: str | Any,
+        theme: Any = None,
+        run_time: float | None = None,
+        **kwargs: Any,
+    ) -> Animation:
+        """Apply a composable visual effect to this component using theme design tokens.
+
+        Parameters:
+            effect: Registered effect name (e.g. 'gradient_reveal', 'glitch', 'pulse_glow')
+                    or BaseEffect instance.
+            theme: Optional Theme instance or theme name string.
+            run_time: Optional animation duration in seconds.
+
+        Returns:
+            Animora Animation object ready for scene.play().
+        """
+        from animora.theme.effects import apply_effect
+
+        return apply_effect(self, effect=effect, theme=theme, run_time=run_time, **kwargs)
+
     def __repr__(self) -> str:
         return f"<{self.__class__.__name__} width={self.width:.2f} height={self.height:.2f}>"
 

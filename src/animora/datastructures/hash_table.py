@@ -202,6 +202,7 @@ class HashTable(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Insert key-value pair and animate bucket highlight and chain entry."""
+        _ = self.manim_object
         b_idx, _c_pos = self._model.insert(key, value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
@@ -220,6 +221,7 @@ class HashTable(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Search key and animate target bucket highlight."""
+        _ = self.manim_object
         found, b_idx, _c_pos, _val = self._model.search(key)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal

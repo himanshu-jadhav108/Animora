@@ -121,6 +121,7 @@ class Stack(Component):
 
     def animate_push(self, value: Any, run_time: float | None = None) -> Animation:
         """Push item to model and animate dropping into the top of the stack."""
+        _ = self.manim_object
         self._model.push(value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
@@ -156,6 +157,7 @@ class Stack(Component):
 
     def animate_pop(self, run_time: float | None = None) -> Animation:
         """Pop item from model and animate flying out of the stack."""
+        _ = self.manim_object
         popped_val = self._model.pop()
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal

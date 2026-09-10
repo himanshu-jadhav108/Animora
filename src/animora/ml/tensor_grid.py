@@ -70,10 +70,30 @@ class TensorGrid(MLComponent):
         ]
         self.colormap = list(colormap) if colormap is not None else default_cmap
 
-        self.cells: list[list[Shape]] = []
-        self.value_texts: list[list[Text]] = []
+        self._cells_grid: list[list[Shape]] = []
+        self._value_texts_grid: list[list[Text]] = []
 
         super().__init__(config=config, **kwargs)
+
+    @property
+    def cells(self) -> list[list[Shape]]:
+        """2D grid of Shape cell components, ensuring Manim mobject is built."""
+        _ = self.manim_object
+        return self._cells_grid
+
+    @cells.setter
+    def cells(self, value: list[list[Shape]]) -> None:
+        self._cells_grid = value
+
+    @property
+    def value_texts(self) -> list[list[Text]]:
+        """2D grid of Text value components, ensuring Manim mobject is built."""
+        _ = self.manim_object
+        return self._value_texts_grid
+
+    @value_texts.setter
+    def value_texts(self, value: list[list[Text]]) -> None:
+        self._value_texts_grid = value
 
     def _interpolate_color(self, val: float, v_min: float, v_max: float) -> str:
         """Map value to color along theme colormap."""
@@ -89,8 +109,8 @@ class TensorGrid(MLComponent):
         v_max = float(np.max(self.values_matrix)) if self.values_matrix.size > 0 else 1.0
 
         all_cell_components: list[Shape] = []
-        self.cells = []
-        self.value_texts = []
+        self._cells_grid = []
+        self._value_texts_grid = []
 
         for r in range(self.num_rows):
             row_cells: list[Shape] = []
@@ -119,8 +139,8 @@ class TensorGrid(MLComponent):
                     )
                     row_texts.append(txt)
 
-            self.cells.append(row_cells)
-            self.value_texts.append(row_texts)
+            self._cells_grid.append(row_cells)
+            self._value_texts_grid.append(row_texts)
 
         # Arrange cells using GridLayout
         cell_group = Group(*all_cell_components)
@@ -139,8 +159,8 @@ class TensorGrid(MLComponent):
         if self.show_values:
             for r in range(self.num_rows):
                 for c in range(self.num_cols):
-                    cell_pos = self.cells[r][c].center
-                    txt_comp = self.value_texts[r][c]
+                    cell_pos = self._cells_grid[r][c].center
+                    txt_comp = self._value_texts_grid[r][c]
                     txt_comp.move_to(cell_pos)
                     composite.add(txt_comp.manim_object)
 
@@ -154,18 +174,19 @@ class TensorGrid(MLComponent):
 
         return composite
 
-    def animate_highlight_cell(
+    def animate_highlight(
         self,
         row: int,
         col: int,
         color: str | None = None,
         run_time: float | None = None,
     ) -> Animation:
-        """Animate highlighting an individual tensor cell."""
+        """Animate highlighting an individual tensor cell at (row, col)."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         resolved_color = color or active_theme.colors.accent
         duration = run_time if run_time is not None else active_theme.timing.fast
-        target_cell = self.cells[row][col]
+        target_cell = self._cells_grid[row][col]
 
         return Animation(
             component=target_cell,
@@ -173,6 +194,26 @@ class TensorGrid(MLComponent):
             run_time=duration,
             name=f"highlight_cell_{row}_{col}",
         )
+
+    def animate_highlight_cell(
+        self,
+        row: int,
+        col: int,
+        color: str | None = None,
+        run_time: float | None = None,
+    ) -> Animation:
+        """Animate highlighting an individual tensor cell
+        (deprecated alias for animate_highlight).
+        """
+        import warnings
+
+        warnings.warn(
+            "TensorGrid.animate_highlight_cell() is deprecated and will be removed in a future "
+            "version. Use TensorGrid.animate_highlight() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self.animate_highlight(row=row, col=col, color=color, run_time=run_time)
 
 
 __all__ = [

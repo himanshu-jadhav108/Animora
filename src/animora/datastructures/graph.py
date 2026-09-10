@@ -203,16 +203,24 @@ class Graph(Component):
 
         return manim.VGroup(*all_mobjects)
 
+    def get_node(self, node: Any) -> Component:
+        """Return the visual node component for the given node key."""
+        _ = self.manim_object
+        if node not in self._node_map:
+            raise KeyError(f"Node {node} not found in Graph")
+        return self._node_map[node]
+
     # -------------------------------------------------------------------------
     # State-Visualization Primitives for Algorithms (Phase 8 Foundation)
     # -------------------------------------------------------------------------
-    def animate_highlight_node(
+    def animate_highlight(
         self,
         node: Any,
         color: str | None = None,
         run_time: float | None = None,
     ) -> Animation:
-        """Highlight a node."""
+        """Highlight a node by key or identifier."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         col = color or active_theme.colors.accent
         duration = run_time or active_theme.timing.fast
@@ -225,6 +233,23 @@ class Graph(Component):
             name=f"highlight_node({node})",
         )
 
+    def animate_highlight_node(
+        self,
+        node: Any,
+        color: str | None = None,
+        run_time: float | None = None,
+    ) -> Animation:
+        """Highlight a node (deprecated alias for animate_highlight)."""
+        import warnings
+
+        warnings.warn(
+            "Graph.animate_highlight_node() is deprecated and will be removed in a future "
+            "version. Use Graph.animate_highlight() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self.animate_highlight(node=node, color=color, run_time=run_time)
+
     def animate_mark_visited(
         self,
         node: Any,
@@ -232,6 +257,7 @@ class Graph(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Mark a node as visited during traversal."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         col = color or active_theme.colors.success
         duration = run_time or active_theme.timing.normal
@@ -253,6 +279,7 @@ class Graph(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Highlight an edge between node u and node v."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         col = color or active_theme.colors.accent
         duration = run_time or active_theme.timing.normal

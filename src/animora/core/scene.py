@@ -67,6 +67,13 @@ class Scene(manim.Scene):  # type: ignore[misc]
                 manim_animations.append(anim.to_manim())
             elif isinstance(item, manim.Animation):
                 manim_animations.append(item)
+            elif hasattr(item, "build") and callable(item.build):
+                # Support Manim _AnimationBuilder (e.g. mobject.animate.shift(...))
+                built = item.build()
+                if isinstance(built, manim.Animation):
+                    manim_animations.append(built)
+                else:
+                    manim_animations.append(built)
             else:
                 raise TypeError(
                     f"Unsupported item passed to Scene.play(): {type(item)}. "

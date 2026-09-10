@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import manim
+import pytest
 
 from animora.components.label import Label
 from animora.core.scene import Scene
@@ -25,7 +26,7 @@ def test_scene_add_and_remove_components() -> None:
     assert circle not in scene.mobjects
 
 
-def test_scene_play_accepts_animora_animation(monkeypatch: object) -> None:
+def test_scene_play_accepts_animora_animation(monkeypatch: pytest.MonkeyPatch) -> None:
     """Verify Scene.play correctly handles Animora Animation, Component, and Manim Animation."""
     scene = Scene()
     label = Label("Animora Scene")
@@ -35,12 +36,10 @@ def test_scene_play_accepts_animora_animation(monkeypatch: object) -> None:
     # We test play invocation by spying on super().play
     played_anims: list[manim.Animation] = []
 
-    def mock_play(*args: manim.Animation, **kwargs: object) -> None:
+    def mock_play(_self: object, *args: manim.Animation, **kwargs: object) -> None:
         played_anims.extend(args)
 
-    # Monkeypatch manim.Scene.play on scene instance
-    scene.play = Scene.play.__get__(scene, Scene)  # type: ignore[method-assign]
-    monkeypatch.setattr(manim.Scene, "play", mock_play)  # type: ignore[attr-defined]
+    monkeypatch.setattr(manim.Scene, "play", mock_play)
 
     # 1. Play Animora Animation
     scene.play(anim)

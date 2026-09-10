@@ -60,7 +60,7 @@ class ScatterPlot(Component):
         else:
             self._axes = axes
 
-        self._dots: list[Shape] = []
+        self._dots_list: list[Shape] = []
         super().__init__(config=config, **kwargs)
 
     @property
@@ -69,9 +69,20 @@ class ScatterPlot(Component):
         return self._axes
 
     @property
+    def _dots(self) -> list[Shape]:
+        """Internal list of Shape circular dot components, ensuring Manim mobject is built."""
+        _ = self.manim_object
+        return self._dots_list
+
+    @_dots.setter
+    def _dots(self, value: list[Shape]) -> None:
+        self._dots_list = value
+
+    @property
     def dots(self) -> list[Shape]:
         """List of Shape circular dot components."""
-        return list(self._dots)
+        _ = self.manim_object
+        return list(self._dots_list)
 
     # -------------------------------------------------------------------------
     # Pure Data Transformation
@@ -89,7 +100,7 @@ class ScatterPlot(Component):
         active_theme = get_active_theme()
         dot_fill = self._point_color or active_theme.colors.primary
 
-        self._dots = []
+        self._dots_list = []
         all_mobjects: list[manim.Mobject] = [self._axes.manim_object]
 
         for x, y in self._raw_points:
@@ -102,17 +113,18 @@ class ScatterPlot(Component):
                 stroke_width=active_theme.strokes.thin,
             ).move_to(pos)
 
-            self._dots.append(dot)
+            self._dots_list.append(dot)
             all_mobjects.append(dot.manim_object)
 
         return manim.VGroup(*all_mobjects)
 
     def animate_plot(self, run_time: float | None = None) -> Animation:
         """Animate the appearance of points."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
 
-        dot_mobjects = [d.manim_object for d in self._dots]
+        dot_mobjects = [d.manim_object for d in self._dots_list]
         return Animation(
             component=self,
             manim_animation=manim.AnimationGroup(

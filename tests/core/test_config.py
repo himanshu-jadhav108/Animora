@@ -15,12 +15,27 @@ def test_bounding_box_geometry() -> None:
 
 
 def test_component_config_defaults() -> None:
-    """Verify default values in ComponentConfig."""
+    """Verify raw default values in ComponentConfig are None and resolve via theme."""
+    from animora.theme.builtin import ModernDark
+
     cfg = ComponentConfig()
-    assert cfg.color == "#FFFFFF"
+    assert cfg.color is None
+    assert cfg.fill_color is None
     assert cfg.fill_opacity == 1.0
-    assert cfg.stroke_width == 2.0
-    assert cfg.font_size == 36.0
+    assert cfg.stroke_color is None
+    assert cfg.stroke_width is None
+    assert cfg.font_size is None
+    assert cfg.font_family is None
+    assert cfg.extra_props == {}
+
+    # Resolve with Theme fills unset fields from the active or specified theme
+    resolved = cfg.resolve_with_theme(ModernDark)
+    assert resolved.color == ModernDark.colors.text
+    assert resolved.fill_color == ModernDark.colors.primary
+    assert resolved.stroke_color == ModernDark.colors.border
+    assert resolved.stroke_width == ModernDark.strokes.regular
+    assert resolved.font_size == ModernDark.typography.font_size_md
+    assert resolved.font_family == ModernDark.typography.font_family
 
 
 def test_component_config_merge() -> None:

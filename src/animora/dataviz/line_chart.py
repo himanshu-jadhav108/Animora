@@ -65,8 +65,8 @@ class LineChart(Component):
         else:
             self._axes = axes
 
-        self._lines: list[Connector] = []
-        self._dots: list[Shape] = []
+        self._lines_list: list[Connector] = []
+        self._dots_list: list[Shape] = []
         super().__init__(config=config, **kwargs)
 
     @property
@@ -74,14 +74,46 @@ class LineChart(Component):
         """The underlying coordinate Axes."""
         return self._axes
 
+    @property
+    def _lines(self) -> list[Connector]:
+        """Internal list of line connectors, ensuring Manim mobject is built."""
+        _ = self.manim_object
+        return self._lines_list
+
+    @_lines.setter
+    def _lines(self, value: list[Connector]) -> None:
+        self._lines_list = value
+
+    @property
+    def _dots(self) -> list[Shape]:
+        """Internal list of dot shapes, ensuring Manim mobject is built."""
+        _ = self.manim_object
+        return self._dots_list
+
+    @_dots.setter
+    def _dots(self, value: list[Shape]) -> None:
+        self._dots_list = value
+
+    @property
+    def lines(self) -> list[Connector]:
+        """List of Connector components representing line segments."""
+        _ = self.manim_object
+        return list(self._lines_list)
+
+    @property
+    def dots(self) -> list[Shape]:
+        """List of Shape circular dot components."""
+        _ = self.manim_object
+        return list(self._dots_list)
+
     def _build_mobject(self) -> manim.Mobject:
         """Construct the Axes, Line segments, and vertex Dots."""
         active_theme = get_active_theme()
         stroke_col = self._line_color or active_theme.colors.primary
         stroke_w = self._custom_stroke_width or active_theme.strokes.regular
 
-        self._lines = []
-        self._dots = []
+        self._lines_list = []
+        self._dots_list = []
         all_mobjects: list[manim.Mobject] = [self._axes.manim_object]
 
         scene_pts = [self._axes.c2p(x, y) for x, y in self._raw_points]
@@ -94,7 +126,7 @@ class LineChart(Component):
                 stroke_color=stroke_col,
                 stroke_width=stroke_w,
             )
-            self._lines.append(conn)
+            self._lines_list.append(conn)
             all_mobjects.append(conn.manim_object)
 
         # Build vertex dots if enabled
@@ -107,18 +139,19 @@ class LineChart(Component):
                     stroke_color=active_theme.colors.background,
                     stroke_width=1.5,
                 ).move_to(pt)
-                self._dots.append(dot)
+                self._dots_list.append(dot)
                 all_mobjects.append(dot.manim_object)
 
         return manim.VGroup(*all_mobjects)
 
     def animate_draw(self, run_time: float | None = None) -> Animation:
         """Animate drawing the continuous line segments and dots."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.slow
 
-        line_mobjects = [line.manim_object for line in self._lines]
-        dot_mobjects = [dot.manim_object for dot in self._dots]
+        line_mobjects = [line.manim_object for line in self._lines_list]
+        dot_mobjects = [dot.manim_object for dot in self._dots_list]
 
         animations: list[manim.Animation] = [manim.Create(lm) for lm in line_mobjects]
         if dot_mobjects:

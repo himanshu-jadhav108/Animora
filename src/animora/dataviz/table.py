@@ -59,9 +59,19 @@ class Table(Component):
         self._cell_color = cell_color
 
         # Grid of cell components: cell_grid[row][col] -> Group(bg_shape, text)
-        self._cells: list[list[Group]] = []
+        self._cell_grid: list[list[Group]] = []
 
         super().__init__(config=config, **kwargs)
+
+    @property
+    def _cells(self) -> list[list[Group]]:
+        """Internal cell grid, ensuring the Manim mobject is built."""
+        _ = self.manim_object
+        return self._cell_grid
+
+    @_cells.setter
+    def _cells(self, value: list[list[Group]]) -> None:
+        self._cell_grid = value
 
     @property
     def num_rows(self) -> int:
@@ -77,7 +87,8 @@ class Table(Component):
 
     def get_cell(self, row: int, col: int) -> Group:
         """Get the composite cell component at the given row and column index."""
-        return self._cells[row][col]
+        _ = self.manim_object
+        return self._cell_grid[row][col]
 
     def _build_mobject(self) -> manim.Mobject:
         """Construct the table cells and arrange them in a 2D matrix using GridLayout."""
@@ -96,7 +107,7 @@ class Table(Component):
 
         num_cols = self.num_cols
         flat_cell_components: list[Group] = []
-        self._cells = []
+        self._cell_grid = []
 
         for _r_idx, (row, is_header) in enumerate(zip(all_row_data, is_header_row, strict=False)):
             row_cells: list[Group] = []
@@ -129,7 +140,7 @@ class Table(Component):
                 row_cells.append(cell_grp)
                 flat_cell_components.append(cell_grp)
 
-            self._cells.append(row_cells)
+            self._cell_grid.append(row_cells)
 
         # Use GridLayout from Phase 4 to compute coordinates
         grid_container = Group(*flat_cell_components)
@@ -144,6 +155,27 @@ class Table(Component):
 
         return grid_container.manim_object
 
+    def animate_highlight(
+        self,
+        row: int,
+        col: int,
+        color: str | None = None,
+        run_time: float | None = None,
+    ) -> Animation:
+        """Animate highlighting a specific cell at (row, col)."""
+        _ = self.manim_object
+        active_theme = get_active_theme()
+        highlight_color = color or active_theme.colors.accent
+        duration = run_time or active_theme.timing.normal
+
+        target_cell = self._cell_grid[row][col]
+        return Animation(
+            component=target_cell,
+            manim_animation=manim.Indicate(target_cell.manim_object, color=highlight_color),
+            run_time=duration,
+            name=f"highlight_cell({row}, {col})",
+        )
+
     def animate_highlight_cell(
         self,
         row: int,
@@ -151,18 +183,16 @@ class Table(Component):
         color: str | None = None,
         run_time: float | None = None,
     ) -> Animation:
-        """Animate highlighting a specific cell."""
-        active_theme = get_active_theme()
-        highlight_color = color or active_theme.colors.accent
-        duration = run_time or active_theme.timing.normal
+        """Animate highlighting a specific cell (deprecated alias for animate_highlight)."""
+        import warnings
 
-        target_cell = self._cells[row][col]
-        return Animation(
-            component=target_cell,
-            manim_animation=manim.Indicate(target_cell.manim_object, color=highlight_color),
-            run_time=duration,
-            name=f"highlight_cell({row}, {col})",
+        warnings.warn(
+            "Table.animate_highlight_cell() is deprecated and will be removed in a future "
+            "version. Use Table.animate_highlight() instead.",
+            DeprecationWarning,
+            stacklevel=2,
         )
+        return self.animate_highlight(row=row, col=col, color=color, run_time=run_time)
 
 
 __all__ = [

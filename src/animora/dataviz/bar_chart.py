@@ -79,6 +79,7 @@ class BarChart(Component):
     @property
     def bars(self) -> list[Shape]:
         """List of Shape rectangle components representing the bars."""
+        _ = self.manim_object
         return list(self._bars)
 
     # -------------------------------------------------------------------------
@@ -139,6 +140,7 @@ class BarChart(Component):
 
     def animate_grow(self, run_time: float | None = None) -> Animation:
         """Animate bars growing from baseline."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
 
@@ -154,13 +156,14 @@ class BarChart(Component):
             name="grow_bars",
         )
 
-    def animate_highlight_bar(
+    def animate_highlight(
         self,
         index: int,
         color: str | None = None,
         run_time: float | None = None,
     ) -> Animation:
-        """Highlight a specific bar."""
+        """Highlight a specific bar by index."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         highlight_color = color or active_theme.colors.accent
         duration = run_time or active_theme.timing.normal
@@ -172,6 +175,23 @@ class BarChart(Component):
             run_time=duration,
             name=f"highlight_bar({index})",
         )
+
+    def animate_highlight_bar(
+        self,
+        index: int,
+        color: str | None = None,
+        run_time: float | None = None,
+    ) -> Animation:
+        """Highlight a specific bar (deprecated alias for animate_highlight)."""
+        import warnings
+
+        warnings.warn(
+            "BarChart.animate_highlight_bar() is deprecated and will be removed in a future "
+            "version. Use BarChart.animate_highlight() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self.animate_highlight(index=index, color=color, run_time=run_time)
 
 
 __all__ = [

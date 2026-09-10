@@ -69,8 +69,24 @@ class Histogram(Component):
         else:
             self._axes = axes
 
-        self._bars: list[Shape] = []
+        self._bars_list: list[Shape] = []
         super().__init__(config=config, **kwargs)
+
+    @property
+    def _bars(self) -> list[Shape]:
+        """Internal list of bars, ensuring Manim mobject is built."""
+        _ = self.manim_object
+        return self._bars_list
+
+    @_bars.setter
+    def _bars(self, value: list[Shape]) -> None:
+        self._bars_list = value
+
+    @property
+    def bars(self) -> list[Shape]:
+        """List of Shape rectangle components representing the histogram bars."""
+        _ = self.manim_object
+        return list(self._bars_list)
 
     @property
     def counts(self) -> np.ndarray:
@@ -104,7 +120,7 @@ class Histogram(Component):
         active_theme = get_active_theme()
         bar_fill = self._bar_color or active_theme.colors.secondary
 
-        self._bars = []
+        self._bars_list = []
         all_mobjects: list[manim.Mobject] = [self._axes.manim_object]
 
         for i in range(len(self._counts)):
@@ -129,17 +145,18 @@ class Histogram(Component):
                 stroke_width=active_theme.strokes.thin,
             ).move_to([cx, cy, 0.0])
 
-            self._bars.append(bar)
+            self._bars_list.append(bar)
             all_mobjects.append(bar.manim_object)
 
         return manim.VGroup(*all_mobjects)
 
     def animate_grow(self, run_time: float | None = None) -> Animation:
         """Animate histogram bars growing from baseline."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
 
-        bar_mobjects = [bar.manim_object for bar in self._bars]
+        bar_mobjects = [bar.manim_object for bar in self._bars_list]
         return Animation(
             component=self,
             manim_animation=manim.AnimationGroup(

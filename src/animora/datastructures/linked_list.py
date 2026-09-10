@@ -201,6 +201,7 @@ class LinkedList(Component):
 
     def animate_insert_tail(self, value: Any, run_time: float | None = None) -> Animation:
         """Insert value at tail and animate new node and pointer appearance."""
+        _ = self.manim_object
         self._model.insert_tail(value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
@@ -236,6 +237,10 @@ class LinkedList(Component):
             run_time=duration,
             name=f"insert_tail({value})",
         )
+
+    def animate_insert(self, value: Any, run_time: float | None = None) -> Animation:
+        """Insert a node at the tail (convenience alias matching BST/Heap API)."""
+        return self.animate_insert_tail(value=value, run_time=run_time)
 
 
 __all__ = [

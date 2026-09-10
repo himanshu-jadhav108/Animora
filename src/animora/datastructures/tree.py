@@ -189,13 +189,21 @@ class Tree(Component):
         _connect(self._model.root)
         return manim.VGroup(*all_mobjects)
 
-    def animate_highlight_node(
+    def get_node(self, value: Any) -> Component:
+        """Return the visual node component for the given value."""
+        _ = self.manim_object
+        if value not in self._node_map:
+            raise KeyError(f"Node value {value} not found in Tree")
+        return self._node_map[value]
+
+    def animate_highlight(
         self,
         value: Any,
         color: str | None = None,
         run_time: float | None = None,
     ) -> Animation:
-        """Highlight a specific tree node."""
+        """Highlight a specific tree node by value."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         highlight_col = color or active_theme.colors.accent
         duration = run_time or active_theme.timing.normal
@@ -207,6 +215,23 @@ class Tree(Component):
             run_time=duration,
             name=f"highlight_node({value})",
         )
+
+    def animate_highlight_node(
+        self,
+        value: Any,
+        color: str | None = None,
+        run_time: float | None = None,
+    ) -> Animation:
+        """Highlight a specific tree node (deprecated alias for animate_highlight)."""
+        import warnings
+
+        warnings.warn(
+            "Tree.animate_highlight_node() is deprecated and will be removed in a future "
+            "version. Use Tree.animate_highlight() instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self.animate_highlight(value=value, color=color, run_time=run_time)
 
 
 __all__ = [

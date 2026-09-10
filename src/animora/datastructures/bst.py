@@ -94,7 +94,7 @@ class BSTModel:
         """
         trace: list[float | int] = []
         deleted = False
-        case_name = "not_found"
+        target_case: str | None = None
 
         def _min_value_node(node: BSTNode) -> BSTNode:
             current = node
@@ -103,7 +103,7 @@ class BSTModel:
             return current
 
         def _delete_helper(root: BSTNode | None, val: float | int) -> BSTNode | None:
-            nonlocal deleted, case_name
+            nonlocal deleted, target_case
             if root is None:
                 return None
 
@@ -116,18 +116,22 @@ class BSTModel:
                 deleted = True
                 # Case 1: Leaf
                 if root.left is None and root.right is None:
-                    case_name = "leaf"
+                    if target_case is None:
+                        target_case = "leaf"
                     return None
                 # Case 2: One child (only right or only left)
                 elif root.left is None:
-                    case_name = "one_child"
+                    if target_case is None:
+                        target_case = "one_child"
                     return root.right
                 elif root.right is None:
-                    case_name = "one_child"
+                    if target_case is None:
+                        target_case = "one_child"
                     return root.left
                 # Case 3: Two children (in-order successor)
                 else:
-                    case_name = "two_children"
+                    if target_case is None:
+                        target_case = "two_children"
                     successor = _min_value_node(root.right)
                     root.value = successor.value
                     root.right = _delete_helper(root.right, successor.value)
@@ -135,6 +139,7 @@ class BSTModel:
             return root
 
         self.root = _delete_helper(self.root, value)
+        case_name = target_case if target_case is not None else "not_found"
         return deleted, case_name, trace
 
     def in_order_traversal(self) -> list[float | int]:
@@ -271,8 +276,16 @@ class BST(Component):
         _connect(self._model.root)
         return manim.VGroup(*all_mobjects)
 
+    def get_node(self, value: float | int) -> Component:
+        """Return the visual node component for the given value."""
+        _ = self.manim_object
+        if value not in self._node_map:
+            raise KeyError(f"Node value {value} not found in BST")
+        return self._node_map[value]
+
     def animate_insert(self, value: float | int, run_time: float | None = None) -> Animation:
         """Insert value, tracing the comparison path before adding new node."""
+        _ = self.manim_object
         trace = self._model.insert(value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.slow
@@ -298,6 +311,7 @@ class BST(Component):
 
     def animate_search(self, value: float | int, run_time: float | None = None) -> Animation:
         """Search value and animate traversal path."""
+        _ = self.manim_object
         found, trace = self._model.search(value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.slow
@@ -320,6 +334,7 @@ class BST(Component):
 
     def animate_delete(self, value: float | int, run_time: float | None = None) -> Animation:
         """Delete value and animate deletion trace."""
+        _ = self.manim_object
         _deleted, case_name, _trace = self._model.delete(value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal

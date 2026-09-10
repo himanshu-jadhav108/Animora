@@ -154,6 +154,11 @@ class Array(Component):
 
         return manim.VGroup(*all_mobjects)
 
+    def get_cell(self, index: int) -> Component:
+        """Return the visual cell component at the specified index."""
+        _ = self.manim_object
+        return self._cell_groups[index]
+
     # -------------------------------------------------------------------------
     # State-Aware Animation Methods
     # -------------------------------------------------------------------------
@@ -164,6 +169,7 @@ class Array(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Mutate underlying model and generate swap arc animation."""
+        _ = self.manim_object
         self._model.swap(i, j)
 
         active_theme = get_active_theme()
@@ -196,6 +202,7 @@ class Array(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Highlight cell at given index."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         highlight_color = color or active_theme.colors.accent
         duration = run_time or active_theme.timing.fast
@@ -215,6 +222,7 @@ class Array(Component):
         run_time: float | None = None,
     ) -> Animation:
         """Update value at index and animate text transformation."""
+        _ = self.manim_object
         self._model[index] = value
         lbl = self._cell_labels[index]
         return lbl.animate_transform_text(str(value), run_time=run_time or 0.8)

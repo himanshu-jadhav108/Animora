@@ -120,6 +120,7 @@ class Queue(Component):
 
     def animate_enqueue(self, value: Any, run_time: float | None = None) -> Animation:
         """Enqueue item into model and animate sliding into the rear (right)."""
+        _ = self.manim_object
         self._model.enqueue(value)
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
@@ -154,6 +155,7 @@ class Queue(Component):
 
     def animate_dequeue(self, run_time: float | None = None) -> Animation:
         """Dequeue item from model and animate sliding out of the front (left)."""
+        _ = self.manim_object
         dequeued_val = self._model.dequeue()
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.normal
@@ -174,6 +176,7 @@ class Queue(Component):
 
     def animate_peek(self, run_time: float | None = None) -> Animation:
         """Highlight front item."""
+        _ = self.manim_object
         active_theme = get_active_theme()
         duration = run_time or active_theme.timing.fast
         front_grp = self._item_groups[0]
