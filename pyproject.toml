@@ -44,6 +44,9 @@ dependencies = [
 [project.scripts]
 animora = "animora.cli.main:main"
 
+[project.entry-points."manim.plugins"]
+animora = "animora"
+
 [project.optional-dependencies]
 cli = [
     "click>=8.0",
@@ -118,4 +121,7 @@ testpaths = ["tests"]
 pythonpath = ["src"]
 filterwarnings = [
     "ignore::DeprecationWarning",
+]
+markers = [
+    "visual_regression: visual regression tests comparing rendered frames against baselines",
 ]

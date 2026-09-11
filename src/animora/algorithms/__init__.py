@@ -29,12 +29,14 @@ from animora.algorithms.sorting import (
     selection_sort_trace,
 )
 from animora.algorithms.trace import (
+    AlgorithmTrace,
     OperationStep,
     OperationTrace,
     OperationType,
 )
 
 __all__: list[str] = [
+    "AlgorithmTrace",
     "OperationStep",
     "OperationTrace",
     "OperationType",
