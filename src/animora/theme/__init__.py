@@ -19,6 +19,24 @@ from animora.theme.context import (
     set_active_theme,
     use_theme,
 )
+from animora.theme.effects import (
+    Aurora,
+    BaseEffect,
+    apply_effect,
+    get_effect,
+    register_effect,
+)
+from animora.theme.presets import (
+    CINEMATIC,
+    EDUCATIONAL,
+    PLAYFUL,
+    PRESETS,
+    SLOW_MO,
+    SMOOTH,
+    SNAPPY,
+    TimingPreset,
+    get_timing_preset,
+)
 from animora.theme.theme import (
     AnimationTiming,
     ColorPalette,
@@ -30,7 +48,16 @@ from animora.theme.theme import (
 )
 
 __all__: list[str] = [
+    "CINEMATIC",
+    "EDUCATIONAL",
+    "PLAYFUL",
+    "PRESETS",
+    "SLOW_MO",
+    "SMOOTH",
+    "SNAPPY",
     "AnimationTiming",
+    "Aurora",
+    "BaseEffect",
     "ColorPalette",
     "CornerRadius",
     "Cyberpunk",
@@ -41,8 +68,13 @@ __all__: list[str] = [
     "SpacingScale",
     "StrokeScale",
     "Theme",
+    "TimingPreset",
     "Typography",
+    "apply_effect",
     "get_active_theme",
+    "get_effect",
+    "get_timing_preset",
+    "register_effect",
     "set_active_theme",
     "use_theme",
 ]

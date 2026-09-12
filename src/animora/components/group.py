@@ -95,6 +95,7 @@ class Group(Component):
                 child.move_to(pos)
 
         # Invalidate cached group mobject to reflect new child positions
+        self._previous_mobject = self._mobject
         self._mobject = self._build_mobject()
         return self
 
