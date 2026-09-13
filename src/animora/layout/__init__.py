@@ -9,6 +9,13 @@ from __future__ import annotations
 
 from animora.layout.base import BaseLayout, LayoutItem, LayoutResult
 from animora.layout.circular import CircularLayout
+from animora.layout.collision import (
+    CollisionPair,
+    check_aabb_overlap,
+    compute_aabb_intersection,
+    detect_collisions,
+    has_collisions,
+)
 from animora.layout.flow import FlowLayout
 from animora.layout.graph import GraphLayout
 from animora.layout.grid import GridLayout
@@ -19,6 +26,7 @@ from animora.layout.vertical import VerticalLayout
 __all__: list[str] = [
     "BaseLayout",
     "CircularLayout",
+    "CollisionPair",
     "FlowLayout",
     "GraphLayout",
     "GridLayout",
@@ -27,4 +35,8 @@ __all__: list[str] = [
     "LayoutResult",
     "TreeLayout",
     "VerticalLayout",
+    "check_aabb_overlap",
+    "compute_aabb_intersection",
+    "detect_collisions",
+    "has_collisions",
 ]

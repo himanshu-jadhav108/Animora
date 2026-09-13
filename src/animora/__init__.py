@@ -29,10 +29,12 @@ from animora.algorithms.sorting import (
     selection_sort_trace,
 )
 from animora.algorithms.trace import (
+    AlgorithmTrace,
     OperationStep,
     OperationTrace,
     OperationType,
 )
+from animora.components.annotation import Annotation
 from animora.components.arrow import Arrow
 from animora.components.connector import Connector
 from animora.components.group import Group
@@ -41,6 +43,7 @@ from animora.components.panel import Panel
 from animora.components.shape import Shape, ShapeType
 from animora.components.text import Text
 from animora.core.animation import Animation
+from animora.core.camera import Camera, MovingCameraScene
 from animora.core.component import Component
 from animora.core.config import BoundingBox, ComponentConfig
 from animora.core.scene import Scene
@@ -61,6 +64,13 @@ from animora.dataviz.scatter_plot import ScatterPlot
 from animora.dataviz.table import Table
 from animora.layout.base import BaseLayout, LayoutItem, LayoutResult
 from animora.layout.circular import CircularLayout
+from animora.layout.collision import (
+    CollisionPair,
+    check_aabb_overlap,
+    compute_aabb_intersection,
+    detect_collisions,
+    has_collisions,
+)
 from animora.layout.flow import FlowLayout
 from animora.layout.graph import GraphLayout
 from animora.layout.grid import GridLayout
@@ -79,6 +89,21 @@ from animora.theme.context import (
     set_active_theme,
     use_theme,
 )
+from animora.theme.effects import (
+    Aurora,
+    apply_effect,
+)
+from animora.theme.presets import (
+    CINEMATIC,
+    EDUCATIONAL,
+    PLAYFUL,
+    PRESETS,
+    SLOW_MO,
+    SMOOTH,
+    SNAPPY,
+    TimingPreset,
+    get_timing_preset,
+)
 from animora.theme.theme import (
     AnimationTiming,
     ColorPalette,
@@ -93,18 +118,30 @@ __version__ = "0.2.0a1"
 
 __all__: list[str] = [
     "BST",
+    "CINEMATIC",
+    "EDUCATIONAL",
+    "PLAYFUL",
+    "PRESETS",
+    "SLOW_MO",
+    "SMOOTH",
+    "SNAPPY",
+    "AlgorithmTrace",
     "Animation",
     "AnimationTiming",
+    "Annotation",
     "Array",
     "ArrayListModel",
     "Arrow",
+    "Aurora",
     "Axes",
     "BSTModel",
     "BSTNode",
     "BarChart",
     "BaseLayout",
     "BoundingBox",
+    "Camera",
     "CircularLayout",
+    "CollisionPair",
     "ColorPalette",
     "Component",
     "ComponentConfig",
@@ -135,6 +172,7 @@ __all__: list[str] = [
     "ListNode",
     "ModernDark",
     "Monokai",
+    "MovingCameraScene",
     "OperationStep",
     "OperationTrace",
     "OperationType",
@@ -153,6 +191,7 @@ __all__: list[str] = [
     "Table",
     "Text",
     "Theme",
+    "TimingPreset",
     "Tree",
     "TreeLayout",
     "TreeNode",
@@ -161,12 +200,16 @@ __all__: list[str] = [
     "__version__",
     "a_star",
     "a_star_trace",
+    "apply_effect",
     "bfs",
     "bfs_trace",
     "binary_search",
     "binary_search_trace",
     "bubble_sort",
     "bubble_sort_trace",
+    "check_aabb_overlap",
+    "compute_aabb_intersection",
+    "detect_collisions",
     "dfs",
     "dfs_trace",
     "dijkstra",
@@ -174,6 +217,8 @@ __all__: list[str] = [
     "fibonacci_dp",
     "fibonacci_dp_trace",
     "get_active_theme",
+    "get_timing_preset",
+    "has_collisions",
     "insertion_sort",
     "insertion_sort_trace",
     "merge_sort",
