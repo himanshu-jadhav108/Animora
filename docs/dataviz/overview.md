@@ -45,6 +45,7 @@ from animora.core import Scene
 from animora.dataviz import BarChart
 from animora.theme import Cyberpunk, use_theme
 
+
 class BarChartDemo(Scene):
     def construct(self):
         with use_theme(Cyberpunk):
@@ -59,6 +60,7 @@ class BarChartDemo(Scene):
 ```python
 from animora.core import Scene
 from animora.dataviz import Table
+
 
 class TableDemo(Scene):
     def construct(self):

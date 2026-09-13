@@ -39,6 +39,10 @@ venv.bak/
 .ruff_cache/
 .coverage
 htmlcov/
+tests/visual_regression/failures/
+
+# Manim Render Cache & Media
+media/
 
 # IDE / Editor
 .vscode/

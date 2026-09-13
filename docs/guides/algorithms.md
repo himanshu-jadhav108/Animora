@@ -28,6 +28,7 @@ from animora.datastructures import Array
 from animora.algorithms import quick_sort
 from animora.theme import ModernDark, use_theme
 
+
 class SortingScene(Scene):
     def construct(self) -> None:
         with use_theme(ModernDark):
@@ -35,3 +36,36 @@ class SortingScene(Scene):
             self.play(arr.animate_create())
             self.play(*quick_sort(arr))
 ```
+
+---
+
+## 3. The Algorithm Trace API (`animora.algorithms.trace`)
+
+Animora separates algorithmic execution from rendering through the **Algorithm Trace API**. Bundled algorithms log operations into an `AlgorithmTrace`, which you can query, inspect, serialize, or transform into custom animations.
+
+### Inspecting Traces
+
+```python
+from animora.algorithms import quick_sort
+from animora.algorithms.trace import OperationType
+
+# Run algorithm and collect the recorded trace:
+# quick_sort returns an AlgorithmTrace (which also unpacks animations into scene.play)
+trace = quick_sort(arr)
+
+# 1. Filter operations by type:
+swaps = trace.filter(OperationType.SWAP)
+compares = trace.filter(OperationType.COMPARE)
+
+# 2. Count specific operations:
+total_swaps = trace.count(OperationType.SWAP)
+print(f"Total swaps performed: {total_swaps}")
+
+# 3. Retrieve targets involved in a specific step:
+targets = trace.targets_for(OperationType.SWAP)
+
+# 4. Generate structured summary or export to dict:
+summary = trace.summary()
+trace_data = trace.to_dict()
+```
+

@@ -19,6 +19,7 @@ Demonstrates `Text`, `Shape.circle`, `Shape.rounded_rectangle`, `Panel`, and sem
     from animora.components import Text, Shape, Panel
     from animora.theme import ModernDark, use_theme
 
+
     class BasicsAndShapesScene(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -26,8 +27,12 @@ Demonstrates `Text`, `Shape.circle`, `Shape.rounded_rectangle`, `Panel`, and sem
                 title.move_to([0, 3.0, 0])
 
                 circle = Shape.circle(radius=0.6, fill_color="#38BDF8").move_to([-3.0, 0.5, 0])
-                rect = Shape.rectangle(width=1.8, height=1.2, fill_color="#818CF8").move_to([0.0, 0.5, 0])
-                rounded = Shape.rounded_rectangle(width=1.8, height=1.2, corner_radius=0.2, fill_color="#10B981").move_to([3.0, 0.5, 0])
+                rect = Shape.rectangle(width=1.8, height=1.2, fill_color="#818CF8").move_to(
+                    [0.0, 0.5, 0]
+                )
+                rounded = Shape.rounded_rectangle(
+                    width=1.8, height=1.2, corner_radius=0.2, fill_color="#10B981"
+                ).move_to([3.0, 0.5, 0])
 
                 panel = Panel(circle, rect, rounded, title="Shape Primitives").move_to([0, 0.5, 0])
 
@@ -53,6 +58,7 @@ Demonstrates automatic multi-element positioning via `GridLayout` and `CircularL
     from animora.components import Shape, Group
     from animora.layout import GridLayout, CircularLayout
     from animora.theme import ModernDark, use_theme
+
 
     class LayoutAndGroupingScene(Scene):
         def construct(self) -> None:
@@ -86,13 +92,18 @@ Demonstrates `PaperLight` and `Cyberpunk` neon themes applied cleanly using `wit
     from animora.components import Text, Shape, Panel
     from animora.theme import PaperLight, Cyberpunk, use_theme
 
+
     class ThemesAndStylingScene(Scene):
         def construct(self) -> None:
             with use_theme(PaperLight):
-                light_panel = Panel(Shape.rounded_rectangle(3.0, 1.5), title=Text("Paper Light")).move_to([-3.2, 0, 0])
+                light_panel = Panel(
+                    Shape.rounded_rectangle(3.0, 1.5), title=Text("Paper Light")
+                ).move_to([-3.2, 0, 0])
 
             with use_theme(Cyberpunk):
-                cyber_panel = Panel(Shape.rounded_rectangle(3.0, 1.5), title=Text("Cyberpunk Neon")).move_to([3.2, 0, 0])
+                cyber_panel = Panel(
+                    Shape.rounded_rectangle(3.0, 1.5), title=Text("Cyberpunk Neon")
+                ).move_to([3.2, 0, 0])
 
             self.play(light_panel.animate_create())
             self.play(cyber_panel.animate_create())
@@ -114,6 +125,7 @@ Demonstrates educational chart components with `animate_grow()` and `animate_hig
     from animora.core import Scene
     from animora.dataviz import BarChart
     from animora.theme import ModernDark, use_theme
+
 
     class DataVizChartsScene(Scene):
         def construct(self) -> None:
@@ -143,6 +155,7 @@ Demonstrates stateful tree insertions with path comparison tracing (`50 -> 30 ->
     from animora.datastructures import BST
     from animora.theme import ModernDark, use_theme
 
+
     class BSTDataStructureScene(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -170,6 +183,7 @@ Demonstrates Quick Sort partition and element swaps over an `Array` component dr
     from animora.algorithms import quick_sort
     from animora.theme import ModernDark, use_theme
 
+
     class QuickSortAlgorithmScene(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -196,6 +210,7 @@ Demonstrates shortest path exploration and relaxed edge highlights on a `Graph` 
     from animora.algorithms import dijkstra
     from animora.theme import ModernDark, use_theme
 
+
     class DijkstraPathfindingScene(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -206,3 +221,58 @@ Demonstrates shortest path exploration and relaxed edge highlights on a `Graph` 
                 self.play(g.animate_create())
                 self.play(*dijkstra(g, start="A", target="D"))
     ```
+
+---
+
+## 8. Educational Annotation & Callouts
+
+Demonstrates the manual callouts system attaching labels, background cards, and pointer arrows to specific data structure elements (`examples/12_annotation_and_callouts.py`).
+
+=== "Python Code"
+    ```python
+    import manim
+    from animora.core import Scene
+    from animora.datastructures import Array, BST
+    from animora.theme import ModernDark, use_theme
+
+
+    class AnnotationDemoScene(Scene):
+        def construct(self) -> None:
+            with use_theme(ModernDark):
+                arr = Array([42, 17, 95, 33, 61])
+                self.play(arr.animate_create())
+                self.play(arr.annotate(2, text="Max Element (95)", direction=manim.UP, box=True))
+
+                bst = BST([50, 25, 75, 12, 37]).move_to([0.0, -1.2, 0.0])
+                self.play(bst.animate_create())
+                self.play(bst.annotate(50, text="Root Node", direction=manim.UP, arrow=True))
+    ```
+
+---
+
+## 9. Composable Text Effects & Stylized Typography
+
+Demonstrates composable visual effects (`gradient_reveal`, `glitch`, `pulse_glow`) parameterized by theme tokens (`examples/13_text_effects_and_materials.py`).
+
+=== "Python Code"
+    ```python
+    from animora.core import Scene
+    from animora.components import Text
+    from animora.theme import ModernDark, Cyberpunk
+    from animora.theme.effects import Aurora
+
+
+    class TextEffectsDemoScene(Scene):
+        def construct(self) -> None:
+            title = Text("AURORA EFFECTS", font_size=40).move_to([0.0, 1.8, 0.0])
+            self.play(title.apply_effect("gradient_reveal", theme=Aurora, run_time=1.2))
+
+            glitch_text = Text("CYBERPUNK GLITCH", font_size=34).move_to([0.0, 0.2, 0.0])
+            self.play(glitch_text.animate_create())
+            self.play(glitch_text.apply_effect("glitch", theme=Cyberpunk, run_time=0.8))
+
+            pulse_text = Text("PULSE EMPHASIS", font_size=30).move_to([0.0, -1.4, 0.0])
+            self.play(pulse_text.animate_fade_in())
+            self.play(pulse_text.apply_effect("pulse_glow", theme=ModernDark, run_time=0.6))
+    ```
+

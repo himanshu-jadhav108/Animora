@@ -21,6 +21,7 @@ Splits text into tokens and character spans, animating the text separating into 
     from animora.ml.nlp import tokenize
     from animora.theme import ModernDark, use_theme
 
+
     class TokenizationDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -48,6 +49,7 @@ Maps discrete tokens to vectors and projects the high-dimensional space down to 
     from animora.ml.nlp import word_embeddings
     from animora.theme import ModernDark, use_theme
 
+
     class EmbeddingsDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -72,6 +74,7 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right
     from animora.core import Scene
     from animora.ml.nlp import attention
     from animora.theme import ModernDark, use_theme
+
 
     class AttentionDemo(Scene):
         def construct(self) -> None:
@@ -100,6 +103,7 @@ Composes the self-attention mechanism with a non-linear feed-forward network ($H
     from animora.core import Scene
     from animora.ml.nlp import transformer_block
     from animora.theme import ModernDark, use_theme
+
 
     class TransformerDemo(Scene):
         def construct(self) -> None:

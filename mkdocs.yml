@@ -7,6 +7,8 @@ repo_name: himanshu-jadhav108/Animora
 
 theme:
   name: material
+  logo: assets/logos-and-banners/Animora-Logo.png
+  favicon: assets/logos-and-banners/Animora-Logo.png
   font:
     text: Inter
     code: JetBrains Mono
@@ -52,7 +54,10 @@ nav:
       - Data Visualization: guides/dataviz.md
       - Data Structures: guides/datastructures.md
       - Algorithms: guides/algorithms.md
+      - Camera & Viewport: guides/camera.md
+      - Reusable Templates: guides/templates.md
       - CLI: guides/cli.md
+      - Visual Regression Testing: guides/visual-regression-testing.md
   - AI & Machine Learning:
       - Overview & Learning Path: ml/index.md
       - 1. Math Foundations: ml/foundations.md
@@ -75,6 +80,8 @@ nav:
       - API Philosophy: architecture/api-philosophy.md
       - ML API Contract: architecture/ml-api-contract.md
       - Dependency Policy: architecture/dependency-policy.md
+      - Effects API Design: architecture/effects-api-design.md
+      - Collision Detection Findings: architecture/collision-detection-findings.md
       - Versioning Strategy: architecture/versioning-strategy.md
       - Docs Media Strategy: architecture/docs-media-strategy.md
   - Governance & Licensing:

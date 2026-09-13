@@ -54,6 +54,7 @@ from animora.core import Scene
 from animora.datastructures import Array
 from animora.algorithms import quick_sort
 
+
 class QuickSortDemo(Scene):
     def construct(self):
         arr = Array([45, 12, 89, 33, 7, 56])
@@ -67,8 +68,11 @@ from animora.core import Scene
 from animora.datastructures import Graph
 from animora.algorithms import dijkstra
 
+
 class DijkstraDemo(Scene):
     def construct(self):
-        g = Graph(nodes=["A", "B", "C", "D"], edges=[("A", "B"), ("B", "D"), ("A", "C"), ("C", "D")])
+        g = Graph(
+            nodes=["A", "B", "C", "D"], edges=[("A", "B"), ("B", "D"), ("A", "C"), ("C", "D")]
+        )
         self.play(*dijkstra(g, start="A", target="D"))
 ```

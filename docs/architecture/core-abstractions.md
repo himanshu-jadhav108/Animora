@@ -107,14 +107,15 @@ from animora.core import Scene
 from animora.components import Label
 import manim
 
+
 class CustomScene(Scene):
     def construct(self):
         # 1. High-level Animora component
         label = Label("Hello, Animora!", color="#38BDF8")
-        
+
         # 2. Add via high-level animation
         self.play(label.animate_fade_in(run_time=1.0))
-        
+
         # 3. Escape hatch to native Manim
         label.manim_object.shift(manim.UP)
         self.play(manim.Wiggle(label.manim_object))

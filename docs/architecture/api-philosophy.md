@@ -18,7 +18,7 @@ Every visual element in Animora inherits from `animora.core.Component`. Its publ
 ```python
 class Component:
     """Base class for all Animora visual components.
-    
+
     (Illustrative specification — non-final implementation)
     """
 
@@ -37,7 +37,9 @@ class Component:
 
     # 3. Spatial Positioning & Alignment
     def move_to(self, target: np.ndarray | Component) -> Self: ...
-    def next_to(self, target: Component, direction: np.ndarray = RIGHT, buff: float = 0.5) -> Self: ...
+    def next_to(
+        self, target: Component, direction: np.ndarray = RIGHT, buff: float = 0.5
+    ) -> Self: ...
     def align_to(self, target: Component, direction: np.ndarray = UP) -> Self: ...
     def scale(self, scale_factor: float) -> Self: ...
 
@@ -67,6 +69,7 @@ from manim import Scene, UP, DOWN, PI, Wiggle, Rotate, Circle, BLUE
 from animora.components.dsa import Array, Graph
 from animora.theme import ModernDarkTheme
 
+
 class HybridAlgorithmScene(Scene):
     def construct(self):
         # 1. High-level declarative Animora component creation
@@ -75,7 +78,7 @@ class HybridAlgorithmScene(Scene):
 
         # 2. Add to standard Manim scene via escape hatch
         self.play(arr.animate_create(run_time=1.5))
-        
+
         # 3. Perform semantic Animora operations
         self.play(arr.animate_swap(0, 3, run_time=1.0))
         self.play(arr.animate_highlight(3, color="#10B981"))

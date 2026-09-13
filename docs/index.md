@@ -1,4 +1,5 @@
 <div class="hero-container">
+  <img src="assets/logos-and-banners/Animora-Logo.png" alt="Animora Logo" width="130px" style="margin-bottom: 0.75rem;" />
   <div class="hero-title">Animora</div>
   <div class="hero-tagline">
     The high-level, declarative animation framework built on Manim for computer science, mathematics, and technical storytelling.
@@ -21,6 +22,7 @@
 from animora.core import Scene
 from animora.datastructures import BST
 from animora.theme import ModernDark, use_theme
+
 
 class BSTDemoScene(Scene):
     def construct(self) -> None:

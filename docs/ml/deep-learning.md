@@ -21,15 +21,18 @@ Renders a multi-layer perceptron architecture and animates activations propagati
     from animora.ml.deep_learning import neural_network_forward
     from animora.theme import ModernDark, use_theme
 
+
     class NeuralNetDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
                 # Animates layered architecture and forward pass
-                self.play(*neural_network_forward(
-                    layer_sizes=[2, 3, 1],
-                    input_data=[0.8, -0.4],
-                    activation="sigmoid",
-                ))
+                self.play(
+                    *neural_network_forward(
+                        layer_sizes=[2, 3, 1],
+                        input_data=[0.8, -0.4],
+                        activation="sigmoid",
+                    )
+                )
     ```
 
 ---
@@ -48,6 +51,7 @@ Computes analytical gradients $\frac{\partial \mathcal{L}}{\partial W}$ and $\fr
     from animora.core import Scene
     from animora.ml.deep_learning import NeuralNetworkModel, backpropagation
     from animora.theme import ModernDark, use_theme
+
 
     class BackpropDemo(Scene):
         def construct(self) -> None:
@@ -75,8 +79,10 @@ Animates optimization trajectories over non-convex or anisotropic loss surfaces,
     from animora.ml.deep_learning import adam, momentum, sgd
     from animora.theme import ModernDark, use_theme
 
+
     def anisotropic_valley(x: float, y: float) -> float:
         return 10.0 * (x**2) + (y**2)
+
 
     class OptimizersDemo(Scene):
         def construct(self) -> None:
@@ -103,6 +109,7 @@ Visualizes a sliding window bounding box moving across an input matrix, computin
     from animora.core import Scene
     from animora.ml.deep_learning import cnn_convolution
     from animora.theme import ModernDark, use_theme
+
 
     class ConvolutionDemo(Scene):
         def construct(self) -> None:
@@ -136,6 +143,7 @@ Renders an unrolled recurrent neural network cell showing the hidden state recur
     from animora.core import Scene
     from animora.ml.deep_learning import rnn_forward
     from animora.theme import ModernDark, use_theme
+
 
     class RNNDemo(Scene):
         def construct(self) -> None:

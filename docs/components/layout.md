@@ -47,6 +47,7 @@ from animora.core import Scene
 from animora.components import Group, Shape, Text
 from animora.layout import GridLayout, TreeLayout, CircularLayout
 
+
 class LayoutDemoScene(Scene):
     def construct(self):
         # 1. Grid of nodes
@@ -57,12 +58,14 @@ class LayoutDemoScene(Scene):
         # 2. Hierarchical Tree
         tree_nodes = [Shape.circle(radius=0.3) for _ in range(5)]
         tree = Group(*tree_nodes)
-        tree.arrange(TreeLayout(
-            edges=[("0", "1"), ("0", "2"), ("1", "3"), ("1", "4")],
-            root_id="0",
-            level_spacing=1.5,
-            node_spacing=1.0,
-        ))
+        tree.arrange(
+            TreeLayout(
+                edges=[("0", "1"), ("0", "2"), ("1", "3"), ("1", "4")],
+                root_id="0",
+                level_spacing=1.5,
+                node_spacing=1.0,
+            )
+        )
 
         self.play(grid.animate_fade_in())
 ```

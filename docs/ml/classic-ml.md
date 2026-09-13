@@ -21,6 +21,7 @@ Animora calculates the exact analytical least-squares fit $(X^T X)^{-1} X^T y$ a
     from animora.ml.classic import linear_regression
     from animora.theme import ModernDark, use_theme
 
+
     class LinearRegressionDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -48,6 +49,7 @@ Visualizes binary classification with sigmoid probability and cross-entropy grad
     from animora.ml.classic import logistic_regression
     from animora.theme import ModernDark, use_theme
 
+
     class LogisticRegressionDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -74,6 +76,7 @@ Visualizes Lloyd's algorithm: centroid initialization, nearest-cluster sample re
     from animora.ml.classic import kmeans
     from animora.theme import ModernDark, use_theme
 
+
     class KMeansDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -98,6 +101,7 @@ Constructs a binary classification tree using exact Gini impurity or Shannon ent
     from animora.core import Scene
     from animora.ml.classic import decision_tree
     from animora.theme import ModernDark, use_theme
+
 
     class DecisionTreeDemo(Scene):
         def construct(self) -> None:
@@ -125,6 +129,7 @@ Visualizes the maximum-margin hyperplane $w \cdot x + b = 0$, dashed margin boun
     from animora.ml.classic import svm
     from animora.theme import ModernDark, use_theme
 
+
     class SVMDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -150,6 +155,7 @@ Computes covariance eigendecomposition via `numpy.linalg.eigh`, draws principal 
     from animora.core import Scene
     from animora.ml.classic import pca
     from animora.theme import ModernDark, use_theme
+
 
     class PCADemo(Scene):
         def construct(self) -> None:

@@ -43,6 +43,7 @@ from animora.core import Scene
 from animora.components import Text, Shape, Arrow, Group, Panel
 import manim
 
+
 class TreeDemoScene(Scene):
     def construct(self):
         # 1. Typography

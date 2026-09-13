@@ -49,6 +49,7 @@ from animora.core import Scene
 from animora.components import Shape, Text, Panel
 from animora.theme import PaperLight, Cyberpunk, use_theme
 
+
 class ThemedDemoScene(Scene):
     def construct(self):
         # 1. Using Light Theme
@@ -78,6 +79,6 @@ custom_theme = ModernDark.merge(
         "primary": "#268BD2",
         "accent": "#B58900",
         "text": "#839496",
-    }
+    },
 )
 ```

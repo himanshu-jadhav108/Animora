@@ -14,6 +14,7 @@ from animora.core import Scene
 from animora.components import Text, Shape, Panel
 from animora.theme import ModernDark, PaperLight, use_theme
 
+
 class MultiThemeScene(Scene):
     def construct(self) -> None:
         # 1. Dark Mode Box

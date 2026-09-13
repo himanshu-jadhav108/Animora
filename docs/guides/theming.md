@@ -43,6 +43,33 @@ solarized = ModernDark.merge(
         "surface": "#073642",
         "primary": "#268BD2",
         "accent": "#B58900",
-    }
+    },
 )
 ```
+
+---
+
+## 4. Animation Timing & Easing Presets
+
+Animora provides named timing presets (`animora.theme.presets`) that standardize transition speeds and easing curves across educational presentations:
+
+| Preset | Speed Multiplier | Easing / Curve | Recommended Use Case |
+|---|---|---|---|
+| **`SNAPPY`** | `0.6×` | Rapid ease-out | UI transitions, quick data adjustments |
+| **`SMOOTH`** | `1.0×` | Standard smooth | Default educational pacing |
+| **`CINEMATIC`** | `1.6×` | Smooth ease-in-out | Hero introductions, full scene wipes |
+| **`PLAYFUL`** | `1.1×` | Bouncy ease-out | Interactive demos, casual walkthroughs |
+| **`EDUCATIONAL`** | `1.8×` | Deliberate ease-in-out | Step-by-step algorithmic explanations |
+| **`SLOW_MO`** | `3.0×` | Gradual ease-in-out | Micro-step inspections, race conditions |
+
+```python
+from animora.theme.presets import CINEMATIC, get_timing_preset
+
+# Access pre-configured durations and curves:
+duration = CINEMATIC.normal  # Scaled based on active theme
+curve = CINEMATIC.easing_function
+
+# Or retrieve by name string:
+snappy_preset = get_timing_preset("snappy")
+```
+

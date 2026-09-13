@@ -49,6 +49,7 @@ graph TD
 from animora.core import Scene
 from animora.datastructures import BST
 
+
 class BSTDemo(Scene):
     def construct(self):
         bst = BST([50, 30, 70, 20, 40])
@@ -65,6 +66,7 @@ class BSTDemo(Scene):
 ```python
 from animora.core import Scene
 from animora.datastructures import Graph
+
 
 class GraphDemo(Scene):
     def construct(self):

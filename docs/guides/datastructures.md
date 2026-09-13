@@ -24,6 +24,7 @@ Animora includes nine stateful data structures (`animora.datastructures`) design
 from animora.core import Scene
 from animora.datastructures import BST
 
+
 class BSTDemo(Scene):
     def construct(self) -> None:
         bst = BST([50, 30, 70, 20, 40])

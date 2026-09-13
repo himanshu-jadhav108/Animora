@@ -21,6 +21,7 @@ Animora executes exact numerical gradient descent on any user-provided 2D scalar
     from animora.ml import gradient_descent
     from animora.theme import ModernDark, use_theme
 
+
     class GradientDescentDemo(Scene):
         def construct(self) -> None:
             with use_theme(ModernDark):
@@ -29,12 +30,14 @@ Animora executes exact numerical gradient descent on any user-provided 2D scalar
                     return (x**2) + (y**2)
 
                 # One-call: runs real numerical gradient descent and animates trajectory
-                self.play(*gradient_descent(
-                    loss,
-                    start=(2.5, 2.5),
-                    learning_rate=0.1,
-                    steps=25,
-                ))
+                self.play(
+                    *gradient_descent(
+                        loss,
+                        start=(2.5, 2.5),
+                        learning_rate=0.1,
+                        steps=25,
+                    )
+                )
     ```
 
 ---
@@ -53,8 +56,10 @@ Renders 2D contour maps from scalar functions $f(x, y)$, automatically calculati
     ```python
     from animora.ml import SurfacePlot
 
+
     def saddle(x: float, y: float) -> float:
         return (x**2) - (y**2)
+
 
     surface = SurfacePlot(saddle, x_range=(-3, 3, 1), y_range=(-3, 3, 1), num_contours=8)
     self.play(surface.animate_create())
@@ -74,8 +79,10 @@ Renders directional vector flows and gradient arrows over a regular 2D grid:
     ```python
     from animora.ml import VectorField
 
+
     def rotational_field(x: float, y: float) -> tuple[float, float]:
         return -y, x
+
 
     vf = VectorField(rotational_field, x_range=(-2, 2, 1), y_range=(-2, 2, 1), step=0.5)
     self.play(vf.animate_create())

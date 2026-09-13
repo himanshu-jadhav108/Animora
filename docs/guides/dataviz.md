@@ -22,6 +22,7 @@ from animora.core import Scene
 from animora.dataviz import BarChart, Table
 from animora.theme import ModernDark, use_theme
 
+
 class ChartDemo(Scene):
     def construct(self) -> None:
         with use_theme(ModernDark):

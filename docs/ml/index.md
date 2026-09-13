@@ -17,6 +17,7 @@ from animora.core import Scene
 from animora.ml.deep_learning import neural_network_forward
 from animora.theme import ModernDark, use_theme
 
+
 class ShowcaseScene(Scene):
     def construct(self) -> None:
         with use_theme(ModernDark):

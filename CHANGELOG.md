@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0a1] - 2026-09-03
 
 ### Added
+- **Ecosystem & Plugin Integration**:
+  - Registered `manim.plugins` entry point in `pyproject.toml` exposing `animora = "animora"`, enabling native discovery via `manim plugins -l`.
+  - Prepared submission configuration for the official Manim Community plugin directory (`ManimCommunity/plugins-site`).
 - **AI & Machine Learning Foundations (`animora.ml`)**:
   - `SurfacePlot`: 2D continuous contour elevation and iso-level visualization for scalar loss surfaces $f(x, y)$.
   - `VectorField`: Regular 2D directional flow vector field and gradient arrows $-\nabla f(x, y)$.
