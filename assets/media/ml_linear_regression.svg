@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Linear Regression</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">Fit: y = 1.95x + 0.32  |  MSE: 0.041</text>
+  
+  <!-- Coordinate Grid -->
+  <line x1="80" y1="280" x2="520" y2="280" stroke="#334155" stroke-width="1.5" />
+  <line x1="80" y1="80" x2="80" y2="280" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Regression Line -->
+  <line x1="100" y1="255" x2="500" y2="95" stroke="#38BDF8" stroke-width="3" />
+  
+  <!-- Residuals and Scatter Dots -->
+  <!-- pt 1 -->
+  <line x1="140" y1="239" x2="140" y2="225" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3" />
+  <circle cx="140" cy="225" r="5" fill="#F59E0B" />
+  
+  <!-- pt 2 -->
+  <line x1="220" y1="207" x2="220" y2="220" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3" />
+  <circle cx="220" cy="220" r="5" fill="#F59E0B" />
+  
+  <!-- pt 3 -->
+  <line x1="300" y1="175" x2="300" y2="165" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3" />
+  <circle cx="300" cy="165" r="5" fill="#F59E0B" />
+  
+  <!-- pt 4 -->
+  <line x1="380" y1="143" x2="380" y2="155" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3" />
+  <circle cx="380" cy="155" r="5" fill="#F59E0B" />
+  
+  <!-- pt 5 -->
+  <line x1="460" y1="111" x2="460" y2="100" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3" />
+  <circle cx="460" cy="100" r="5" fill="#F59E0B" />
+  
+  <text x="505" y="90" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="12px" font-weight="600">Optimal Fit</text>
+</svg>

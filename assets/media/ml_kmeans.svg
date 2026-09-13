@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">K-Means Clustering (Lloyd's Algorithm)</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">k = 3  |  Iter 4: Centroids Converged</text>
+  
+  <!-- Cluster 1 (Cyan) -->
+  <circle cx="160" cy="220" r="5" fill="#38BDF8" />
+  <circle cx="140" cy="240" r="5" fill="#38BDF8" />
+  <circle cx="180" cy="250" r="5" fill="#38BDF8" />
+  <circle cx="150" cy="210" r="5" fill="#38BDF8" />
+  <!-- Centroid 1 -->
+  <line x1="147" y1="217" x2="167" y2="237" stroke="#38BDF8" stroke-width="4" />
+  <line x1="167" y1="217" x2="147" y2="237" stroke="#38BDF8" stroke-width="4" />
+
+  <!-- Cluster 2 (Orange) -->
+  <circle cx="420" cy="140" r="5" fill="#F59E0B" />
+  <circle cx="440" cy="120" r="5" fill="#F59E0B" />
+  <circle cx="460" cy="150" r="5" fill="#F59E0B" />
+  <circle cx="430" cy="160" r="5" fill="#F59E0B" />
+  <!-- Centroid 2 -->
+  <line x1="427" y1="132" x2="447" y2="152" stroke="#F59E0B" stroke-width="4" />
+  <line x1="447" y1="132" x2="427" y2="152" stroke="#F59E0B" stroke-width="4" />
+
+  <!-- Cluster 3 (Green) -->
+  <circle cx="280" cy="120" r="5" fill="#10B981" />
+  <circle cx="310" cy="110" r="5" fill="#10B981" />
+  <circle cx="290" cy="140" r="5" fill="#10B981" />
+  <circle cx="320" cy="130" r="5" fill="#10B981" />
+  <!-- Centroid 3 -->
+  <line x1="290" y1="115" x2="310" y2="135" stroke="#10B981" stroke-width="4" />
+  <line x1="310" y1="115" x2="290" y2="135" stroke="#10B981" stroke-width="4" />
+
+  <!-- Centroid Movement Paths (dashed) -->
+  <path d="M 230,190 Q 260,150 300,125" fill="none" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3,3" />
+  <path d="M 370,200 Q 400,170 437,142" fill="none" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3,3" />
+</svg>

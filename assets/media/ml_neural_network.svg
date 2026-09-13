@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Neural Network Architecture &amp; Forward Pass</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">Architecture: [2, 3, 1]  |  Activation: Sigmoid</text>
+  
+  <!-- Synaptic Weights Layer 0 to 1 -->
+  <!-- Node 0,0 to L1 -->
+  <line x1="120" y1="140" x2="300" y2="100" stroke="#334155" stroke-width="1.5" />
+  <line x1="120" y1="140" x2="300" y2="190" stroke="#38BDF8" stroke-width="2.5" />
+  <line x1="120" y1="140" x2="300" y2="280" stroke="#334155" stroke-width="1.5" />
+  <!-- Node 0,1 to L1 -->
+  <line x1="120" y1="240" x2="300" y2="100" stroke="#334155" stroke-width="1.5" />
+  <line x1="120" y1="240" x2="300" y2="190" stroke="#38BDF8" stroke-width="2.5" />
+  <line x1="120" y1="240" x2="300" y2="280" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Synaptic Weights Layer 1 to 2 -->
+  <line x1="300" y1="100" x2="480" y2="190" stroke="#334155" stroke-width="1.5" />
+  <line x1="300" y1="190" x2="480" y2="190" stroke="#F59E0B" stroke-width="3" />
+  <line x1="300" y1="280" x2="480" y2="190" stroke="#334155" stroke-width="1.5" />
+  
+  <!-- Layer 0 (Input) -->
+  <circle cx="120" cy="140" r="22" fill="#1E293B" stroke="#38BDF8" stroke-width="2.5" />
+  <text x="120" y="145" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.80</text>
+  
+  <circle cx="120" cy="240" r="22" fill="#1E293B" stroke="#38BDF8" stroke-width="2.5" />
+  <text x="120" y="245" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">-0.40</text>
+  <text x="120" y="285" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Input [2]</text>
+  
+  <!-- Layer 1 (Hidden) -->
+  <circle cx="300" cy="100" r="22" fill="#1E293B" stroke="#475569" stroke-width="2" />
+  <text x="300" y="105" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.42</text>
+  
+  <circle cx="300" cy="190" r="22" fill="#1E293B" stroke="#F59E0B" stroke-width="3" />
+  <text x="300" y="195" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">0.88</text>
+  
+  <circle cx="300" cy="280" r="22" fill="#1E293B" stroke="#475569" stroke-width="2" />
+  <text x="300" y="285" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.19</text>
+  <text x="300" y="325" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Hidden [3]</text>
+  
+  <!-- Layer 2 (Output) -->
+  <circle cx="480" cy="190" r="22" fill="#1E293B" stroke="#10B981" stroke-width="3" />
+  <text x="480" y="195" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">0.74</text>
+  <text x="480" y="235" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Output [1]</text>
+</svg>

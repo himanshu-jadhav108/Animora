@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <!-- Grid items -->
+  <g transform="translate(60, 50)">
+    <rect x="0" y="0" width="80" height="80" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <rect x="100" y="0" width="80" height="80" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <rect x="200" y="0" width="80" height="80" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <rect x="0" y="100" width="80" height="80" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <rect x="100" y="100" width="80" height="80" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <rect x="200" y="100" width="80" height="80" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+  </g>
+  <!-- Circular items -->
+  <g transform="translate(450, 150)">
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#334155" stroke-dasharray="4 4" stroke-width="1.5" />
+    <circle cx="0" cy="-70" r="16" fill="#1E293B" stroke="#F59E0B" stroke-width="2" />
+    <circle cx="60" cy="-35" r="16" fill="#1E293B" stroke="#F59E0B" stroke-width="2" />
+    <circle cx="60" cy="35" r="16" fill="#1E293B" stroke="#F59E0B" stroke-width="2" />
+    <circle cx="0" cy="70" r="16" fill="#1E293B" stroke="#F59E0B" stroke-width="2" />
+    <circle cx="-60" cy="35" r="16" fill="#1E293B" stroke="#F59E0B" stroke-width="2" />
+    <circle cx="-60" cy="-35" r="16" fill="#1E293B" stroke="#F59E0B" stroke-width="2" />
+  </g>
+  <text x="140" y="280" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="13px" font-weight="600" text-anchor="middle">GridLayout(columns=3)</text>
+  <text x="450" y="280" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="13px" font-weight="600" text-anchor="middle">CircularLayout(radius=2.2)</text>
+</svg>

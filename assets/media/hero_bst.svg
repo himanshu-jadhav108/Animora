@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0F172A; }
+      .grid-line { stroke: #1E293B; stroke-width: 1; stroke-dasharray: 4 4; }
+      .edge { stroke: #475569; stroke-width: 3; stroke-linecap: round; }
+      .node-circle { fill: #1E293B; stroke: #38BDF8; stroke-width: 3; }
+      .node-text { fill: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+      .title-text { fill: #94A3B8; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 600; }
+      .badge-bg { fill: rgba(56, 189, 248, 0.15); stroke: #38BDF8; stroke-width: 1.5; rx: 6; }
+      .badge-text { fill: #38BDF8; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; }
+      
+      /* Animation keyframes */
+      @keyframes pulseNode {
+        0%, 100% { stroke: #38BDF8; filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.3)); }
+        50% { stroke: #F59E0B; filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8)); fill: #2A2418; }
+      }
+      @keyframes insertNode {
+        0% { opacity: 0; transform: translateY(-30px); }
+        40% { opacity: 1; transform: translateY(0); }
+        70% { stroke: #10B981; filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.8)); }
+        100% { stroke: #38BDF8; }
+      }
+      @keyframes tracePath {
+        0% { stroke-dashoffset: 200; stroke: #475569; }
+        50% { stroke-dashoffset: 0; stroke: #F59E0B; }
+        100% { stroke-dashoffset: 0; stroke: #38BDF8; }
+      }
+
+      .node-50 { animation: pulseNode 4s infinite 0s; }
+      .node-30 { animation: pulseNode 4s infinite 1s; }
+      .node-40 { animation: pulseNode 4s infinite 2s; }
+      .node-35 { animation: insertNode 4s infinite 2.5s; transform-origin: 350px 330px; }
+      .edge-insert { stroke-dasharray: 200; animation: tracePath 4s infinite 2s; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" rx="12" class="bg" />
+  
+  <!-- Subtle Grid Lines -->
+  <line x1="100" y1="0" x2="100" y2="450" class="grid-line" />
+  <line x1="300" y1="0" x2="300" y2="450" class="grid-line" />
+  <line x1="500" y1="0" x2="500" y2="450" class="grid-line" />
+  <line x1="700" y1="0" x2="700" y2="450" class="grid-line" />
+  <line x1="0" y1="100" x2="800" y2="100" class="grid-line" />
+  <line x1="0" y1="220" x2="800" y2="220" class="grid-line" />
+  <line x1="0" y1="340" x2="800" y2="340" class="grid-line" />
+
+  <!-- Header Overlay -->
+  <rect x="30" y="24" width="220" height="32" class="badge-bg" />
+  <text x="42" y="44" class="badge-text">animora.datastructures.BST</text>
+  <text x="30" y="80" class="title-text">bst.animate_insert(35)</text>
+
+  <!-- Edges -->
+  <!-- 50 -> 30 -->
+  <line x1="400" y1="110" x2="260" y2="190" class="edge" />
+  <!-- 50 -> 70 -->
+  <line x1="400" y1="110" x2="540" y2="190" class="edge" />
+  <!-- 30 -> 20 -->
+  <line x1="260" y1="190" x2="180" y2="270" class="edge" />
+  <!-- 30 -> 40 -->
+  <line x1="260" y1="190" x2="340" y2="270" class="edge" />
+  <!-- 40 -> 35 (Animated Insertion Edge) -->
+  <line x1="340" y1="270" x2="300" y2="350" class="edge edge-insert" />
+
+  <!-- Tree Nodes -->
+  <!-- Root: 50 -->
+  <g class="node-50">
+    <circle cx="400" cy="110" r="28" class="node-circle" />
+    <text x="400" y="110" class="node-text">50</text>
+  </g>
+
+  <!-- Left Child: 30 -->
+  <g class="node-30">
+    <circle cx="260" cy="190" r="28" class="node-circle" />
+    <text x="260" y="190" class="node-text">30</text>
+  </g>
+
+  <!-- Right Child: 70 -->
+  <g>
+    <circle cx="540" cy="190" r="28" class="node-circle" />
+    <text x="540" y="190" class="node-text">70</text>
+  </g>
+
+  <!-- Left-Left: 20 -->
+  <g>
+    <circle cx="180" cy="270" r="26" class="node-circle" />
+    <text x="180" y="270" class="node-text">20</text>
+  </g>
+
+  <!-- Left-Right: 40 -->
+  <g class="node-40">
+    <circle cx="340" cy="270" r="26" class="node-circle" />
+    <text x="340" y="270" class="node-text">40</text>
+  </g>
+
+  <!-- Inserted Node: 35 -->
+  <g class="node-35">
+    <circle cx="300" cy="350" r="26" class="node-circle" />
+    <text x="300" y="350" class="node-text">35</text>
+  </g>
+
+  <!-- Status pill bottom-right -->
+  <rect x="580" y="390" width="190" height="34" rx="17" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+  <circle cx="600" cy="407" r="6" fill="#10B981" />
+  <text x="618" y="411" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="12px" font-weight="600">Trace Verified (3 steps)</text>
+</svg>

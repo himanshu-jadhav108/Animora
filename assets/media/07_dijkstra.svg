@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+
+  <!-- Graph Edges -->
+  <!-- A -> B -->
+  <line x1="150" y1="170" x2="300" y2="90" stroke="#10B981" stroke-width="4" />
+  <!-- B -> D -->
+  <line x1="300" y1="90" x2="450" y2="170" stroke="#10B981" stroke-width="4" />
+  <!-- A -> C -->
+  <line x1="150" y1="170" x2="300" y2="250" stroke="#475569" stroke-width="2" />
+  <!-- C -> D -->
+  <line x1="300" y1="250" x2="450" y2="170" stroke="#475569" stroke-width="2" />
+
+  <!-- Nodes -->
+  <!-- Node A (Start) -->
+  <circle cx="150" cy="170" r="28" fill="#1E293B" stroke="#10B981" stroke-width="3" />
+  <text x="150" y="175" fill="#10B981" font-family="'Inter', sans-serif" font-size="16px" font-weight="700" text-anchor="middle">A</text>
+  <text x="150" y="220" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11px" text-anchor="middle">d=0</text>
+
+  <!-- Node B (Visited) -->
+  <circle cx="300" cy="90" r="28" fill="#1E293B" stroke="#10B981" stroke-width="3" />
+  <text x="300" y="95" fill="#10B981" font-family="'Inter', sans-serif" font-size="16px" font-weight="700" text-anchor="middle">B</text>
+  <text x="300" y="50" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11px" text-anchor="middle">d=1</text>
+
+  <!-- Node C -->
+  <circle cx="300" cy="250" r="28" fill="#1E293B" stroke="#475569" stroke-width="2" />
+  <text x="300" y="255" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="16px" font-weight="700" text-anchor="middle">C</text>
+  <text x="300" y="295" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="11px" text-anchor="middle">d=2</text>
+
+  <!-- Node D (Target Reached) -->
+  <circle cx="450" cy="170" r="28" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="3" />
+  <text x="450" y="175" fill="#10B981" font-family="'Inter', sans-serif" font-size="16px" font-weight="700" text-anchor="middle">D</text>
+  <text x="450" y="220" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="11px" font-weight="600" text-anchor="middle">d=2 (Goal)</text>
+</svg>

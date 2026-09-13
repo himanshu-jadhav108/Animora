@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">VectorField Gradient Flow</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">F(x, y) = [-y, x] (Vortex / Rotational Field)</text>
+  
+  <!-- Flow Grid Arrows -->
+  <defs>
+    <marker id="arrowHead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#38BDF8" />
+    </marker>
+    <marker id="arrowHeadAccent" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#F59E0B" />
+    </marker>
+  </defs>
+
+  <!-- Circular vortex flow vectors -->
+  <line x1="300" y1="100" x2="350" y2="100" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowHead)" />
+  <line x1="390" y1="140" x2="420" y2="180" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowHead)" />
+  <line x1="410" y1="210" x2="390" y2="250" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowHead)" />
+  <line x1="320" y1="270" x2="270" y2="270" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowHead)" />
+  <line x1="200" y1="230" x2="180" y2="190" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowHead)" />
+  <line x1="190" y1="160" x2="220" y2="120" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrowHead)" />
+
+  <!-- Center core -->
+  <circle cx="300" cy="190" r="8" fill="#F59E0B" />
+  <circle cx="300" cy="190" r="25" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,3" />
+</svg>

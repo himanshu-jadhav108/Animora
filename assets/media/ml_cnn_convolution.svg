@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">CNN 2D Convolution (Sliding Window)</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">Input [3×3]  *  Kernel [2×2]  =  Feature Map [2×2]</text>
+  
+  <!-- Input Grid [3x3] -->
+  <g transform="translate(60, 110)">
+    <rect width="135" height="135" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="90" height="90" rx="4" fill="none" stroke="#F59E0B" stroke-width="3" />
+    <text x="67" y="165" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Input [3×3]</text>
+    <text x="22" y="30" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px">1</text>
+    <text x="67" y="30" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px">2</text>
+    <text x="112" y="30" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">3</text>
+    <text x="22" y="75" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px">4</text>
+    <text x="67" y="75" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px">5</text>
+    <text x="112" y="75" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">6</text>
+  </g>
+
+  <!-- Multiplication Symbol -->
+  <text x="235" y="185" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="22px" font-weight="700" text-anchor="middle">×</text>
+
+  <!-- Kernel [2x2] -->
+  <g transform="translate(265, 130)">
+    <rect width="90" height="90" rx="6" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <text x="45" y="125" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Kernel [2×2]</text>
+    <text x="22" y="35" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700">1</text>
+    <text x="67" y="35" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700">0</text>
+    <text x="22" y="75" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700">0</text>
+    <text x="67" y="75" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700">1</text>
+  </g>
+
+  <!-- Equals Symbol -->
+  <text x="390" y="185" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="22px" font-weight="700" text-anchor="middle">=</text>
+
+  <!-- Output Grid [2x2] -->
+  <g transform="translate(425, 130)">
+    <rect width="100" height="100" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="2" />
+    <text x="50" y="125" fill="#10B981" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Feature Map [2×2]</text>
+    <!-- Highlight computed cell (0, 0) = 1*1 + 5*1 = 6 -->
+    <rect x="5" y="5" width="42" height="42" rx="4" fill="#10B981" fill-opacity="0.25" stroke="#10B981" stroke-width="1.5" />
+    <text x="26" y="32" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="14px" font-weight="700" text-anchor="middle">6</text>
+    <text x="74" y="32" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="14px" text-anchor="middle">8</text>
+    <text x="26" y="78" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="14px" text-anchor="middle">12</text>
+    <text x="74" y="78" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="14px" text-anchor="middle">14</text>
+  </g>
+</svg>

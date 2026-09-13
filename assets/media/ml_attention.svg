@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Scaled Dot-Product Attention</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">Attention(Q, K, V) = Softmax(QKᵀ / √d) V  |  Row sums = 1.000</text>
+  
+  <!-- Heatmap Matrix [3x3] -->
+  <text x="140" y="105" fill="#F59E0B" font-family="'Inter', sans-serif" font-size="13px" font-weight="600" text-anchor="middle">Attention Weights A</text>
+  
+  <!-- Row 0 -->
+  <rect x="65" y="125" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.85" />
+  <text x="87" y="152" fill="#0F172A" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">0.72</text>
+  
+  <rect x="115" y="125" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.2" />
+  <text x="137" y="152" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.18</text>
+  
+  <rect x="165" y="125" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.1" />
+  <text x="187" y="152" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.10</text>
+  
+  <!-- Row 1 -->
+  <rect x="65" y="175" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.25" />
+  <text x="87" y="202" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.20</text>
+  
+  <rect x="115" y="175" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.75" />
+  <text x="137" y="202" fill="#0F172A" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">0.65</text>
+  
+  <rect x="165" y="175" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.15" />
+  <text x="187" y="202" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.15</text>
+  
+  <!-- Row 2 -->
+  <rect x="65" y="225" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.15" />
+  <text x="87" y="252" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.12</text>
+  
+  <rect x="115" y="225" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.1" />
+  <text x="137" y="252" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">0.08</text>
+  
+  <rect x="165" y="225" width="45" height="45" rx="4" fill="#F59E0B" fill-opacity="0.95" />
+  <text x="187" y="252" fill="#0F172A" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">0.80</text>
+
+  <!-- Multiplication Arrow -->
+  <text x="245" y="200" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="22px" font-weight="700" text-anchor="middle">×</text>
+  <text x="285" y="105" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="13px" font-weight="600" text-anchor="middle">Value V</text>
+  <rect x="260" y="125" width="50" height="145" rx="4" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5" />
+  <text x="285" y="202" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">[3×2]</text>
+
+  <!-- Equals & Output -->
+  <text x="345" y="200" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="22px" font-weight="700" text-anchor="middle">=</text>
+  <text x="440" y="105" fill="#10B981" font-family="'Inter', sans-serif" font-size="13px" font-weight="600" text-anchor="middle">Context Output O</text>
+  <rect x="380" y="125" width="120" height="145" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="2" />
+  <text x="440" y="160" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">[0.85,  0.42]</text>
+  <text x="440" y="202" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">[0.31,  0.78]</text>
+  <text x="440" y="244" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">[0.12,  0.94]</text>
+</svg>

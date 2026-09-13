@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <rect width="600" height="340" rx="8" fill="#0F172A" />
+  <text x="30" y="40" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="16px" font-weight="700">Tokenization &amp; Character Spans</text>
+  <text x="30" y="65" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12px">Raw String: &quot;Attention is all you need !&quot;</text>
+  
+  <!-- Token Chips Grid -->
+  <g transform="translate(45, 140)">
+    <!-- Chip 0 -->
+    <rect x="0" y="0" width="80" height="60" rx="6" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <text x="40" y="28" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">&quot;Attention&quot;</text>
+    <text x="40" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10px" text-anchor="middle">id: 0</text>
+
+    <!-- Chip 1 -->
+    <rect x="90" y="0" width="55" height="60" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <text x="117" y="28" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">&quot;is&quot;</text>
+    <text x="117" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10px" text-anchor="middle">id: 1</text>
+
+    <!-- Chip 2 -->
+    <rect x="155" y="0" width="60" height="60" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <text x="185" y="28" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">&quot;all&quot;</text>
+    <text x="185" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10px" text-anchor="middle">id: 2</text>
+
+    <!-- Chip 3 -->
+    <rect x="225" y="0" width="60" height="60" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <text x="255" y="28" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12px" text-anchor="middle">&quot;you&quot;</text>
+    <text x="255" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10px" text-anchor="middle">id: 3</text>
+
+    <!-- Chip 4 -->
+    <rect x="295" y="0" width="70" height="60" rx="6" fill="#1E293B" stroke="#F59E0B" stroke-width="2" />
+    <text x="330" y="28" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">&quot;need&quot;</text>
+    <text x="330" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10px" text-anchor="middle">id: 4</text>
+
+    <!-- Chip 5 -->
+    <rect x="375" y="0" width="45" height="60" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="2" />
+    <text x="397" y="28" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="12px" font-weight="700" text-anchor="middle">&quot;!&quot;</text>
+    <text x="397" y="48" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10px" text-anchor="middle">id: 5</text>
+  </g>
+
+  <text x="300" y="250" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="12px" text-anchor="middle">Regex: \w+|[^\w\s]  •  Exact span boundaries preserved</text>
+</svg>
